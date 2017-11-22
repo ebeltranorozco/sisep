@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
+	'hostname' => 'www.laria.mx',
+	'username' => 'lariamx_root',
 	'password' => 'efrainbeltran',
-	'database' => 'sisep',
+	'database' => 'lariamx_sisep',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
