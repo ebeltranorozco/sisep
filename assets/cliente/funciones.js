@@ -45,9 +45,6 @@ $(function () {
 	});
 	*/
 
-
-
-
     $('#idTablaPadron').DataTable( {
     	dom: 'lBfrtip',/*Bfrtip*/
             buttons: [
@@ -180,11 +177,9 @@ $(function () {
         var tipo_solicitante = $("#tipo_solicitante").val();
         var cesionado_usuario = $("#cesionado_usuario").val();
         var id_padron_beneficiario = $("#id_padron_beneficiario").val();
-
         //var url="http://localhost/sisep/beneficiario/genera_convenio?t="+tipo_solicitante+"&c="+cesionado_usuario;
         var url="http://localhost/sisep/beneficiario/genera_convenio?id="+id_padron_beneficiario;
         abrirEnPestana(url);  
-
     })
     /********************************************************************************/
 
@@ -192,15 +187,8 @@ $(function () {
         // va a cargar 5 variables requeridas
         var tipo_solicitante = $("#tipo_solicitante").val();
         var cesionado_usuario = $("#cesionado_usuario").val();
-
-        //alert ( tipo_solicitante);
-        //alert (cesionado_usuario);
-
-        //objeto_window_referencia = window.open("http://www.cnn.com/", "Pagina_CNN", "targets=_new");
-
         var url="http://localhost/sisep/beneficiario/prepara_convenio?t="+tipo_solicitante+"&c="+cesionado_usuario;
-        abrirEnPestana(url);  
-
+        abrirEnPestana(url); 
     });
     /*********************************************************************************************/
     $("#btnBuscarBeneficiario").click(function(){
@@ -213,7 +201,7 @@ $(function () {
                 type : 'POST',                  
                 dataType : 'json',          
                 success : function(jsonResponse) {                    
-                    console.log( jsonResponse);
+                    //console.log( jsonResponse);
 
                     if (jsonResponse['STATUS'] == 'OK') {
                         // HAY Q GENERAR LA TABLA
@@ -234,7 +222,25 @@ $(function () {
                         cHtml += '<tbody>';
                         //var x = JSON.parse(jsonResponse.CONSULTA);
                         var x = jsonResponse['CONSULTA'];
-                        console.log(JSON.parse(x));
+                        console.log(x);
+                        $.each(x,function(index, value){
+                            //console.log('My array has at position ' + index + ', this value: ' + value);
+                        });
+                        console.log('cambiando');
+                        for (var k in x) {
+                            z = JSON.parse(k);
+                            //console.log(x[k]);
+                            
+                            //console.log(ch->'nombre_solicitante');
+                            console.log(z[0]);
+                            z1 = jQuery.parseJSON(k);
+                            //console.log(z1);
+                        }
+                        //var y= JSON.stringify(x[0]);
+                        //console.log(y);
+                        //alert(y);
+                        //alert(x[0]->nombre_solicitante)
+
                         
 
                         //aqui me quede.

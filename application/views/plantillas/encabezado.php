@@ -16,9 +16,7 @@ ini_set("session.gc_maxlifetime","7200");//2017-07-11
       <link href="<?php echo base_url('assets/css/bootstrap-theme.min.css'); ?>" rel="stylesheet">    
       <link href="<?php echo base_url('assets/css/font-awesome.min.css');    ?>" rel="stylesheet">
       
-      <!-- DATATABLES CDN -->
-
-      
+      <!-- DATATABLES CDN -->      
       <link rel="stylesheet" type="text/css" href="assets/DataTables/datatables.min.css"/>
       <script type="text/javascript" src="assets/DataTables/datatables.min.js"></script>
       <style type="text/css">
@@ -34,16 +32,7 @@ ini_set("session.gc_maxlifetime","7200");//2017-07-11
           /*background: url('images/pageLoader.gif') 50% 50% no-repeat rgb(249,249,249);
           opacity: .8;*/
         }
-      </style>
-      
-      <!--
-      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css"/> 
-      <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
-
-      
-      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.16/datatables.min.css"/>
-      <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.16/datatables.min.js"></script>
-      -->
+      </style>  
 
 
     </head>  
@@ -82,16 +71,14 @@ ini_set("session.gc_maxlifetime","7200");//2017-07-11
                 <div id="navbarCollapse" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="<?php echo base_url() ?>">Inicio</a></li>
-                        <!--
-                        <li><a href="#">Perfil</a></li>
-                        <li><a href="#">Mensages</a></li>
-                      -->
+                        
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                           <?php if (!isset($_SESSION['logeado']) ) { ?>
-                            <a href="registro">Registro</a></li>
+                            <a href="registro">Registro</a>
                           <?php } ?>
+                        </li>
                         <li>
                           <?php if (!isset($_SESSION['logeado']) )  { ?>
                             <a href="login">Login</a></li>

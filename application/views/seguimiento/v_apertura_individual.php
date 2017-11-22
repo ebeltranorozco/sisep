@@ -5,7 +5,7 @@ $fecha_oficio		= array('id'=>'fecha_oficio_apertura', 'name'=>'fecha_oficio_aper
 $fecha_acuse		= array('id'=>'fecha_acuse_oficio_apertura', 'name'=>'fecha_acuse_oficio_apertura', 'class'=>'form-control', 'value'=>set_value('fecha_acuse_oficio_apertura') );
 
 $id_beneficiario= array('id'=>'id_beneficiario', 'name'=>'id_beneficiario', 'class'=>'form-control', 'value'=>set_value('id_beneficiario'),'readonly'=>'TRUE' );
-$nombre_beneficiario= array('id'=>'nombre_beneficiario', 'name'=>'nombre_beneficiario', 'class'=>'form-control', 'value'=>set_value('nombre_beneficiario'),'placeholder'=>'Ingrese minimo 5 caracteres' );
+$nombre_beneficiario= array('id'=>'nombre_beneficiario', 'name'=>'nombre_beneficiario', 'class'=>'form-control', 'value'=>set_value('nombre_beneficiario'),'placeholder'=>'Ingrese minimo 5 caracteres' ,'value'=>'maria');
 //$no_oficio_apertura		= array('id'=>'', 'name'=>'', 'class'=>'form-control', 'value'=>set_value('') );
 
 

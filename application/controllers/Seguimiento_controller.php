@@ -30,7 +30,7 @@ class Seguimiento_controller extends CI_Controller {
 
  		$this->load->view('plantillas/encabezado',$data);
 		$this->load->view('plantillas/menu',$data);		
-		$this->load->view('seguimiento/v_apertura_individual',$data);
+		//$this->load->view('seguimiento/v_apertura_individual',$data);
 		$this->load->view('plantillas/footer',$data);
  	}
  	/****************************************************************************/
@@ -50,37 +50,13 @@ class Seguimiento_controller extends CI_Controller {
 		$this->load->view('plantillas/menu',$data);		
 		$this->load->view('seguimiento/v_apertura_global',$data);
 		$this->load->view('plantillas/footer',$data);	 	
-
-/*
-		$this->db->select('*,siseppadronbeneficiarios.id_padron_beneficiario as id_padron'); // campo ambiguo
-		$this->db->from('siseppadronbeneficiarios');
-		$this->db->join( 'siseppersonasfisicas',' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `siseppersonasfisicas`.`id_padron_beneficiario`','left');
-		$this->db->where( 'siseppadronbeneficiarios.id_padron_beneficiario', $id);
-		
-
-		$qryPadron = $this->db->get()->row();
-		$data->data = $qryPadron;	
-		$data->SQL = $this->db->last_query();
-
-		$this->load->view('plantillas/encabezado',$data);
-		$this->load->view('plantillas/menu',$data);		
-
-		if ($this->db->affected_rows()>0 ){	
-			$data->accion = 'EDICION';
-			$this->load->view('beneficiario/v_padron_individual',$data);				
-		}else {
-			$data->mensaje_error = 'Nada que Mostrar * Revise Consulta SQL *<br>'.$this->db->last_query();			
-			$this->load->view('errors/users/v_error_user',$data);				
-		}
-		$this->load->view('plantillas/footer',$data);
-*/
  	}
  	/******************************************************/
  	public function buscar_beneficiarios(){  // BUEN SCRIPT AJAX REQUEST
  		$RespData = array();
  		if (isset($_POST['nombre']) ){
  			$nombre = $_POST['nombre'];
- 			$qryConsulta = $this->db->query('select * from siseppadronbeneficiarios where id_componente ='.$_SESSION['id_componente'].' and	nombre_solicitante like "'.$nombre.'%"')->result();
+ 			$qryConsulta = $this->db->query('select * from siseppadronbeneficiarios where id_componente ='.$_SESSION['id_componente'].' and	nombre_solicitante like "'.$nombre.'%"')->result_array();
  			if ($this->db->affected_rows()>0){
  				$RespData['CONSULTA'] = $qryConsulta;
  				$RespData['STATUS'] = 'OK';
