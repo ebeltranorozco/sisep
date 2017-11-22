@@ -1,0 +1,35 @@
+-- --------------------------------------------------------
+-- Host:                         apisinaloa.wsoft.mx
+-- Versión del servidor:         5.5.58-0ubuntu0.14.04.1 - (Ubuntu)
+-- SO del servidor:              debian-linux-gnu
+-- HeidiSQL Versión:             9.4.0.5125
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+-- Volcando estructura para tabla sagarpa.sisepCatComponentes
+CREATE TABLE IF NOT EXISTS `sisepCatComponentes` (
+  `idComponente` int(11) NOT NULL,
+  `nombreComponente` char(200) DEFAULT NULL,
+  PRIMARY KEY (`idComponente`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Volcando datos para la tabla sagarpa.sisepCatComponentes: ~6 rows (aproximadamente)
+DELETE FROM `sisepCatComponentes`;
+/*!40000 ALTER TABLE `sisepCatComponentes` DISABLE KEYS */;
+INSERT INTO `sisepCatComponentes` (`idComponente`, `nombreComponente`) VALUES
+	(3650, 'CAPITALIZACIÓN PRODUCTIVA AGRÍCOLA-INFRAESTRUCTURA Y EQUIPAMIENTO PARA INSTALACIONES PRODUCTIVAS'),
+	(3653, 'ESTRATEGIAS INTEGRALES DE POLÍTICA PÚBLICA AGRÍCOLA-PROYECTOS REGIONALES DE DESARROLLO AGRÍCOLA'),
+	(3654, 'ESTRATEGIAS INTEGRALES DE POLÍTICA PÚBLICA AGRÍCOLA-AGROCLÚSTER'),
+	(3657, 'MEJORAMIENTO PRODUCTIVO DE SUELO Y AGUA-RECUPERACIÓN DE SUELOS CON DEGRADACIÓN AGROQUÍMICA, PRINCIPALMENTE PÉRDIDA DE FERTILIDAD'),
+	(3658, 'MEJORAMIENTO PRODUCTIVO DE SUELO Y AGUA-SISTEMAS DE RIEGO TECNIFICADO'),
+	(3660, 'ENERGIAS RENOVABLES');
+/*!40000 ALTER TABLE `sisepCatComponentes` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
