@@ -5,6 +5,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="container">
 	    <div class="row">
 	        <div class="col-sm-3 col-md-3">
+
+	        	<!-- AQUI EMPIEZA PROPIAMENTE EL MENU -->
 	            <div class="panel-group" id="accordion">
 	                <div class="panel panel-default">
 	                    <div class="panel-heading">
@@ -13,6 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	                            </span> Beneficiarios</a>
 	                        </h4>
 	                    </div>
+	            
 	                    <div id="collapseOne" <?php if ($menu_activo=='primero') { echo 'class="panel-collapse collapse in"';}else { echo 'class="panel-collapse collapse"';}  ?> >
 	                        <div class="panel-body">
 	                            <table class="table">
@@ -153,9 +156,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	                        </div>
 	                    </div>
 	                </div>
-	            </div>
-	        </div>	        
-	    </div>
-	</div>
+	            </div> <!-- aqui termina propiamente el menu -->
+
+	        </div><!-- FIN DEL COL-SM-3  y COL-MD-3-->	        
+	    </div> <!-- FIN DEL ROW -->
+	</div> <!-- FIN DEL CONTAINER DEL MENU -->
 </div> <!-- fin del col-md-3 del menu -->     
+
 <div class="col-md-9"> <!-- AREA DE TRABAJO -->

@@ -21,16 +21,61 @@ class Seguimiento_controller extends CI_Controller {
 		$data->page_title = 'SISEP';
 
  		$accion = 'ALTA';
+ 		$id_seguimiento = 9999999;
  		if (isset($_GET['id'])){
  			$id=$_GET['id'];
  			$accion = 'EDICION';
  			// consulta SQL
-
  		}
+
+ 		$this->load->library('table');
+ 		$this->table->set_heading('ID','Folio Interno','SURI','Concepto','Producto','Apoyo','Aportacion','Acciones');
+
+
+ 		$template = array (
+            'table_open'          => '<table border="0" class="table table-condensed" cellpadding="4" cellspacing="0" id="idTablaTmpDetalleSeguimiento">',
+
+            'heading_row_start'   => '<tr>',
+            'heading_row_end'     => '</tr>',
+            'heading_cell_start'  => '<th>',
+            'heading_cell_end'    => '</th>',
+
+            'row_start'           => '<tr>',
+            'row_end'             => '</tr>',
+            'cell_start'          => '<td>',
+            'cell_end'            => '</td>',
+
+            'row_alt_start'       => '<tr>',
+            'row_alt_end'         => '</tr>',
+            'cell_alt_start'      => '<td>',
+            'cell_alt_end'        => '</td>',
+
+            'table_close'         => '</table>'
+      	);	
+
+		
+ 		$this->table->set_template($template);	
+
+ 		$this->db->select('id_seguimiento,folio_interno_seguimiento,folio_suri_seguimiento,concepto_seguimiento,sistema_producto_seguimiento,,aportacion_federal_seguimiento,aportacion_productor_seguimiento,""');
+		$this->db->from('seguimientos');
+		//$this->db->join('enc_resultado','det_resultado.ID_enc_resultado = enc_resultado.ID_enc_resultado','LEFT');			
+		$this->db->where('id_seguimiento',$id_seguimiento);
+
+		$cCad = $this->db->get_compiled_select();
+		$qryBeneficiarios = $this->db->query($cCad)->result_array();
+		$data->consulta = $qryBeneficiarios;// proviene del detallado de resultados..!
+		$data->sql = $cCad; // CONOCER LA CONSULTA QUE LO ESTA EJECUTANDO..!
+
+ 		/*	if (count($query_result)>0)  {
+				$data->accion = 'CONSULTA';
+			}
+
+			
+ 		*/
 
  		$this->load->view('plantillas/encabezado',$data);
 		$this->load->view('plantillas/menu',$data);		
-		//$this->load->view('seguimiento/v_apertura_individual',$data);
+		$this->load->view('seguimiento/v_apertura_individual',$data);
 		$this->load->view('plantillas/footer',$data);
  	}
  	/****************************************************************************/

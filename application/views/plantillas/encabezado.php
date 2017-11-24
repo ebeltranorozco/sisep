@@ -69,36 +69,34 @@ ini_set("session.gc_maxlifetime","7200");//2017-07-11
                 </div>
                 <!-- Collection of nav links and other content for toggling -->
                 <div id="navbarCollapse" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="<?php echo base_url() ?>">Inicio</a></li>
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="<?php echo base_url() ?>">Inicio</a></li>
                         
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                          <?php if (!isset($_SESSION['logeado']) ) { ?>
-                            <a href="registro">Registro</a>
-                          <?php } ?>
-                        </li>
-                        <li>
-                          <?php if (!isset($_SESSION['logeado']) )  { ?>
-                            <a href="login">Login</a></li>
-                          <?php } else { ?>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">                        
+                    
+                    <?php if (!isset($_SESSION['logeado']) ) { ?>
+                      <li><a href="registro">Registro</a></li>
+                    <?php } ?>                        
+                        
+                    <?php if (!isset($_SESSION['logeado']) )  { ?>
+                      <li><a href="login">Login</a></li>
+                    <?php } else { ?>
 
-                            <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php  echo $_SESSION['alias_usuario'] ;?><span class="caret"></span></a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Perfil</a></li>
-                                <li><a href="#">Contraseña</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="logout">Cerrar Session</a></li>                                
-                              </ul>
-                            </li>
-                                                        
-                          <?php } ?>
-                    </ul>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php  echo $_SESSION['alias_usuario'] ;?><span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">Perfil</a></li>
+                          <li><a href="#">Contraseña</a></li>
+                          <li role="separator" class="divider"></li>
+                          <li><a href="logout">Cerrar Session</a></li>                                
+                        </ul> <!-- ul seccion dropdownm -->
+                      </li>                                                        
+                    <?php } ?>
+                  </ul> <!-- "nav navbar-nav navbar-right " SECCION LOGIN RIGHT -->
                 </div>
-
               </nav>
+
             </div> <!-- fin del col-md-12 -->
           </div>   <!-- fin del row -->
           <!-- LA PARTE DE LOS MENSAJES DE ERROR Y DEMAS VALIDACIONES -->
@@ -126,5 +124,5 @@ ini_set("session.gc_maxlifetime","7200");//2017-07-11
               
             <div class="centrado-porcentual2" id="ajax-loading" style="display:none" ><img id="imagen_cargando" src="assets/images/cargando.gif" /></div>          
           </div> <!-- FIN DEL ROW -->
-
-          <div class="row"> <!-- empieza la parte del menu y area de trabajo y pie de pagina -->
+          <!-- DE AQUI ELIMINE UN CLASS=ROW 23/11/2017 por un error de </body> debe cerrar todas las etiquetas div-->
+          <!-- empieza la parte del menu y area de trabajo y pie de pagina -->

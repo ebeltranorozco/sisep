@@ -1,7 +1,80 @@
 if (typeof jQuery === 'undefined') {
   throw new Error('Bootstrap\'s JavaScript requires jQuery')
 }
+function number_format(amount, decimals) {  // formatear un numero decimales y coma
 
+    amount += ''; // por si pasan un numero en vez de un string
+    amount = parseFloat(amount.replace(/[^0-9\.]/g, '')); // elimino cualquier cosa que no sea numero o punto
+
+    decimals = decimals || 0; // por si la variable no fue fue pasada
+
+    // si no es un numero o es igual a cero retorno el mismo cero
+    if (isNaN(amount) || amount === 0) 
+        return parseFloat(0).toFixed(decimals);
+
+    // si es mayor o menor que cero retorno el valor formateado como numero
+    amount = '' + amount.toFixed(decimals);
+
+    var amount_parts = amount.split('.'),
+        regexp = /(\d+)(\d{3})/;
+
+    while (regexp.test(amount_parts[0]))
+        amount_parts[0] = amount_parts[0].replace(regexp, '$1' + ',' + '$2');
+
+    return amount_parts.join('.');
+}
+/**************************************/
+function randomString( nLong  ) {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  if (!nLong){ nLong = 10 ;}
+
+  for (var i = 0; i < nLong; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
+}
+/************************************/
+function btnSeleccionaBeneficiario(thisButton){   
+    
+    var i = thisButton.parentNode.parentNode.rowIndex;     
+    //document.getElementById("idTablaTmpBeneficiarios").deleteRow(i);     
+    //var nombre = $(i).parents("tr").find("td").eq(0).html();    
+
+    var tabla = document.getElementById('idTablaTmpBeneficiarios'); 
+    var id_padron_beneficiario  = tabla.rows[i].cells[0].innerHTML;
+    var folio_interno           = tabla.rows[i].cells[1].innerHTML;
+    var folio_suri              = tabla.rows[i].cells[2].innerHTML;
+    var fecha_folio_suri        = tabla.rows[i].cells[3].innerHTML;    
+    var nombre_seleccionado     = tabla.rows[i].cells[4].innerHTML;
+    var concepto                = tabla.rows[i].cells[5].innerHTML;
+    var has                     = tabla.rows[i].cells[6].innerHTML;
+    var sistema_producto        = tabla.rows[i].cells[7].innerHTML;    
+    var apoyo                   = tabla.rows[i].cells[8].innerHTML;
+    var productor               = tabla.rows[i].cells[9].innerHTML;
+
+    if (confirm('Seleccionar al cliente ['+nombre_seleccionado+']' )){ 
+        // asignamos los valores al los input
+        $("#id_beneficiario").val(id_padron_beneficiario);
+        $("#folio_interno").val(folio_interno);
+        $("#folio_suri").val(folio_suri);
+        $("#fecha_folio_suri").val(fecha_folio_suri);
+        $("#nombre_beneficiario_seleccionado").val(nombre_seleccionado);
+        $("#concepto_real").val(concepto);
+        $("#has_real").val(has);
+        $("#producto_real").val(sistema_producto);
+        $("#monto_apoyo_real").val(apoyo);
+        $("#monto_productor_real").val(productor);
+        $("#idDivBuscarBeneficiarioApertura").html( '');        
+    } // fin del confirmar    
+    
+}// fin de funcion EditaRowDetalladoIdrPlagicidas(this)
+
+/************************************/
+
+/*************************************/
+
+/**********************************/
 function abrirEnPestana(url) {
         var a = document.createElement("a");
         a.target = "_blank";
@@ -205,50 +278,71 @@ $(function () {
 
                     if (jsonResponse['STATUS'] == 'OK') {
                         // HAY Q GENERAR LA TABLA
-                        cHtml = '<table class="table table-striped table-condensed" summary="Análisis de ventas anuales">';
+                        cHtml = '<table id="idTablaTmpBeneficiarios" class="table table-striped table-condensed" summary="Análisis de ventas anuales">';
                         cHtml += '<caption>Listado de Beneficiario(s)</caption>';
-                        cHtml += '<col style="width:10%;" />';
-                        cHtml += '<col style="width:30%;" />';
+                        //cHtml += '<col style="width:10%;" />';
+                        //cHtml += '<col style="width:30%;" />';
                         cHtml += '<thead>';
                         cHtml += '<tr>';
+                        cHtml += '<th scope="col" style="display:none">ID</th>';                        
+                        cHtml += '<th scope="col" style="display:none">Folio Interno</th>';
+                        cHtml += '<th scope="col" style="display:none">Folio SURI</th>';
+                        cHtml += '<th scope="col" style="display:none">Fecha Folio SURI</th>';
                         cHtml += '<th scope="col">Nombre</th>';
+                        cHtml += '<th scope="col" style="display:none">ID Concepto</th>';
                         cHtml += '<th scope="col">has</th>';
+                        cHtml += '<th scope="col" style="display:none">Producto</th>';                        
                         cHtml += '<th scope="col">Apoyo</th>';
-                        cHtml += '<th scope="col">Aportacion</th>';
-                        cHtml += '<th scope="col">Total</th>';
+                        cHtml += '<th scope="col">Aportacion</th>';                        
                         cHtml += '<th scope="col">Accion</th>';
                         cHtml += '</tr>';
                         cHtml += '</thead>';
                         cHtml += '<tbody>';
                         //var x = JSON.parse(jsonResponse.CONSULTA);
-                        var x = jsonResponse['CONSULTA'];
-                        console.log(x);
-                        $.each(x,function(index, value){
-                            //console.log('My array has at position ' + index + ', this value: ' + value);
-                        });
-                        console.log('cambiando');
-                        for (var k in x) {
-                            z = JSON.parse(k);
-                            //console.log(x[k]);
-                            
-                            //console.log(ch->'nombre_solicitante');
-                            console.log(z[0]);
-                            z1 = jQuery.parseJSON(k);
-                            //console.log(z1);
-                        }
-                        //var y= JSON.stringify(x[0]);
-                        //console.log(y);
-                        //alert(y);
-                        //alert(x[0]->nombre_solicitante)
+                        var arrayNombres = jsonResponse['CONSULTA'];                       
 
+                        $.each(arrayNombres, function(key_index,value){
+                            cHtml += '<tr>';
+                            cHtml += '<th scope="row" style="display:none">'+value.id_padron_beneficiario+'</th>';
+                            cHtml += '<th scope="row" style="display:none">'+value.folio_interno+'</th>';
+                            cHtml += '<th scope="row" style="display:none">'+value.folio_suri+'</th>';
+                            cHtml += '<th scope="row" style="display:none">'+value.fecha_folio_suri+'</th>';
+                            cHtml += '<th scope="row">'+value.nombre_solicitante+'</th>';
+                            cHtml += '<th scope="row" style="display:none">'+value.id_concepto+'</th>';
+                            cHtml += '<th scope="row">'+number_format(value.has_suri,2)+'</th>';                            
+                            cHtml += '<th scope="row" style="display:none">'+value.producto_atender+'</th>';                            
+                            cHtml += '<th scope="row">'+number_format(value.apoyo_solicitado,2)+'</th>';
+                            cHtml += '<th scope="row">'+number_format(value.aportacion_productor,2)+'</th>';                            
+                            cHtml += '<th scope="row">';
+                            cHtml += '<button type="button" class="btn btn-info btn-xs" onclick="btnSeleccionaBeneficiario(this)" ><span class="glyphicon glyphicon-chevron-right"></span></button>';
+                            cHtml += '</th>';
+                            cHtml += '</tr>';
+                            //console.log(value.nombre_solicitante);
+                        });
+                        
+                        cHtml += '</tbody>';
+                        cHtml += '</table><hr>';
+                        /*                        
+                        $folio_interno                      =array('id'=>'folio_interno','name'=>'folio_interno','class'=>'form-control','value'=>set_value('folio_interno'),'readonly'=>TRUE);
+                        $folio_suri                         =array('id'=>'folio_suri','name'=>'folio_suri','class'=>'form-control','value'=>set_value('folio_suri'),'readonly'=>TRUE);
+                        $fecha_folio_suri                   =array('id'=>'fecha_folio_suri','name'=>'fecha_folio_suri','class'=>'form-control','value'=>set_value('fecha_folio_suri'),'readonly'=>TRUE);
+                        $nombre_beneficiario_seleccionado   =array('id'=>'nombre_beneficiario_seleccionado','name'=>'nombre_beneficiario_seleccionado','class'=>'form-control','value'=>set_value('nombre_beneficiario_seleccionado'),'readonly'=>TRUE);
+                        $concepto_real                      =array('id'=>'concepto_real','name'=>'concepto_real','class'=>'form-control','value'=>set_value('concepto_real'),'readonly'=>TRUE);
+                        $has_real                           =array('id'=>'has_real','name'=>'has_real','class'=>'form-control','value'=>set_value('has_real'),'readonly'=>TRUE);
+                        $monto_apoyo_real                   =array('id'=>'monto_apoyo_real','name'=>'monto_apoyo_real','class'=>'form-control','value'=>set_value('monto_apoyo_real'),'readonly'=>TRUE);
+                        $monto_productor_real               =array('id'=>'monto_productor_real','name'=>'monto_productor_real','class'=>'form-control','value'=>set_value('monto_productor_real'),'readonly'=>TRUE);
+                        $producto_real                      =array('id'=>'producto_real','name'=>'producto_real','class'=>'form-control','value'=>set_value('producto_real'),'readonly'=>TRUE);
+
+                        */
+                        $("#nombre_beneficiario_seleccionado").prop('readonly',false);
+                        $("#concepto_real").prop('readonly',false);
+                        $("#has_real").prop('readonly',false);
+                        $("#monto_apoyo_real").prop('readonly',false);
+                        $("#monto_productor_real").prop('readonly',false);
+                        $("#producto_real").prop('readonly',false);
                         
 
-                        //aqui me quede.
 
-                        cHtml += '<tr>';                        
-                        cHtml += '</tr>';
-                        cHtml += '</tbody>';
-                        cHtml += '</table>';
                         $("#idDivBuscarBeneficiarioApertura").html( cHtml);
                     }else{ alert(jsonResponse['ERROR']);}
 
@@ -264,7 +358,81 @@ $(function () {
 
     }); // fin de btnBuscarBeneficiario
     /********************************************************************************************/
+    $("#btnAgregaBeneficiarios").click(function(){ // boton agrega beneficiario a la tabla idTablaTmpDetalleSeguimiento
+        /*                        
+            $folio_interno                      =array('id'=>'folio_interno','name'=>'folio_interno','class'=>'form-control','value'=>set_value('folio_interno'),'readonly'=>TRUE);
+            $folio_suri                         =array('id'=>'folio_suri','name'=>'folio_suri','class'=>'form-control','value'=>set_value('folio_suri'),'readonly'=>TRUE);
+            $fecha_folio_suri                   =array('id'=>'fecha_folio_suri','name'=>'fecha_folio_suri','class'=>'form-control','value'=>set_value('fecha_folio_suri'),'readonly'=>TRUE);
+            $nombre_beneficiario_seleccionado   =array('id'=>'nombre_beneficiario_seleccionado','name'=>'nombre_beneficiario_seleccionado','class'=>'form-control','value'=>set_value('nombre_beneficiario_seleccionado'),'readonly'=>TRUE);
+            $concepto_real                      =array('id'=>'concepto_real','name'=>'concepto_real','class'=>'form-control','value'=>set_value('concepto_real'),'readonly'=>TRUE);
+            $has_real                           =array('id'=>'has_real','name'=>'has_real','class'=>'form-control','value'=>set_value('has_real'),'readonly'=>TRUE);
+            $monto_apoyo_real                   =array('id'=>'monto_apoyo_real','name'=>'monto_apoyo_real','class'=>'form-control','value'=>set_value('monto_apoyo_real'),'readonly'=>TRUE);
+            $monto_productor_real               =array('id'=>'monto_productor_real','name'=>'monto_productor_real','class'=>'form-control','value'=>set_value('monto_productor_real'),'readonly'=>TRUE);
+            $producto_real                      =array('id'=>'producto_real','name'=>'producto_real','class'=>'form-control','value'=>set_value('producto_real'),'readonly'=>TRUE);
 
+            var id_padron_beneficiario  = tabla.rows[i].cells[0].innerHTML;
+            var folio_interno           = tabla.rows[i].cells[1].innerHTML;
+            var folio_suri              = tabla.rows[i].cells[2].innerHTML;
+            var fecha_folio_suri        = tabla.rows[i].cells[3].innerHTML;    
+            var nombre_seleccionado     = tabla.rows[i].cells[4].innerHTML;
+            var concepto                = tabla.rows[i].cells[5].innerHTML;
+            var has                     = tabla.rows[i].cells[6].innerHTML;
+            var sistema_producto        = tabla.rows[i].cells[7].innerHTML;    
+            var apoyo                   = tabla.rows[i].cells[8].innerHTML;
+            var productor               = tabla.rows[i].cells[9].innerHTML;
+
+        */
+        var id_padron_beneficiario  = $("#id_beneficiario").val();
+        var folio_interno           = $("#folio_interno").val();
+        var folio_suri              = $("#folio_suri").val();
+        var fecha_folio_suri        = $("#fecha_folio_suri").val();
+        var nombre_seleccionado     = $("#nombre_beneficiario_seleccionado").val();
+        var concepto                = $("#concepto_real").val();
+        var sistema_producto        = $("#producto_real").val();
+        var has                     = $("#has_real").val();
+        var apoyo                   = $("#monto_apoyo_real").val();
+        var productor               = $("#monto_productor_real").val();
+
+        if ($('#idTablaTmpDetalleSeguimiento >tbody >tr').length == 0){
+           $("#tablaDetalleMuestras").append("<tbody></tbody>");           
+           alert('agregando un TBODY');
+        }
+
+        // agregarmos a la tabla del detallado
+        cHtml = '<tr id="'+randomString()+'" >';                                                                                                                                       //formatoNumero(numero, decimales, separadorDecimal, separadorMiles) {
+        cHtml += '<td>'+id_padron_beneficiario+'</td>';
+        cHtml += '<td>'+folio_interno+'</td>';
+        cHtml += '<td>'+folio_suri+'</td>'
+        cHtml += '<td>'+fecha_folio_suri+'</td>'
+        cHtml += '<td>'+nombre_seleccionado+'</td>'
+        cHtml += '<td>'+concepto+'</td>';
+        cHtml += '<td>'+sistema_producto+'</td>';
+        cHtml += '<td>'+has+'</td>';
+        cHtml += '<td>'+apoyo+'</td>';
+        cHtml += '<td>'+productor+'</td>';
+        cHtml += '<td>';        
+        cHtml += '<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal" onclick="DuplicaRowDetalladoEstudio(this,1)" name="B2"><span class="glyphicon glyphicon-copy" data-toggle="tooltip" title="Duplicar Muestra"></span></button>';
+        cHtml += '</td>';
+        cHtml += '</tr>';
+        //console.log( cHtml);
+        $("#idTablaTmpDetalleSeguimiento").append(cHtml);
+        /*
+        cHtml += '<td style="display: none;">'+cIdMetodologia+'</td>';
+        cHtml += '<td style="display: none;">'+id_estudio+'</td>';
+        cHtml += '<td>'+cbo_estudio+'</td>';
+        //cHtml += '<td>'+formatoNumero(nPrecio, 2)+'</td>';
+        cHtml += '<td>'+formatoNumero(nPrecio,2,".",",")+'</td>';
+        //cHtml += '<td>'+moment(fecha).format("YYYY-MM-DD")+'</td>';
+        cHtml += '<td>'+fecha+'</td>';
+        cHtml += '<td>';        
+        cHtml += '<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal" onclick="DuplicaRowDetalladoEstudio(this,1)" name="B2"><span class="glyphicon glyphicon-copy" data-toggle="tooltip" title="Duplicar Muestra"></span></button>';
+        //22/06/2017 AGERGANDO UN BOTON DE MODIFICAR.
+        cHtml += '<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal" onclick="DuplicaRowDetalladoEstudio(this,0)" name="B2"><span class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Correccion de los Datos de la Muestra"></span></button>';                                
+        cHtml += '</td></tr>';
+        */
+        alert('saliendo ok');
+    });
+    /********************************************************************************************/
 	
     
 }); // FIN DEL JQUERY
