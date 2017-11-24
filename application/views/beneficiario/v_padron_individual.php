@@ -31,9 +31,9 @@ $nacionalidad_persona_fisica		=array( 'id'=>'nacionalidad_persona_fisica', 'name
 $fecha_nacimiento_persona_fisica	=array( 'id'=>'fecha_nacimiento_persona_fisica', 'name'=>'fecha_nacimiento_persona_fisica', 'class'=>'form-control', 'value'=>set_value('fecha_nacimiento_persona_fisica'));
 $estado_civil_persona_fisica		=array( 'id'=>'estado_civil_persona_fisica', 'name'=>'estado_civil_persona_fisica', 'class'=>'form-control', 'value'=>set_value('estado_civil_persona_fisica'));
 $calle_persona_fisica				=array( 'id'=>'calle_persona_fisica', 'name'=>'calle_persona_fisica', 'class'=>'form-control', 'value'=>set_value('calle_persona_fisica'));
-$num__persona_fisica 				=array( 'id'=>'num__persona_fisica', 'name'=>'num__persona_fisica', 'class'=>'form-control', 'value'=>set_value('num__persona_fisica'));
+$numero_persona_fisica 				=array( 'id'=>'num__persona_fisica', 'name'=>'num__persona_fisica', 'class'=>'form-control', 'value'=>set_value('num__persona_fisica'));
 $colonia_persona_fisica				=array( 'id'=>'colonia_persona_fisica', 'name'=>'colonia_persona_fisica', 'class'=>'form-control', 'value'=>set_value('colonia_persona_fisica'));
-$cp__persona_fisica					=array( 'id'=>'cp__persona_fisica', 'name'=>'cp__persona_fisica', 'class'=>'form-control', 'value'=>set_value('cp__persona_fisica'));
+$cp_persona_fisica					=array( 'id'=>'cp__persona_fisica', 'name'=>'cp__persona_fisica', 'class'=>'form-control', 'value'=>set_value('cp__persona_fisica'));
 $localidad_persona_fisica			=array( 'id'=>'localidad_persona_fisica', 'name'=>'localidad_persona_fisica', 'class'=>'form-control', 'value'=>set_value('localidad_persona_fisica'));
 $municipio_persona_fisica			=array( 'id'=>'municipio_persona_fisica', 'name'=>'municipio_persona_fisica', 'class'=>'form-control', 'value'=>set_value('municipio_persona_fisica'));
 $estado_persona_fisica 				=array( 'id'=>'estado_persona_fisica', 'name'=>'estado_persona_fisica', 'class'=>'form-control', 'value'=>set_value('estado_persona_fisica'));
@@ -43,8 +43,46 @@ $correo_persona_fisica				=array( 'id'=>'correo_persona_fisica', 'name'=>'correo
 $id_oficial_persona_fisica 			=array( 'id'=>'id_oficial_persona_fisica', 'name'=>'id_oficial_persona_fisica', 'class'=>'form-control', 'value'=>set_value('id_oficial_persona_fisica'));
 $num_id_oficial_persona_fisica		=array( 'id'=>'num_id_oficial_persona_fisica', 'name'=>'num_id_oficial_persona_fisica', 'class'=>'form-control', 'value'=>set_value('num_id_oficial_persona_fisica'));
 
+//DATOS PERSONAS MORALES
+$nombrePersonaMoral	=array( 'id'=>'nnombrePersonaMoral', 'name'=>'nombrePersonaMoral', 'class'=>'form-control', 'value'=>set_value('nombrePersonaMoral'));
+$rfcPersonaMoral	  =array( 'id'=>'callePersonaMoral', 'name'=>'callePersonaMoral	', 'class'=>'form-control', 'value'=>set_value('callePersonaMoral'));			
+$callePersonaMoral		=array( 'id'=>'callePersonaMoral', 'name'=>'callePersonaMoral', 'class'=>'form-control', 'value'=>set_value('callePersonaMoral'));
+$numeroPersonaMoral	=array( 'id'=>'numero_persona_moral', 'name'=>'numero_persona_moral', 'class'=>'form-control', 'value'=>set_value('numero_persona_moral'));
+$coloniaPersonaMoral		=array( 'id'=>'coloniaPersonaMoral', 'name'=>'coloniaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('coloniaPersonaMoral'));
+$cpPersonaMoral		=array( 'id'=>'cpPersonaMoral', 'name'=>'cpPersonaMoral', 'class'=>'form-control', 'value'=>set_value('cpPersonaMoral'));
+$localidadPersonaMoral		=array( 'id'=>'localidadPersonaMoral', 'name'=>'localidadPersonaMoral', 'class'=>'form-control', 'value'=>set_value('localidadPersonaMoral'));
+$municipioPersonaMoral		=array( 'id'=>'municipioPersonaMoral', 'name'=>'municipioPersonaMoral', 'class'=>'form-control', 'value'=>set_value('municipioPersonaMoral'));
+$estadoPersonaMoral		=array( 'id'=>'estadoPersonaMoral', 'name'=>'estadoPersonaMoral', 'class'=>'form-control', 'value'=>set_value('estadoPersonaMoral'));
+$telefonoOficinaPersonaMoral	=array( 'id'=>'telefonoOficinaPersonaMoral', 'name'=>'telefonoOficinaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('telefonoOficinaPersonaMoral'));
+$correoPersonaMoral		=array( 'id'=>'correoPersonaMoral', 'name'=>'correoPersonaMoral', 'class'=>'form-control', 'value'=>set_value('correoPersonaMoral'));
+$fechaInscripcionRfcPersonaMoral	=array( 'id'=>'fechaInscripcionRfcPersonaMoral', 'name'=>'fechaInscripcionRfcPersonaMoral', 'class'=>'form-control', 'value'=>set_value('fechaInscripcionRfcPersonaMoral'));
+$objetoSocialPmoralPersonaMoral	=array( 'id'=>'objetoSocialPmoralPersonaMoral', 'name'=>'objetoSocialPmoralPersonaMoral', 'class'=>'form-control', 'value'=>set_value('objetoSocialPmoralPersonaMoral'));
+$tipoDeorganismoPersonaMoral		=array( 'id'=>'tipoDeorganismoPersonaMoral', 'name'=>'tipoDeorganismoPersonaMoral', 'class'=>'form-control', 'value'=>set_value('tipoDeorganismoPersonaMoral'));
+$noActaConstitutivaPersonaMoral		=array( 'id'=>'noActaConstitutivaPersonaMoral', 'name'=>'noActaConstitutivaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('noActaConstitutivaPersonaMoral'));
+$fechaDeConstitucionPersonaMoral		=array( 'id'=>'fechaDeConstitucionPersonaMoral', 'name'=>'fechaDeConstitucionPersonaMoral', 'class'=>'form-control', 'value'=>set_value('fechaDeConstitucionPersonaMoral'));
+$nombreLicenciadoNotarioPersonaMoral       =array( 'id'=>'nombreLicenciadoNotarioPersonaMoral', 'name'=>'nombreLicenciadoNotarioPersonaMoral', 'class'=>'form-control', 'value'=>set_value('nombreLicenciadoNotarioPersonaMoral'));
+$notarioActaConstPersonaMoral		=array( 'id'=>'notarioActaConstPersonaMoral', 'name'=>'notarioActaConstPersonaMoral	', 'class'=>'form-control', 'value'=>set_value('notarioActaConstPersonaMoral'));
+$numNotarioActConstPersonaMoral		=array( 'id'=>'numNotarioActConstPersonaMoral', 'name'=>'numNotarioActConstPersonaMoral', 'class'=>'form-control', 'value'=>set_value('numNotarioActConstPersonaMoral'));
+$calleNotarioActaConstPersonaMoral		=array( 'id'=>'calleNotarioActaConstPersonaMoral', 'name'=>'calleNotarioActaConstPersonaMoral', 'class'=>'form-control', 'value'=>set_value('calleNotarioActaConstPersonaMoral'));
+$numeroNotarioActaConstPersonaMoral		=array( 'id'=>'numeroNotarioActaConstPersonaMoral', 'name'=>'numeroNotarioActaConstPersonaMoral', 'class'=>'form-control', 'value'=>set_value('numeroNotarioActaConstPersonaMoral'));
+$coloniaNotarioActaConstPersonaMoral		=array( 'id'=>'coloniaNotarioActaConstPersonaMoral', 'name'=>'coloniaNotarioActaConstPersonaMoral', 'class'=>'form-control', 'value'=>set_value('coloniaNotarioActaConstPersonaMoral'));
+$cpNotarioActaConstPersonaMoral		=array( 'id'=>'cpNotarioActaConstPersonaMoral', 'name'=>'cpNotarioActaConstPersonaMoral', 'class'=>'form-control', 'value'=>set_value('cpNotarioActaConstPersonaMoral'));
+$municipioNotarioActaConstPersonaMoral		=array( 'id'=>'municipioNotarioActaConstPersonaMoral', 'name'=>'municipioNotarioActaConstPersonaMoral', 'class'=>'form-control', 'value'=>set_value('municipioNotarioActaConstPersonaMoral'));
+$estadoNotarioActaConstPersonaMoral		=array( 'id'=>'estadoNotarioActaConstPersonaMoral', 'name'=>'estadoNotarioActaConstPersonaMoral', 'class'=>'form-control', 'value'=>set_value('estadoNotarioActaConstPersonaMoral'));
+$noActaAsambleaPersonaMoral			=array( 'id'=>'noActaAsambleaPersonaMoral', 'name'=>'noActaAsambleaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('noActaAsambleaPersonaMoral'));
+$fechaDeActaAsambleaPersonaMoral		=array( 'id'=>'fechaDeActaAsambleaPersonaMoral', 'name'=>'fechaDeActaAsambleaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('fechaDeActaAsambleaPersonaMoral'));
+$notarioActaAsambleaPersonaMoral		=array( 'id'=>'notarioActaAsambleaPersonaMoral', 'name'=>'notarioActaAsambleaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('notarioActaAsambleaPersonaMoral'));
+$numDomNotarioActaAsambleaPersonaMoral	=array( 'id'=>'numDomNotarioActaAsambleaPersonaMoral', 'name'=>'numDomNotarioActaAsambleaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('numDomNotarioActaAsambleaPersonaMoral'));
+$calleNotarioActaAsmbleaPersonaMoral		=array( 'id'=>'calleNotarioActaAsmbleaPersonaMoral', 'name'=>'calleNotarioActaAsmbleaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('calleNotarioActaAsmbleaPersonaMoral'));
+$numeroNotarioActaAsambleaPersonaMoral	=array( 'id'=>'numeroNotarioActaAsambleaPersonaMoral', 'name'=>'numeroNotarioActaAsambleaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('numeroNotarioActaAsambleaPersonaMoral'));
+$coloniaNotarioActaAsambleaPersonaMoral	=array( 'id'=>'coloniaNotarioActaAsambleaPersonaMoral', 'name'=>'coloniaNotarioActaAsambleaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('coloniaNotarioActaAsambleaPersonaMoral'));
+$cpNotarioActaAsambleaPersonaMoral		=array( 'id'=>'cpNotarioActaAsambleaPersonaMoral', 'name'=>'cpNotarioActaAsambleaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('cpNotarioActaAsambleaPersonaMoral'));
+$municipioNotarioActaAsambleaPersonaMoral =array( 'id'=>'municipioNotarioActaAsambleaPersonaMoral', 'name'=>'municipioNotarioActaAsambleaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('municipioNotarioActaAsambleaPersonaMoral'));
+$estadoNotarioActaAsambleaPersonaMoral		=array( 'id'=>'estadoNotarioActaAsambleaPersonaMoral', 'name'=>'estadoNotarioActaAsambleaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('estadoNotarioActaAsambleaPersonaMoral'));
+
+//FIN DE PRESONAS MORALES
 if ($accion == 'EDICION') {
-	$id_padron['value'] 		= $data->id_padron; // por el campo ambiguo..
+	$id_padron['value'] 		= $data->id_padron; // por el campo ambiguo..f
 	$folio_interno['value']		= $data->folio_interno;
 	$folio_suri['value'] 		=  $data->folio_suri;
 	$fecha_folio_suri['value']	= $data->fecha_folio_suri;
@@ -164,6 +202,7 @@ if ($accion == 'EDICION') {
 					  	<div id="menu1" class="tab-pane fade">
 					    <h3>Datos Persona Fisica</h3>
 						
+						
 						<div class="row">
 					    	<div class="col-md-4">
 					    		<?php echo form_label('Nombre:'); echo form_input($nombre_persona_fisica); ?>
@@ -175,10 +214,12 @@ if ($accion == 'EDICION') {
 					    		<?php echo form_label('Apellido Materno:'); echo form_input($ap_materno_persona_fisica); ?>
 					    	</div>
 					    </div>
-					    <br>
+					   
+					    <hr>
+
 					    <div class="row">
 					    	<div class="col-md-4">
-					    		<?php echo form_label('Rfc:'); echo form_input($rfc_persona_fisica); ?>
+					    		<?php echo form_label('RFC:'); echo form_input($rfc_persona_fisica); ?>
 					    	</div>
 					    	<div class="col-md-4">
 					    		<?php echo form_label('CURP:'); echo form_input($curp_persona_fisica); ?>
@@ -188,6 +229,76 @@ if ($accion == 'EDICION') {
 					    	</div>
 					    </div>
 					    <hr>
+					   <div class="row">
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Fecha de Nacimiento:'); echo form_input($fecha_nacimiento_persona_fisica); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Estado Civil:'); echo form_input($estado_civil_persona_fisica); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Calle:'); echo form_input($calle_persona_fisica); ?>
+					    	</div>
+					    </div>
+					    <hr>
+                       <div class="row">
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Numero:'); echo form_input($numero_persona_fisica); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Colonia:'); echo form_input($colonia_persona_fisica); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Codigo Postal:'); echo form_input($cp_persona_fisica); ?>
+					    	</div>
+					    </div>
+					    <hr>
+					     <div class="row">
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Localidad:'); echo form_input($localidad_persona_fisica); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Municipio:'); echo form_input($municipio_persona_fisica); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Estado:'); echo form_input($estado_persona_fisica); ?>
+					    	</div>
+					    </div>
+					    <hr>
+					     <div class="row">
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Telefono:'); echo form_input($telefono_persona_fisica); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Numero de Celular:'); echo form_input($num_celular_persona_fisica); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Correo Electronico:'); echo form_input($correo_persona_fisica); ?>
+					    	</div>
+					    </div>
+					    <hr>
+					    <div class="row">
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Identificacion Oficial:'); echo form_input($id_oficial_persona_fisica); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Numero de Identificacion Oficial:'); echo form_input($num_id_oficial_persona_fisica); ?>
+					    	</div>
+					    </div>
+					    <hr>
+
+					    <!-- *********************************************************************************** -->
+
+
+
+
+
+
+
+
+
+
+
 
 					    <!--
 					    /*
@@ -216,7 +327,159 @@ $num_id_oficial_persona_fisica
 					  </div>
 					  <div id="menu2" class="tab-pane fade">
 					    <h3>Morales</h3>
-					    <p>Some content in menu 2.</p>
+					<!--aqui inician  las variables-->
+                        <div class="row">
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Nombre de la Sociedad:'); echo form_input($nombrePersonaMoral); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('RFC'); echo form_input($rfcPersonaMoral); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Calle:'); echo form_input($callePersonaMoral); ?>
+					    	</div>
+					    </div>
+					   
+					    <hr>
+
+					    <div class="row">
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Numero:'); echo form_input($numeroPersonaMoral); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Colonia:'); echo form_input($coloniaPersonaMoral); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Codigo Postal:'); echo form_input($cpPersonaMoral); ?>
+					    	</div>
+					    </div>
+					    <hr>
+					   <div class="row">
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Localidad:'); echo form_input($localidadPersonaMoral); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Municipio:'); echo form_input($municipioPersonaMoral); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Estado:'); echo form_input($estadoPersonaMoral); ?>
+					    	</div>
+					    </div>
+					    <hr>
+                       <div class="row">
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Telefono:'); echo form_input($telefonoOficinaPersonaMoral); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Correo:'); echo form_input($correoPersonaMoral); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Fecha de Inscripcion al RFC:'); echo form_input($fechaInscripcionRfcPersonaMoral); ?>
+					    	</div>
+					    </div>
+					    <hr>
+					     <div class="row">
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Objeto Social:'); echo form_input($objetoSocialPmoralPersonaMoral); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Tipo de Organismo:'); echo form_input($tipoDeorganismoPersonaMoral); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('No. Acta Constitutiva:'); echo form_input($noActaConstitutivaPersonaMoral); ?>
+					    	</div>
+					    </div>
+					    <hr>
+					     <div class="row">
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Fecha de Constitucion de la Persona Moral:'); echo form_input($fechaDeConstitucionPersonaMoral); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Nombre de Notario:'); echo form_input($nombreLicenciadoNotarioPersonaMoral); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Nombre de la Notaria:'); echo form_input($notarioActaConstPersonaMoral); ?>
+					    	</div>
+					    </div>
+					    <hr>
+					    <div class="row">
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Numero de Notario:'); echo form_input($numNotarioActConstPersonaMoral); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Nombre de la Calle de la Notaria:'); echo form_input($calleNotarioActaConstPersonaMoral); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Numero del Domicilio de Notaria:'); echo form_input($numeroNotarioActaConstPersonaMoral); ?>
+					    	</div>
+					    </div>
+					    <hr>
+					    <div class="row">
+					    	
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Colonia de la Notaria:'); echo form_input($coloniaNotarioActaConstPersonaMoral); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Codigo Postal de la Notaria:'); echo form_input($cpNotarioActaConstPersonaMoral); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Municipio:'); echo form_input($municipioNotarioActaConstPersonaMoral); ?>
+					    	</div>
+					    </div>
+					    <hr>
+					    
+					    <div class="row">
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Estado:'); echo form_input($estadoNotarioActaConstPersonaMoral); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Numero de Acta de Asamblea:'); echo form_input($noActaAsambleaPersonaMoral); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Fecha de Acta de Asamblea:'); echo form_input($fechaDeActaAsambleaPersonaMoral); ?>
+					    	</div>
+					    </div>
+					    <hr>
+					     <div class="row">
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Notario que Emite Acta de Asamblea:'); echo form_input($notarioActaAsambleaPersonaMoral); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Numero del Domicilio del Notario que Emite Acta de Asamblea:'); echo form_input($numDomNotarioActaAsambleaPersonaMoral); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Calle del Domicilio de Notaria:'); echo form_input($calleNotarioActaAsmbleaPersonaMoral); ?>
+					    	</div>
+					         		
+					    </div>
+					    <hr>
+					   
+					    <div class="row">
+					    	<div class="col-md-4">
+					    	   <?php echo form_label('Numero de Notaria:'); echo form_input($numeroNotarioActaAsambleaPersonaMoral); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Colonia de la Notaria:'); echo form_input($coloniaNotarioActaAsambleaPersonaMoral); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Codigo Postal de la Notaria:'); echo form_input($cpNotarioActaAsambleaPersonaMoral); ?>
+					    	</div>
+					      </div>
+					    <hr>
+					    
+					    <div class="row">
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Municipio:'); echo form_input($municipioNotarioActaAsambleaPersonaMoral); ?>
+					    	</div>
+					    	<div class="col-md-4">
+					    		<?php echo form_label('Estado:'); echo form_input($estadoNotarioActaAsambleaPersonaMoral); ?>
+					    	</div>
+
+					    </div>
+					    <hr>
+
+
+<!--aqui cierran  las variables-->
 					  </div>
 					  <div id="menu3" class="tab-pane fade">
 					    <h3>Representantes</h3>
