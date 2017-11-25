@@ -29,8 +29,7 @@ class Seguimiento_controller extends CI_Controller {
  		}
 
  		$this->load->library('table');
- 		$this->table->set_heading('ID','Folio Interno','SURI','Concepto','Producto','Apoyo','Aportacion','Acciones');
-
+ 		
 
  		$template = array (
             'table_open'          => '<table border="0" class="table table-condensed" cellpadding="4" cellspacing="0" id="idTablaTmpDetalleSeguimiento">',
@@ -56,22 +55,23 @@ class Seguimiento_controller extends CI_Controller {
 		
  		$this->table->set_template($template);	
 
- 		$this->db->select('id_seguimiento,folio_interno_seguimiento,folio_suri_seguimiento,concepto_seguimiento,sistema_producto_seguimiento,,aportacion_federal_seguimiento,aportacion_productor_seguimiento,""');
+ 		//$this->db->select('id_seguimiento,folio_interno_seguimiento,folio_suri_seguimiento,concepto_seguimiento,sistema_producto_seguimiento,,aportacion_federal_seguimiento,aportacion_productor_seguimiento,""');
+ 		$this->table->set_heading('ID','Nombre','SURI','ID Concepto','Concepto','DDR','HAS','Apoyo','Aportacion','Acciones');
+
+ 		$this->db->select('id_padron_beneficiario,nombre_beneficiario_seguimiento,folio_suri_seguimiento,seguimientos.id_concepto,nombre_concepto,id_ddr,has_seguimiento,aportacion_federal_seguimiento,aportacion_productor_seguimiento');
 		$this->db->from('seguimientos');
-		//$this->db->join('enc_resultado','det_resultado.ID_enc_resultado = enc_resultado.ID_enc_resultado','LEFT');			
+		$this->db->join('conceptos_inversion','seguimientos.id_concepto = conceptos_inversion.id_concepto','LEFT');			
 		$this->db->where('id_seguimiento',$id_seguimiento);
 
 		$cCad = $this->db->get_compiled_select();
 		$qryBeneficiarios = $this->db->query($cCad)->result_array();
 		$data->consulta = $qryBeneficiarios;// proviene del detallado de resultados..!
 		$data->sql = $cCad; // CONOCER LA CONSULTA QUE LO ESTA EJECUTANDO..!
-
- 		/*	if (count($query_result)>0)  {
-				$data->accion = 'CONSULTA';
-			}
-
-			
- 		*/
+		// GENERANDO EL DROP DE EL CONCEPTO
+		
+		//function listData($table,$name,$value,$orderBy=null, $where_nombre_campo=null, $where_variable=null) {
+		//function listData($table,$name,$value,$orderBy=null, $where_nombre_campo=null, $where_variable=null) {
+		$data->ConceptosFederalesCombo = listData('conceptos_inversion','nombre_concepto', 'id_concepto'); 		
 
  		$this->load->view('plantillas/encabezado',$data);
 		$this->load->view('plantillas/menu',$data);		
@@ -114,5 +114,16 @@ class Seguimiento_controller extends CI_Controller {
  		
  		header('Content-type: application/json; charset=utf-8');
  		echo json_encode($RespData);    
+ 	}
+ 	/***************************************************************/
+ 	public function graba_oficio_apertura(){
+ 		$RespData = array();
+
+
+
+ 		// aqi me quede
+ 		
+ 		header('Content-type: application/json; charset=utf-8');
+ 		echo json_encode($RespData); 
  	}
  } // fin del controller

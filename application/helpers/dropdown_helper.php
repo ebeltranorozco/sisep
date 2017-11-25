@@ -20,6 +20,7 @@ if(!defined('BASEPATH')) exit('No direct script access allowed');
       
       $query = $CI->db->select("$name,$value")->from($table)->get();
       if ($query->num_rows() > 0) {
+          $items['0'] = 'Seleccione';
           foreach($query->result() as $data) {
               $items[$data->$value] =  $data->$name;
           }

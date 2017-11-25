@@ -47,25 +47,43 @@ function btnSeleccionaBeneficiario(thisButton){
     var folio_suri              = tabla.rows[i].cells[2].innerHTML;
     var fecha_folio_suri        = tabla.rows[i].cells[3].innerHTML;    
     var nombre_seleccionado     = tabla.rows[i].cells[4].innerHTML;
-    var concepto                = tabla.rows[i].cells[5].innerHTML;
+    var id_concepto             = tabla.rows[i].cells[5].innerHTML;
     var has                     = tabla.rows[i].cells[6].innerHTML;
     var sistema_producto        = tabla.rows[i].cells[7].innerHTML;    
     var apoyo                   = tabla.rows[i].cells[8].innerHTML;
     var productor               = tabla.rows[i].cells[9].innerHTML;
-
+    var ddr                     = tabla.rows[i].cells[11].innerHTML;
+    var nombre_proyecto         = tabla.rows[i].cells[10].innerHTML;
+    
     if (confirm('Seleccionar al cliente ['+nombre_seleccionado+']' )){ 
         // asignamos los valores al los input
         $("#id_beneficiario").val(id_padron_beneficiario);
         $("#folio_interno").val(folio_interno);
         $("#folio_suri").val(folio_suri);
         $("#fecha_folio_suri").val(fecha_folio_suri);
-        $("#nombre_beneficiario_seleccionado").val(nombre_seleccionado);
-        $("#concepto_real").val(concepto);
+        $("#ddr_real").val( ddr );
+        $("#nombre_beneficiario_seleccionado").val(nombre_seleccionado);        
+        //$("#concepto_real").val(id_concepto);
+        $('#cboConceptos option[value="5"]').attr("selected", true);  
         $("#has_real").val(has);
         $("#producto_real").val(sistema_producto);
         $("#monto_apoyo_real").val(apoyo);
         $("#monto_productor_real").val(productor);
-        $("#idDivBuscarBeneficiarioApertura").html( '');        
+        $("#nombre_proyecto").val(nombre_proyecto);
+
+        // habilitando los input y el combobox y el boton
+        $("#nombre_beneficiario_seleccionado").prop('readonly',false);
+        $("#concepto_real").prop('readonly',false);
+        $("#has_real").prop('readonly',false);
+        $("#monto_apoyo_real").prop('readonly',false);
+        $("#monto_productor_real").prop('readonly',false);
+        $("#producto_real").prop('readonly',false);
+        $("#cboConceptos").prop('disabled',false);
+        $("#nombre_proyecto").prop('readonly',false);
+
+        $("#btnAgregaBeneficiarios").show();
+
+        $("#idDivBuscarBeneficiarioApertura").html( '');  // quito los nombres que se buscaron..!
     } // fin del confirmar    
     
 }// fin de funcion EditaRowDetalladoIdrPlagicidas(this)
@@ -293,7 +311,9 @@ $(function () {
                         cHtml += '<th scope="col">has</th>';
                         cHtml += '<th scope="col" style="display:none">Producto</th>';                        
                         cHtml += '<th scope="col">Apoyo</th>';
-                        cHtml += '<th scope="col">Aportacion</th>';                        
+                        cHtml += '<th scope="col">Aportacion</th>';
+                        cHtml += '<th scope="col" style="display:none">Nombre del Proyecto</th>';
+                        cHtml += '<th scope="col" style="display:none">DDR</th>';
                         cHtml += '<th scope="col">Accion</th>';
                         cHtml += '</tr>';
                         cHtml += '</thead>';
@@ -313,6 +333,8 @@ $(function () {
                             cHtml += '<th scope="row" style="display:none">'+value.producto_atender+'</th>';                            
                             cHtml += '<th scope="row">'+number_format(value.apoyo_solicitado,2)+'</th>';
                             cHtml += '<th scope="row">'+number_format(value.aportacion_productor,2)+'</th>';                            
+                            cHtml += '<th scope="row" style="display:none">'+value.nombre_proyecto+'</th>';
+                            cHtml += '<th scope="row" style="display:none">'+value.id_ddr+'</th>';
                             cHtml += '<th scope="row">';
                             cHtml += '<button type="button" class="btn btn-info btn-xs" onclick="btnSeleccionaBeneficiario(this)" ><span class="glyphicon glyphicon-chevron-right"></span></button>';
                             cHtml += '</th>';
@@ -334,12 +356,7 @@ $(function () {
                         $producto_real                      =array('id'=>'producto_real','name'=>'producto_real','class'=>'form-control','value'=>set_value('producto_real'),'readonly'=>TRUE);
 
                         */
-                        $("#nombre_beneficiario_seleccionado").prop('readonly',false);
-                        $("#concepto_real").prop('readonly',false);
-                        $("#has_real").prop('readonly',false);
-                        $("#monto_apoyo_real").prop('readonly',false);
-                        $("#monto_productor_real").prop('readonly',false);
-                        $("#producto_real").prop('readonly',false);
+
                         
 
 
@@ -359,80 +376,106 @@ $(function () {
     }); // fin de btnBuscarBeneficiario
     /********************************************************************************************/
     $("#btnAgregaBeneficiarios").click(function(){ // boton agrega beneficiario a la tabla idTablaTmpDetalleSeguimiento
-        /*                        
-            $folio_interno                      =array('id'=>'folio_interno','name'=>'folio_interno','class'=>'form-control','value'=>set_value('folio_interno'),'readonly'=>TRUE);
-            $folio_suri                         =array('id'=>'folio_suri','name'=>'folio_suri','class'=>'form-control','value'=>set_value('folio_suri'),'readonly'=>TRUE);
-            $fecha_folio_suri                   =array('id'=>'fecha_folio_suri','name'=>'fecha_folio_suri','class'=>'form-control','value'=>set_value('fecha_folio_suri'),'readonly'=>TRUE);
-            $nombre_beneficiario_seleccionado   =array('id'=>'nombre_beneficiario_seleccionado','name'=>'nombre_beneficiario_seleccionado','class'=>'form-control','value'=>set_value('nombre_beneficiario_seleccionado'),'readonly'=>TRUE);
-            $concepto_real                      =array('id'=>'concepto_real','name'=>'concepto_real','class'=>'form-control','value'=>set_value('concepto_real'),'readonly'=>TRUE);
-            $has_real                           =array('id'=>'has_real','name'=>'has_real','class'=>'form-control','value'=>set_value('has_real'),'readonly'=>TRUE);
-            $monto_apoyo_real                   =array('id'=>'monto_apoyo_real','name'=>'monto_apoyo_real','class'=>'form-control','value'=>set_value('monto_apoyo_real'),'readonly'=>TRUE);
-            $monto_productor_real               =array('id'=>'monto_productor_real','name'=>'monto_productor_real','class'=>'form-control','value'=>set_value('monto_productor_real'),'readonly'=>TRUE);
-            $producto_real                      =array('id'=>'producto_real','name'=>'producto_real','class'=>'form-control','value'=>set_value('producto_real'),'readonly'=>TRUE);
-
-            var id_padron_beneficiario  = tabla.rows[i].cells[0].innerHTML;
-            var folio_interno           = tabla.rows[i].cells[1].innerHTML;
-            var folio_suri              = tabla.rows[i].cells[2].innerHTML;
-            var fecha_folio_suri        = tabla.rows[i].cells[3].innerHTML;    
-            var nombre_seleccionado     = tabla.rows[i].cells[4].innerHTML;
-            var concepto                = tabla.rows[i].cells[5].innerHTML;
-            var has                     = tabla.rows[i].cells[6].innerHTML;
-            var sistema_producto        = tabla.rows[i].cells[7].innerHTML;    
-            var apoyo                   = tabla.rows[i].cells[8].innerHTML;
-            var productor               = tabla.rows[i].cells[9].innerHTML;
-
-        */
+        
         var id_padron_beneficiario  = $("#id_beneficiario").val();
         var folio_interno           = $("#folio_interno").val();
         var folio_suri              = $("#folio_suri").val();
         var fecha_folio_suri        = $("#fecha_folio_suri").val();
         var nombre_seleccionado     = $("#nombre_beneficiario_seleccionado").val();
-        var concepto                = $("#concepto_real").val();
+        //var id_concepto             = $("#cboConceptos").val(); // obtenemo el id del item del combo seleccionado
+        //var nombre_concepto         = $("#cboConceptos").html(); // obtenemo el nombre del item del combo seleccionado
+        var id_concepto             = $("#cboConceptos option:selected").val();
+        var nombre_concepto         = $("#cboConceptos option:selected").text();
         var sistema_producto        = $("#producto_real").val();
         var has                     = $("#has_real").val();
         var apoyo                   = $("#monto_apoyo_real").val();
         var productor               = $("#monto_productor_real").val();
+        var ddr                     = $("#ddr_real").val();
+        var nombre_proyecto         = $("#nombre_proyecto").val();
 
         if ($('#idTablaTmpDetalleSeguimiento >tbody >tr').length == 0){
            $("#tablaDetalleMuestras").append("<tbody></tbody>");           
-           alert('agregando un TBODY');
+           //alert('agregando un TBODY');
         }
 
         // agregarmos a la tabla del detallado
         cHtml = '<tr id="'+randomString()+'" >';                                                                                                                                       //formatoNumero(numero, decimales, separadorDecimal, separadorMiles) {
         cHtml += '<td>'+id_padron_beneficiario+'</td>';
-        cHtml += '<td>'+folio_interno+'</td>';
-        cHtml += '<td>'+folio_suri+'</td>'
-        cHtml += '<td>'+fecha_folio_suri+'</td>'
-        cHtml += '<td>'+nombre_seleccionado+'</td>'
-        cHtml += '<td>'+concepto+'</td>';
-        cHtml += '<td>'+sistema_producto+'</td>';
+        cHtml += '<td>'+nombre_seleccionado+'</td>';
+        cHtml += '<td>'+folio_suri+'</td>';
+        //cHtml += '<td>'+nombre_proyecto+'</td>';
+        cHtml += '<td>'+id_concepto+'</td>'; // oculto
+        cHtml += '<td>'+nombre_concepto+'</td>'; 
+        cHtml += '<td>'+ddr+'</td>'; // 
         cHtml += '<td>'+has+'</td>';
         cHtml += '<td>'+apoyo+'</td>';
-        cHtml += '<td>'+productor+'</td>';
+        cHtml += '<td>'+productor+'</td>';       
+        
         cHtml += '<td>';        
-        cHtml += '<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal" onclick="DuplicaRowDetalladoEstudio(this,1)" name="B2"><span class="glyphicon glyphicon-copy" data-toggle="tooltip" title="Duplicar Muestra"></span></button>';
+        //cHtml += '<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal" onclick="DuplicaRowDetalladoEstudio(this,1)" name="B2"><span class="glyphicon glyphicon-copy" data-toggle="tooltip" title="Duplicar Muestra"></span></button>';
+        cHtml += '<button type="button" class="btn btn-info btn-xs" onclick="EliminaBeneficiarioTabla(this,1)" ><span class="glyphicon glyphicon-delete" data-toggle="tooltip" title="Eliminar Beneficiario"></span></button>';
         cHtml += '</td>';
         cHtml += '</tr>';
         //console.log( cHtml);
-        $("#idTablaTmpDetalleSeguimiento").append(cHtml);
-        /*
-        cHtml += '<td style="display: none;">'+cIdMetodologia+'</td>';
-        cHtml += '<td style="display: none;">'+id_estudio+'</td>';
-        cHtml += '<td>'+cbo_estudio+'</td>';
-        //cHtml += '<td>'+formatoNumero(nPrecio, 2)+'</td>';
-        cHtml += '<td>'+formatoNumero(nPrecio,2,".",",")+'</td>';
-        //cHtml += '<td>'+moment(fecha).format("YYYY-MM-DD")+'</td>';
-        cHtml += '<td>'+fecha+'</td>';
-        cHtml += '<td>';        
-        cHtml += '<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal" onclick="DuplicaRowDetalladoEstudio(this,1)" name="B2"><span class="glyphicon glyphicon-copy" data-toggle="tooltip" title="Duplicar Muestra"></span></button>';
-        //22/06/2017 AGERGANDO UN BOTON DE MODIFICAR.
-        cHtml += '<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal" onclick="DuplicaRowDetalladoEstudio(this,0)" name="B2"><span class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Correccion de los Datos de la Muestra"></span></button>';                                
-        cHtml += '</td></tr>';
-        */
-        alert('saliendo ok');
+        $("#idTablaTmpDetalleSeguimiento").append(cHtml);        
     });
     /********************************************************************************************/
-	
+	$("#btnGrabarApertura").click(function(){
+
+
+
+        if (confirm('Grabar el Oficio')){
+            //captar variables
+            var no_oficio       = $("#no_oficio_apertura").val();
+            var fecha_oficio    = $("#fecha_oficio_apertura").val();
+            var fecha_acuse     = $("#fecha_acuse_oficio_apertura").val();
+
+
+            //leyendo la tabla
+            var detallado = new Array();
+            $('#idTablaTmpDetalleSeguimiento tr').each(function () {
+
+                    var analito = $(this).find("td").eq(0).html();
+                    var resultado = $(this).find("td").eq(1).html();
+                    var lc = $(this).find("td").eq(2).html();
+                    var lmp = $(this).find("td").eq(3).html();
+                    var tecnica = $(this).find("td").eq(4).html();
+                    if (analito) {
+                        detallado.push( analito,resultado,lc,lmp,tecnica);  
+                    }           
+
+                });
+            console.log( detallado);
+
+            var data = { enc:{'no_oficio':no_oficio,'fecha_oficio':fecha_oficio,'fecha_acuse': fecha_acuse},det:[]}
+            
+            $.ajax({            
+                data: data,
+                method: 'POST',
+                url: base_url+'/graba_oficio_apertura',
+                success: function (htmlResponse){
+                    console.log('entro a la funcion sucesso');
+                    console.log(htmlResponse);
+                    //alert(htmlResponse);
+                    
+                    if (htmlResponse['SITUACION_REGISTRO']=='EXITO'){
+                        $("#divBtnGrabaIDRPlaguicidas").hide();
+                        alert('Informe de Resultado Grabado');
+                    }
+                    
+                }
+            }); // fin del ajax    
+
+
+
+
+
+
+
+
+
+        }// fin de grabar el oficio de apertura
+    });
+    /**********************************************************************************************/
     
 }); // FIN DEL JQUERY
