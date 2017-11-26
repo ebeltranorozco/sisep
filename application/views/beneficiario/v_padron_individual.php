@@ -198,6 +198,15 @@ if ($accion == 'EDICION') {
 	//banco
 	$fecha_de_cta_DatosBanco['value'] = $data->fecha_cta_datos_banco;
 
+	//propiedad
+	$ubicacion_predio_DatosPropiedad['value'] = $data->ubicacion_predio_datos_propiedad;
+
+
+	//proveedor
+	$nombre_DatosProveedor['value'] = $data->nombre_datos_proveedor;
+
+
+
 
 
 	/*
@@ -225,7 +234,7 @@ $num_id_oficial_persona_fisica		=array( 'id'=>'num_id_oficial_persona_fisica', '
 
 	*/
 }
-var_dump($data);
+//var_dump($data);
 //var_dump($SQL);
 ?>
 
