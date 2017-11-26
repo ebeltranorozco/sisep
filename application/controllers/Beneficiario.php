@@ -142,6 +142,9 @@ class Beneficiario extends CI_Controller {
 		$this->db->join( 'siseprepresentanteslegales', ' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `siseprepresentanteslegales`.`id_padron_beneficiario`','left');
 		$this->db->join( 'sisepdatosupp', ' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `sisepdatosupp`.`id_padron_beneficiario`','left');
 		$this->db->join( 'sisepdatosbanco', ' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `sisepdatosbanco`.`id_padron_beneficiario`','left');
+		$this->db->join( 'sisepdatospropiedad', ' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `sisepdatospropiedad`.`id_padron_beneficiario`','left');
+		$this->db->join( 'sisepdatosproveedor', ' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `sisepdatosproveedor`.`id_padron_beneficiario`','left');
+		
 		$this->db->where( 'siseppadronbeneficiarios.id_padron_beneficiario', $id);
 		
 
