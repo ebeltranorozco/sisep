@@ -138,6 +138,10 @@ class Beneficiario extends CI_Controller {
 		$this->db->select('*,siseppadronbeneficiarios.id_padron_beneficiario as id_padron'); // campo ambiguo
 		$this->db->from('siseppadronbeneficiarios');
 		$this->db->join( 'siseppersonasfisicas',' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `siseppersonasfisicas`.`id_padron_beneficiario`','left');
+		$this->db->join( 'siseppersonasmorales',' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `siseppersonasmorales`.`id_padron_beneficiario`','left');
+		$this->db->join( 'siseprepresentanteslegales', ' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `siseprepresentanteslegales`.`id_padron_beneficiario`','left');
+		$this->db->join( 'sisepdatosupp', ' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `sisepdatosupp`.`id_padron_beneficiario`','left');
+		$this->db->join( 'sisepdatosbanco', ' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `sisepdatosbanco`.`id_padron_beneficiario`','left');
 		$this->db->where( 'siseppadronbeneficiarios.id_padron_beneficiario', $id);
 		
 

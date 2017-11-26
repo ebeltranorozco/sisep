@@ -188,6 +188,17 @@ if ($accion == 'EDICION') {
 	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
 	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
 
+	//REPRESENTANTES
+	$nombres_Representante_Legal['value'] = $data->nombre_representante_legal;
+
+	//datos upp
+	$localidad_Datos_UPP['value'] = $data->localidad_datos_upp;
+
+
+	//banco
+	$fecha_de_cta_DatosBanco['value'] = $data->fecha_cta_datos_banco;
+
+
 
 	/*
 	$nombre_persona_fisica 				=array( 'id'=>'nombre_persona_fisica', 'name'=>'nombre_persona_fisica', 'class'=>'form-control', 'value'=>set_value('nombre_persona_fisica'));
