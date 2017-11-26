@@ -19,7 +19,7 @@ $cesionado_usuario 		= array( 'id'=>'cesionado_usuario', 'name'=>'cesionado_usua
 $descripcion_proyecto 	= array( 'id'=>'descripcion_proyecto', 'name'=>'descripcion_proyecto', 'class'=>'form-control','value'=>set_value('descripcion_proyecto'));
 
 // DATOS PERSONAS FISICAS
-
+	
 //=array( 'id'=>'', 'name'=>'', 'class'=>'form-control', 'value'=>set_value(''));
 $nombre_persona_fisica 				=array( 'id'=>'nombre_persona_fisica', 'name'=>'nombre_persona_fisica', 'class'=>'form-control', 'value'=>set_value('nombre_persona_fisica'));
 $ap_paterno_persona_fisica			=array( 'id'=>'ap_paterno_persona_fisica', 'name'=>'ap_paterno_persona_fisica', 'class'=>'form-control', 'value'=>set_value('ap_paterno_persona_fisica'));
@@ -131,7 +131,7 @@ $nombre_banco_DatosBanco					=array( 'id'=>'nombre_banco_DatosBanco', 'name'=>'n
 
 //Fin de variables de BANCO
 //Inicio de las Variables de PROVEDOR
-$nombre_DatosProveedor					    =array( 'id'=>'nombre_DatosProveedor', 'name'=>'nombre_DatosProveedor', 'class'=>'form-control', 'value'=>set_value('nombre_DatosProveedor'));
+$fecha_cta_datos_banco					    =array( 'id'=>'nombre_DatosProveedor', 'name'=>'nombre_DatosProveedor', 'class'=>'form-control', 'value'=>set_value('nombre_DatosProveedor'));
 $calle_DatosProveedor						=array( 'id'=>'calle_DatosProveedor', 'name'=>'calle_DatosProveedor', 'class'=>'form-control', 'value'=>set_value('calle_DatosProveedor'));
 $numero_DatosProveedor						=array( 'id'=>'numero_DatosProveedor', 'name'=>'numero_DatosProveedor', 'class'=>'form-control', 'value'=>set_value('numero_DatosProveedor'));
 $localidad_DatosProveedor					=array( 'id'=>'localidad_DatosProveedor', 'name'=>'localidad_DatosProveedor', 'class'=>'form-control', 'value'=>set_value('localidad_DatosProveedor'));
