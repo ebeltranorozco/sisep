@@ -765,7 +765,6 @@ var_dump($data);
 					    <hr>
 					    </div>
 
-
 					  <div id="menu6" class="tab-pane fade">
 					    <h3>Propiedad</h3>
 					   <div class="row">
@@ -798,6 +797,7 @@ var_dump($data);
 					    	</div>
 					 </div>
 					    <hr>
+ 					</div>
 					  <div id="menu7" class="tab-pane fade">
 					    <h3>Proveedor</h3>
 					    <div class="row">
@@ -811,26 +811,26 @@ var_dump($data);
 					    		<?php echo form_label('Numero de Domicilio:'); echo form_input($numero_DatosProveedor); ?>
 					    	</div>
 					    </div>
-					    <hr>
-					    <div class="row">
-					    	<div class="col-md-4">
+					      <hr>
+					         <div class="row">
+					    	    <div class="col-md-4">
 					    		<?php echo form_label('Localidad:'); echo form_input($localidad_DatosProveedor); ?>
-					    	</div>
-					    	<div class="col-md-4">
+					    	    </div>
+					    		<div class="col-md-4">
 					    		<?php echo form_label('Municipio:'); echo form_input($municipio_DatosProveedor); ?>
-					    	</div>
+					    		</div>
 					   			<div class="col-md-4">
 					    		<?php echo form_label('Codigo Postal:'); echo form_input($cp_DatosProveedor); ?>
-					    	</div>
+					    		</div>
 					    </div>
 					    <hr>
-							<div class="row">
+						<div class="row">
 					    	<div class="col-md-4">
 					    		<?php echo form_label('Estado:'); echo form_input($estado_DatosProveedor); ?>
-					    	</div>
-					     </div>
+					    	 </div>
+					   </div> 
 					    <hr>
-					</div>
+		           	</div>
 
  				</h6>
 
