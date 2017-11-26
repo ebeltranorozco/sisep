@@ -225,7 +225,7 @@ $num_id_oficial_persona_fisica		=array( 'id'=>'num_id_oficial_persona_fisica', '
 
 	*/
 }
-var_dump($data);
+// var_dump($data);
 //var_dump($SQL);
 ?>
 
