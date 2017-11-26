@@ -97,3 +97,4 @@ $route['listado_autorizaciones'] = 'seguimiento_controller/listado_autorizacione
 $route['apertura'] = 'seguimiento_controller/apertura';
 $route['buscar_beneficiarios'] = 'seguimiento_controller/buscar_beneficiarios'; // es ajax para buscar beneficiario
 
+$route['graba_oficio_apertura'] = 'seguimiento_controller/graba_oficio_apertura'; // graba el oficio de apertura
