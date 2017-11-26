@@ -172,8 +172,49 @@ if ($accion == 'EDICION') {
 	$tipo_solicitante['value'] 	= $data->tipo_solicitante;
 	$cesionado_usuario['value'] = $data->cesionado_usuario;
 	$descripcion_proyecto['value'] = $data->descripcion_proyecto;
+
+	//personas fisicas
+	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
+	$ap_paterno_persona_fisica['value'] = $data->ap_paterno_persona_fisica;
+	$ap_materno_persona_fisica['value'] = $data->ap_materno_persona_fisica;
+	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
+	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
+	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
+	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
+	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
+	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
+	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
+	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
+	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
+	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
+
+
+	/*
+	$nombre_persona_fisica 				=array( 'id'=>'nombre_persona_fisica', 'name'=>'nombre_persona_fisica', 'class'=>'form-control', 'value'=>set_value('nombre_persona_fisica'));
+$ap_paterno_persona_fisica			=array( 'id'=>'ap_paterno_persona_fisica', 'name'=>'ap_paterno_persona_fisica', 'class'=>'form-control', 'value'=>set_value('ap_paterno_persona_fisica'));
+$ap_materno_persona_fisica			=array( 'id'=>'ap_materno_persona_fisica', 'name'=>'ap_materno_persona_fisica', 'class'=>'form-control', 'value'=>set_value('ap_materno_persona_fisica'));
+$nombre_persona_fisica				=array( 'id'=>'nombre_persona_fisica', 'name'=>'nombre_persona_fisica', 'class'=>'form-control', 'value'=>set_value('nombre_persona_fisica'));
+$rfc_persona_fisica					=array( 'id'=>'rfc_persona_fisica', 'name'=>'rfc_persona_fisica', 'class'=>'form-control', 'value'=>set_value('rfc_persona_fisica'));
+$curp_persona_fisica				=array( 'id'=>'curp_persona_fisica', 'name'=>'curp_persona_fisica', 'class'=>'form-control', 'value'=>set_value('curp_persona_fisica'));
+$nacionalidad_persona_fisica		=array( 'id'=>'nacionalidad_persona_fisica', 'name'=>'nacionalidad_persona_fisica', 'class'=>'form-control', 'value'=>set_value('nacionalidad_persona_fisica'));
+$fecha_nacimiento_persona_fisica	=array( 'id'=>'fecha_nacimiento_persona_fisica', 'name'=>'fecha_nacimiento_persona_fisica', 'class'=>'form-control', 'value'=>set_value('fecha_nacimiento_persona_fisica'));
+$estado_civil_persona_fisica		=array( 'id'=>'estado_civil_persona_fisica', 'name'=>'estado_civil_persona_fisica', 'class'=>'form-control', 'value'=>set_value('estado_civil_persona_fisica'));
+$calle_persona_fisica				=array( 'id'=>'calle_persona_fisica', 'name'=>'calle_persona_fisica', 'class'=>'form-control', 'value'=>set_value('calle_persona_fisica'));
+$numero_persona_fisica 				=array( 'id'=>'num__persona_fisica', 'name'=>'num__persona_fisica', 'class'=>'form-control', 'value'=>set_value('num__persona_fisica'));
+$colonia_persona_fisica				=array( 'id'=>'colonia_persona_fisica', 'name'=>'colonia_persona_fisica', 'class'=>'form-control', 'value'=>set_value('colonia_persona_fisica'));
+$cp_persona_fisica					=array( 'id'=>'cp__persona_fisica', 'name'=>'cp__persona_fisica', 'class'=>'form-control', 'value'=>set_value('cp__persona_fisica'));
+$localidad_persona_fisica			=array( 'id'=>'localidad_persona_fisica', 'name'=>'localidad_persona_fisica', 'class'=>'form-control', 'value'=>set_value('localidad_persona_fisica'));
+$municipio_persona_fisica			=array( 'id'=>'municipio_persona_fisica', 'name'=>'municipio_persona_fisica', 'class'=>'form-control', 'value'=>set_value('municipio_persona_fisica'));
+$estado_persona_fisica 				=array( 'id'=>'estado_persona_fisica', 'name'=>'estado_persona_fisica', 'class'=>'form-control', 'value'=>set_value('estado_persona_fisica'));
+$telefono_persona_fisica			=array( 'id'=>'telefono_persona_fisica', 'name'=>'telefono_persona_fisica', 'class'=>'form-control', 'value'=>set_value('telefono_persona_fisica'));
+$num_celular_persona_fisica			=array( 'id'=>'num_celular_persona_fisica', 'name'=>'num_celular_persona_fisica', 'class'=>'form-control', 'value'=>set_value('num_celular_persona_fisica'));
+$correo_persona_fisica				=array( 'id'=>'correo_persona_fisica', 'name'=>'correo_persona_fisica', 'class'=>'form-control', 'value'=>set_value('correo_persona_fisica'));
+$id_oficial_persona_fisica 			=array( 'id'=>'id_oficial_persona_fisica', 'name'=>'id_oficial_persona_fisica', 'class'=>'form-control', 'value'=>set_value('id_oficial_persona_fisica'));
+$num_id_oficial_persona_fisica		=array( 'id'=>'num_id_oficial_persona_fisica', 'name'=>'num_id_oficial_persona_fisica', 'class'=>'form-control', 'value'=>set_value('num_id_oficial_persona_fisica'));
+
+	*/
 }
-//var_dump($data);
+var_dump($data);
 //var_dump($SQL);
 ?>
 
