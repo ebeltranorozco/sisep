@@ -44,111 +44,111 @@ $id_oficial_persona_fisica 			=array( 'id'=>'id_oficial_persona_fisica', 'name'=
 $num_id_oficial_persona_fisica		=array( 'id'=>'num_id_oficial_persona_fisica', 'name'=>'num_id_oficial_persona_fisica', 'class'=>'form-control', 'value'=>set_value('num_id_oficial_persona_fisica'));
 
 //DATOS PERSONAS MORALES
-$nombrePersonaMoral	                =array( 'id'=>'nnombrePersonaMoral', 'name'=>'nombrePersonaMoral', 'class'=>'form-control', 'value'=>set_value('nombrePersonaMoral'));
-$rfcPersonaMoral	                =array( 'id'=>'callePersonaMoral', 'name'=>'callePersonaMoral	', 'class'=>'form-control', 'value'=>set_value('callePersonaMoral'));			
-$callePersonaMoral		            =array( 'id'=>'callePersonaMoral', 'name'=>'callePersonaMoral', 'class'=>'form-control', 'value'=>set_value('callePersonaMoral'));
-$numeroPersonaMoral	                =array( 'id'=>'numero_persona_moral', 'name'=>'numero_persona_moral', 'class'=>'form-control', 'value'=>set_value('numero_persona_moral'));
-$coloniaPersonaMoral				=array( 'id'=>'coloniaPersonaMoral', 'name'=>'coloniaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('coloniaPersonaMoral'));
-$cpPersonaMoral						=array( 'id'=>'cpPersonaMoral', 'name'=>'cpPersonaMoral', 'class'=>'form-control', 'value'=>set_value('cpPersonaMoral'));
-$localidadPersonaMoral				=array( 'id'=>'localidadPersonaMoral', 'name'=>'localidadPersonaMoral', 'class'=>'form-control', 'value'=>set_value('localidadPersonaMoral'));
-$municipioPersonaMoral				=array( 'id'=>'municipioPersonaMoral', 'name'=>'municipioPersonaMoral', 'class'=>'form-control', 'value'=>set_value('municipioPersonaMoral'));
-$estadoPersonaMoral					=array( 'id'=>'estadoPersonaMoral', 'name'=>'estadoPersonaMoral', 'class'=>'form-control', 'value'=>set_value('estadoPersonaMoral'));
-$telefonoOficinaPersonaMoral		=array( 'id'=>'telefonoOficinaPersonaMoral', 'name'=>'telefonoOficinaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('telefonoOficinaPersonaMoral'));
-$correoPersonaMoral					=array( 'id'=>'correoPersonaMoral', 'name'=>'correoPersonaMoral', 'class'=>'form-control', 'value'=>set_value('correoPersonaMoral'));
-$fechaInscripcionRfcPersonaMoral	=array( 'id'=>'fechaInscripcionRfcPersonaMoral', 'name'=>'fechaInscripcionRfcPersonaMoral', 'class'=>'form-control', 'value'=>set_value('fechaInscripcionRfcPersonaMoral'));
-$objetoSocialPmoralPersonaMoral		=array( 'id'=>'objetoSocialPmoralPersonaMoral', 'name'=>'objetoSocialPmoralPersonaMoral', 'class'=>'form-control', 'value'=>set_value('objetoSocialPmoralPersonaMoral'));
-$tipoDeorganismoPersonaMoral		=array( 'id'=>'tipoDeorganismoPersonaMoral', 'name'=>'tipoDeorganismoPersonaMoral', 'class'=>'form-control', 'value'=>set_value('tipoDeorganismoPersonaMoral'));
-$noActaConstitutivaPersonaMoral		=array( 'id'=>'noActaConstitutivaPersonaMoral', 'name'=>'noActaConstitutivaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('noActaConstitutivaPersonaMoral'));
-$fechaDeConstitucionPersonaMoral	=array( 'id'=>'fechaDeConstitucionPersonaMoral', 'name'=>'fechaDeConstitucionPersonaMoral', 'class'=>'form-control', 'value'=>set_value('fechaDeConstitucionPersonaMoral'));
-$nombreLicenciadoNotarioPersonaMoral=array( 'id'=>'nombreLicenciadoNotarioPersonaMoral', 'name'=>'nombreLicenciadoNotarioPersonaMoral', 'class'=>'form-control', 'value'=>set_value('nombreLicenciadoNotarioPersonaMoral'));
-$notarioActaConstPersonaMoral		=array( 'id'=>'notarioActaConstPersonaMoral', 'name'=>'notarioActaConstPersonaMoral	', 'class'=>'form-control', 'value'=>set_value('notarioActaConstPersonaMoral'));
-$numNotarioActConstPersonaMoral		=array( 'id'=>'numNotarioActConstPersonaMoral', 'name'=>'numNotarioActConstPersonaMoral', 'class'=>'form-control', 'value'=>set_value('numNotarioActConstPersonaMoral'));
-$calleNotarioActaConstPersonaMoral	=array( 'id'=>'calleNotarioActaConstPersonaMoral', 'name'=>'calleNotarioActaConstPersonaMoral', 'class'=>'form-control', 'value'=>set_value('calleNotarioActaConstPersonaMoral'));
-$numeroNotarioActaConstPersonaMoral	=array( 'id'=>'numeroNotarioActaConstPersonaMoral', 'name'=>'numeroNotarioActaConstPersonaMoral', 'class'=>'form-control', 'value'=>set_value('numeroNotarioActaConstPersonaMoral'));
-$coloniaNotarioActaConstPersonaMoral		=array( 'id'=>'coloniaNotarioActaConstPersonaMoral', 'name'=>'coloniaNotarioActaConstPersonaMoral', 'class'=>'form-control', 'value'=>set_value('coloniaNotarioActaConstPersonaMoral'));
-$cpNotarioActaConstPersonaMoral				=array( 'id'=>'cpNotarioActaConstPersonaMoral', 'name'=>'cpNotarioActaConstPersonaMoral', 'class'=>'form-control', 'value'=>set_value('cpNotarioActaConstPersonaMoral'));
-$municipioNotarioActaConstPersonaMoral		=array( 'id'=>'municipioNotarioActaConstPersonaMoral', 'name'=>'municipioNotarioActaConstPersonaMoral', 'class'=>'form-control', 'value'=>set_value('municipioNotarioActaConstPersonaMoral'));
-$estadoNotarioActaConstPersonaMoral			=array( 'id'=>'estadoNotarioActaConstPersonaMoral', 'name'=>'estadoNotarioActaConstPersonaMoral', 'class'=>'form-control', 'value'=>set_value('estadoNotarioActaConstPersonaMoral'));
-$noActaAsambleaPersonaMoral					=array( 'id'=>'noActaAsambleaPersonaMoral', 'name'=>'noActaAsambleaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('noActaAsambleaPersonaMoral'));
-$fechaDeActaAsambleaPersonaMoral			=array( 'id'=>'fechaDeActaAsambleaPersonaMoral', 'name'=>'fechaDeActaAsambleaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('fechaDeActaAsambleaPersonaMoral'));
-$notarioActaAsambleaPersonaMoral			=array( 'id'=>'notarioActaAsambleaPersonaMoral', 'name'=>'notarioActaAsambleaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('notarioActaAsambleaPersonaMoral'));
-$numDomNotarioActaAsambleaPersonaMoral		=array( 'id'=>'numDomNotarioActaAsambleaPersonaMoral', 'name'=>'numDomNotarioActaAsambleaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('numDomNotarioActaAsambleaPersonaMoral'));
-$calleNotarioActaAsmbleaPersonaMoral		=array( 'id'=>'calleNotarioActaAsmbleaPersonaMoral', 'name'=>'calleNotarioActaAsmbleaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('calleNotarioActaAsmbleaPersonaMoral'));
-$numeroNotarioActaAsambleaPersonaMoral		=array( 'id'=>'numeroNotarioActaAsambleaPersonaMoral', 'name'=>'numeroNotarioActaAsambleaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('numeroNotarioActaAsambleaPersonaMoral'));
-$coloniaNotarioActaAsambleaPersonaMoral		=array( 'id'=>'coloniaNotarioActaAsambleaPersonaMoral', 'name'=>'coloniaNotarioActaAsambleaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('coloniaNotarioActaAsambleaPersonaMoral'));
-$cpNotarioActaAsambleaPersonaMoral			=array( 'id'=>'cpNotarioActaAsambleaPersonaMoral', 'name'=>'cpNotarioActaAsambleaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('cpNotarioActaAsambleaPersonaMoral'));
-$municipioNotarioActaAsambleaPersonaMoral 	=array( 'id'=>'municipioNotarioActaAsambleaPersonaMoral', 'name'=>'municipioNotarioActaAsambleaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('municipioNotarioActaAsambleaPersonaMoral'));
-$estadoNotarioActaAsambleaPersonaMoral		=array( 'id'=>'estadoNotarioActaAsambleaPersonaMoral', 'name'=>'estadoNotarioActaAsambleaPersonaMoral', 'class'=>'form-control', 'value'=>set_value('estadoNotarioActaAsambleaPersonaMoral'));
+$nombre_persona_moral	               		 =array( 'id'=>'nombre_persona_moral', 'name'=>'nombre_persona_moral', 'class'=>'form-control', 'value'=>set_value('nombre_persona_moral'));
+$rfc_persona_moral	                   		 =array( 'id'=>'rfc_persona_moral', 'name'=>'rfc_persona_moral', 'class'=>'form-control', 'value'=>set_value('rfc_persona_moral'));			
+$calle_persona_moral	             		 =array( 'id'=>'calle_persona_moral', 'name'=>'calle_persona_moral', 'class'=>'form-control', 'value'=>set_value('calle_persona_moral'));
+$numero_persona_moral	              		 =array( 'id'=>'numero_persona_moral', 'name'=>'numero_persona_moral', 'class'=>'form-control', 'value'=>set_value('numero_persona_moral'));
+$colonia_persona_moral				 		 =array( 'id'=>'colonia_persona_moral', 'name'=>'colonia_persona_moral', 'class'=>'form-control', 'value'=>set_value('colonia_persona_moral'));
+$cp_persona_moral					 		 =array( 'id'=>'cp_persona_moral', 'name'=>'cp_persona_moral', 'class'=>'form-control', 'value'=>set_value('cp_persona_moral'));
+$localidad_persona_moral			  		 =array( 'id'=>'localidadPersonaMoral', 'name'=>'localidadPersonaMoral', 'class'=>'form-control', 'value'=>set_value('localidadPersonaMoral'));
+$municipio_persona_moral			  		 =array( 'id'=>'municipio_persona_moral', 'name'=>'municipio_persona_moral', 'class'=>'form-control', 'value'=>set_value('municipio_persona_moral'));
+$estado_persona_moral				  		 =array( 'id'=>'estado_persona_moral', 'name'=>'estado_persona_moral', 'class'=>'form-control', 'value'=>set_value('estado_persona_moral'));
+$telefono_oficina_persona_moral	      		 =array( 'id'=>'telefono_oficina_persona_moral', 'name'=>'telefono_oficina_persona_moral', 'class'=>'form-control', 'value'=>set_value('telefono_oficina_persona_moral'));
+$correo_persona_moral				  		 =array( 'id'=>'correo_persona_moral', 'name'=>'correo_persona_moral', 'class'=>'form-control', 'value'=>set_value('correo_persona_moral'));
+$fecha_Inscripcion_rfc_persona_moral  		 =array( 'id'=>'fecha_Inscripcion_rfc_persona_moral', 'name'=>'fecha_Inscripcion_rfc_persona_moral', 'class'=>'form-control', 'value'=>set_value('fecha_Inscripcion_rfc_persona_moral'));
+$objeto_social_persona_moral		  		 =array( 'id'=>'objeto_social_persona_moral', 'name'=>'objeto_social_persona_moral', 'class'=>'form-control', 'value'=>set_value('objeto_social_persona_moral'));
+$tipo_de_organismo_persona_moral	   		 =array( 'id'=>'tipo_de_organismo_persona_moral', 'name'=>'tipo_de_organismo_persona_moral', 'class'=>'form-control', 'value'=>set_value('tipo_de_organismo_persona_moral'));
+$no_acta_constitutiva_persona_moral	  		 =array( 'id'=>'no_acta_constitutiva_persona_moral', 'name'=>'no_acta_constitutiva_persona_moral', 'class'=>'form-control', 'value'=>set_value('no_acta_constitutiva_persona_moral'));
+$fecha_de_constitucion_persona_moral  		 =array( 'id'=>'fecha_de_constitucion_persona_moral', 'name'=>'fecha_de_constitucion_persona_moral', 'class'=>'form-control', 'value'=>set_value('fecha_de_constitucion_persona_moral'));
+$nombre_licenciado_notario_persona_moral     =array( 'id'=>'nombre_licenciado_notario_persona_moral', 'name'=>'nombre_licenciado_notario_persona_moral', 'class'=>'form-control', 'value'=>set_value('nombre_licenciado_notario_persona_moral'));
+$notario_acta_const_persona_moral		     =array( 'id'=>'notario_acta_const_persona_moral', 'name'=>'notario_acta_const_persona_moral', 'class'=>'form-control', 'value'=>set_value('notario_acta_const_persona_moral'));
+$num_notario_act_const_persona_moral   	     =array( 'id'=>'num_notario_act_const_persona_moral', 'name'=>'num_notario_act_const_persona_moral', 'class'=>'form-control', 'value'=>set_value('num_notario_act_const_persona_moral'));
+$calle_notario_acta_const_persona_moral	     =array( 'id'=>'calle_notario_acta_const_persona_moral', 'name'=>'calle_notario_acta_const_persona_moral', 'class'=>'form-control', 'value'=>set_value('calle_notario_acta_const_persona_moral'));
+$numero_notario_acta_const_persona_moral     =array( 'id'=>'numero_notario_acta_const_persona_moral', 'name'=>'numero_notario_acta_const_persona_moral', 'class'=>'form-control', 'value'=>set_value('numero_notario_acta_const_persona_moral'));
+$colonia_notario_acta_const_persona_moral    =array( 'id'=>'colonia_notario_acta_const_persona_moral', 'name'=>'colonia_notario_acta_const_persona_moral', 'class'=>'form-control', 'value'=>set_value('colonia_notario_acta_const_persona_moral'));
+$cp_notario_acta_const_persona_moral         =array( 'id'=>'cp_notario_acta_const_persona_moral', 'name'=>'cp_notario_acta_const_persona_moral', 'class'=>'form-control', 'value'=>set_value('cp_notario_acta_const_persona_moral'));
+$municipio_notario_acta_const_persona_moral  =array( 'id'=>'municipio_notario_acta_const_persona_moral', 'name'=>'municipio_notario_acta_const_persona_moral', 'class'=>'form-control', 'value'=>set_value('municipio_notario_acta_const_persona_moral'));
+$estado_notario_acta_const_persona_moral	 =array( 'id'=>'estado_notario_acta_const_persona_moral', 'name'=>'estado_notario_acta_const_persona_moral', 'class'=>'form-control', 'value'=>set_value('estado_notario_acta_const_persona_moral'));
+$no_acta_asamblea_persona_moral		         =array( 'id'=>'no_acta_asamblea_persona_moral', 'name'=>'no_acta_asamblea_persona_moral', 'class'=>'form-control', 'value'=>set_value('no_acta_asamblea_persona_moral'));
+$fecha_de_acta_asamblea_persona_moral     	 =array( 'id'=>'fecha_de_acta_asamblea_persona_moral', 'name'=>'fecha_de_acta_asamblea_persona_moral', 'class'=>'form-control', 'value'=>set_value('fecha_de_acta_asamblea_persona_moral'));
+$notario_acta_asamblea_persona_moral	     =array( 'id'=>'notario_acta_asamblea_persona_moral', 'name'=>'notario_acta_asamblea_persona_moral', 'class'=>'form-control', 'value'=>set_value('notario_acta_asamblea_persona_moral'));
+$num_dom_notario_act_asamblea_persona_moral	 =array( 'id'=>'num_dom_notario_act_asamblea_persona_moral', 'name'=>'num_dom_notario_act_asamblea_persona_moral', 'class'=>'form-control', 'value'=>set_value('num_dom_notario_act_asamblea_persona_moral'));
+$calle_notario_acta_asamblea_persona_moral	 =array( 'id'=>'calle_notario_acta_asamblea_persona_moral', 'name'=>'calle_notario_acta_asamblea_persona_moral', 'class'=>'form-control', 'value'=>set_value('calle_notario_acta_asamblea_persona_moral'));
+$numero_notario_acta_asamblea_persona_moral	 =array( 'id'=>'numero_notario_acta_asamblea_persona_moral', 'name'=>'numero_notario_acta_asamblea_persona_moral', 'class'=>'form-control', 'value'=>set_value('numero_notario_acta_asamblea_persona_moral'));
+$colonia_notario_acta_asamblea_persona_moral =array( 'id'=>'colonia_notario_acta_asamblea_persona_moral', 'name'=>'colonia_notario_acta_asamblea_persona_moral', 'class'=>'form-control', 'value'=>set_value('colonia_notario_acta_asamblea_persona_moral'));
+$cp_notario_acta_asamblea_persona_moral	    	=array( 'id'=>'cp_notario_acta_asamblea_persona_moral', 'name'=>'cp_notario_acta_asamblea_persona_moral', 'class'=>'form-control', 'value'=>set_value('cp_notario_acta_asamblea_persona_moral'));
+$municipio_notario_acta_asamblea_persona_moral 	=array( 'id'=>'municipio_notario_acta_asamblea_persona_moral', 'name'=>'municipio_notario_acta_asamblea_persona_moral', 'class'=>'form-control', 'value'=>set_value('municipio_notario_acta_asamblea_persona_moral'));
+$estado_notario_acta_asamblea_persona_moral		=array( 'id'=>'estado_notario_acta_asamblea_persona_moral', 'name'=>'estado_notario_acta_asamblea_persona_moral', 'class'=>'form-control', 'value'=>set_value('estado_notario_acta_asamblea_persona_moral'));
 //FIN DE PRESONAS MORALES
 // INICIO DE REPRESENTANTE DE LA PERSONA MORAL
-$apellido_paterno_Representante_Legal		=array( 'id'=>'apellido_paterno_Representante_Legal', 'name'=>'apellido_paterno_Representante_Legal', 'class'=>'form-control', 'value'=>set_value('apellido_paterno_Representante_Legal'));
-$apellido_materno_Representante_Legal		=array( 'id'=>'apellido_materno_Representante_Legal', 'name'=>'apellido_materno_Representante_Legal', 'class'=>'form-control', 'value'=>set_value('apellido_materno_Representante_Legal'));
-$nombres_Representante_Legal				=array( 'id'=>'nombres_Representante_Legal', 'name'=>'nombres_Representante_Legal', 'class'=>'form-control', 'value'=>set_value('nombres_Representante_Legal'));
-$caracter_Representante_Legal				=array( 'id'=>'caracter_Representante_Legal', 'name'=>'caracter_Representante_Legal', 'class'=>'form-control', 'value'=>set_value('caracter_Representante_Legal'));
-$rfc_Representante_Legal					=array( 'id'=>'rfc_Representante_Legal', 'name'=>'rfc_Representante_Legal', 'class'=>'form-control', 'value'=>set_value('rfc_Representante_Legal'));
-$curp_Representante_Legal					=array( 'id'=>'curp_Representante_Legal', 'name'=>'curp_Representante_Legal', 'class'=>'form-control', 'value'=>set_value('curp_Representante_Legal'));
-$nacionalidad_Representante_Legal			=array( 'id'=>'nacionalidad_Representante_Legal	', 'name'=>'nacionalidad_Representante_Legal', 'class'=>'form-control', 'value'=>set_value('nacionalidad_Representante_Legal	'));
-$fecha_de_nacimiento_Representante_Legal	=array( 'id'=>'fecha_de_nacimiento_Representante_Legal', 'name'=>'fecha_de_nacimiento_Representante_Legal', 'class'=>'form-control', 'value'=>set_value('fecha_de_nacimiento_Representante_Legal'));
-$estado_civil_Representante_Legal			=array( 'id'=>'estado_civil_Representante_Legal', 'name'=>'estado_civil_Representante_Legal', 'class'=>'form-control', 'value'=>set_value('estado_civil_Representante_Legal'));
-$calle_Representante_Legal					=array( 'id'=>'calle_Representante_Legal', 'name'=>'calle_Representante_Legal', 'class'=>'form-control', 'value'=>set_value('calle_Representante_Legal'));
-$numero_Representante_Legal					=array( 'id'=>'numero_Representante_Legal', 'name'=>'numero_Representante_Legal', 'class'=>'form-control', 'value'=>set_value('numero_Representante_Legal'));
-$colonia_Representante_Legal				=array( 'id'=>'colonia_Representante_Legal', 'name'=>'colonia_Representante_Legal', 'class'=>'form-control', 'value'=>set_value('colonia_Representante_Legal'));
-$cp_Representante_Legal						=array( 'id'=>'cp_Representante_Legal', 'name'=>'cp_Representante_Legal', 'class'=>'form-control', 'value'=>set_value('cp_Representante_Legal'));
-$localidad_Representante_Legal				=array( 'id'=>'localidad_Representante_Legal', 'name'=>'localidad_Representante_Legal', 'class'=>'form-control', 'value'=>set_value('localidad_Representante_Legal'));
-$municipio_Representante_Legal				=array( 'id'=>'municipio_Representante_Legal', 'name'=>'municipio_Representante_Legal', 'class'=>'form-control', 'value'=>set_value('municipio_Representante_Legal'));
-$estado_Representante_Legal					=array( 'id'=>'estado_Representante_Legal', 'name'=>'estado_Representante_Legal', 'class'=>'form-control', 'value'=>set_value('estado_Representante_Legal'));
-$telefono_Representante_Legal				=array( 'id'=>'telefono_Representante_Legal', 'name'=>'telefono_Representante_Legal', 'class'=>'form-control', 'value'=>set_value('telefono_Representante_Legal'));
-$celular_Representante_Legal				=array( 'id'=>'celular_Representante_Legal', 'name'=>'celular_Representante_Legal', 'class'=>'form-control', 'value'=>set_value('celular_Representante_Legal'));
-$correo_Representante_Legal					=array( 'id'=>'correo_Representante_Legal', 'name'=>'correo_Representante_Legal', 'class'=>'form-control', 'value'=>set_value('correo_Representante_Legal'));
-$tipo_documento_Representante_Legal			=array( 'id'=>'tipo_documento_Representante_Legal', 'name'=>'tipo_documento_Representante_Legal', 'class'=>'form-control', 'value'=>set_value('tipo_documento_Representante_Legal'));
-$numero_documento_Representante_Legal		=array( 'id'=>'numero_documento_Representante_Legal', 'name'=>'numero_documento_Representante_Legal', 'class'=>'form-control', 'value'=>set_value('numero_documento_Representante_Legal'));
-$nombre_licenciado_notario_Representante_Legal	=array( 'id'=>'nombre_licenciado_notario_Representante_Legal', 'name'=>'nombre_licenciado_notario_Representante_Legal', 'class'=>'form-control', 'value'=>set_value('nombre_licenciado_notario_Representante_Legal'));
-$notario_doc_legal_Representante_Legal		=array( 'id'=>'notario_doc_legal_Representante_Legal', 'name'=>'notario_doc_legal_Representante_Legal', 'class'=>'form-control', 'value'=>set_value('notario_doc_legal_Representante_Legal'));
-$num_notario_docRepresentante_Legal			=array( 'id'=>'num_notario_docRepresentante_Legal', 'name'=>'num_notario_docRepresentante_Legal', 'class'=>'form-control', 'value'=>set_value('num_notario_docRepresentante_Legal'));
-$calle_notario_docRepresentante_Legal		=array( 'id'=>'calle_notario_docRepresentante_Legal', 'name'=>'calle_notario_docRepresentante_Legal', 'class'=>'form-control', 'value'=>set_value('calle_notario_docRepresentante_Legal'));
-$numero_dom__notario_docRepresentante_Legal	=array( 'id'=>'numero_dom__notario_docRepresentante_Legal	', 'name'=>'numero_dom__notario_docRepresentante_Legal', 'class'=>'form-control', 'value'=>set_value('numero_dom__notario_docRepresentante_Legal'));
-$colonia_notario_docRepresentante_Legal		=array( 'id'=>'colonia_notario_docRepresentante_Legal', 'name'=>'colonia_notario_docRepresentante_Legal', 'class'=>'form-control', 'value'=>set_value('colonia_notario_docRepresentante_Legal'));
-$cp_notario_docRepresentante_Legal			=array( 'id'=>'cp_notario_docRepresentante_Legal	', 'name'=>'cp_notario_docRepresentante_Legal', 'class'=>'form-control', 'value'=>set_value('cp_notario_docRepresentante_Legal'));
-$municipio_notario_docRepresentante_Legal	=array( 'id'=>'municipio_notario_docRepresentante_Legal', 'name'=>'municipio_notario_docRepresentante_Legal', 'class'=>'form-control', 'value'=>set_value('municipio_notario_docRepresentante_Legal'));
-$estado_notario_docRepresentante_Legal		=array( 'id'=>'estado_notario_docRepresentante_Legal', 'name'=>'estado_notario_docRepresentante_Legal', 'class'=>'form-control', 'value'=>set_value('estado_notario_docRepresentante_Legal'));
+$apellido_paterno_representante_legal			=array( 'id'=>'apellido_paterno_representante_legal', 'name'=>'apellido_paterno_representante_legal', 'class'=>'form-control', 'value'=>set_value('apellido_paterno_representante_legal'));
+$apellido_materno_representante_legal			=array( 'id'=>'apellido_materno_representante_legal', 'name'=>'apellido_materno_representante_legal', 'class'=>'form-control', 'value'=>set_value('apellido_materno_representante_legal'));
+$nombre_representante_legal						=array( 'id'=>'nombre_representante_legal', 'name'=>'nombre_representante_legal', 'class'=>'form-control', 'value'=>set_value('nombre_representante_legal'));
+$caracter_representante_legal					=array( 'id'=>'caracter_representante_legal', 'name'=>'caracter_representante_legal', 'class'=>'form-control', 'value'=>set_value('caracter_representante_legal'));
+$rfc_representante_legal						=array( 'id'=>'rfc_representante_legal', 'name'=>'rfc_representante_legal', 'class'=>'form-control', 'value'=>set_value('rfc_representante_legal'));
+$curp_representante_legal						=array( 'id'=>'curp_representante_legal', 'name'=>'curp_representante_legal', 'class'=>'form-control', 'value'=>set_value('curp_representante_legal'));
+$nacionalidad_representante_legal				=array( 'id'=>'nacionalidad_representante_legal	', 'name'=>'nacionalidad_representante_legal', 'class'=>'form-control', 'value'=>set_value('nacionalidad_representante_legal'));
+$fecha_de_nacimiento_representante_legal		=array( 'id'=>'fecha_de_nacimiento_representante_legal', 'name'=>'fecha_de_nacimiento_representante_legal', 'class'=>'form-control', 'value'=>set_value('fecha_de_nacimiento_representante_legal'));
+$estado_civil_representante_legal				=array( 'id'=>'estado_civil_representante_legal', 'name'=>'estado_civil_representante_legal', 'class'=>'form-control', 'value'=>set_value('estado_civil_representante_legal'));
+$calle_representante_legal						=array( 'id'=>'calle_representante_legal', 'name'=>'calle_representante_legal', 'class'=>'form-control', 'value'=>set_value('calle_representante_legal'));
+$numero_representante_legal						=array( 'id'=>'numero_representante_legal', 'name'=>'numero_representante_legal', 'class'=>'form-control', 'value'=>set_value('numero_representante_legal'));
+$colonia_representante_legal					=array( 'id'=>'colonia_representante_legal', 'name'=>'colonia_representante_legal', 'class'=>'form-control', 'value'=>set_value('colonia_representante_legal'));
+$cp_representante_legal							=array( 'id'=>'cp_representante_legal', 'name'=>'cp_representante_legal', 'class'=>'form-control', 'value'=>set_value('cp_representante_legal'));
+$localidad_representante_legal					=array( 'id'=>'localidad_representante_legal', 'name'=>'localidad_representante_legal', 'class'=>'form-control', 'value'=>set_value('localidad_representante_legal'));
+$municipio_representante_legal					=array( 'id'=>'municipio_representante_legal', 'name'=>'municipio_representante_legal', 'class'=>'form-control', 'value'=>set_value('municipio_representante_legal'));
+$estado_representante_legal						=array( 'id'=>'estado_representante_legal', 'name'=>'estado_representante_legal', 'class'=>'form-control', 'value'=>set_value('estado_representante_legal'));
+$telefono_representante_legal					=array( 'id'=>'telefono_representante_legal', 'name'=>'telefono_representante_legal', 'class'=>'form-control', 'value'=>set_value('telefono_representante_legal'));
+$celular_representante_legal					=array( 'id'=>'celular_representante_legal', 'name'=>'celular_representante_legal', 'class'=>'form-control', 'value'=>set_value('celular_representante_legal'));
+$correo_representante_legal						=array( 'id'=>'correo_representante_legal', 'name'=>'correo_representante_legal', 'class'=>'form-control', 'value'=>set_value('correo_representante_legal'));
+$tipo_documento_representante_legal				=array( 'id'=>'tipo_documento_representante_legal', 'name'=>'tipo_documento_representante_legal', 'class'=>'form-control', 'value'=>set_value('tipo_documento_representante_legal'));
+$numero_documento_representante_legal			=array( 'id'=>'numero_documento_representante_legal', 'name'=>'numero_documento_representante_legal', 'class'=>'form-control', 'value'=>set_value('numero_documento_representante_legal'));
+$nombre_licenciado_notario_representante_legal	=array( 'id'=>'nombre_licenciado_notario_representante_legal', 'name'=>'nombre_licenciado_notario_representante_legal', 'class'=>'form-control', 'value'=>set_value('nombre_licenciado_notario_representante_legal'));
+$notario_doc_legal_representante_legal			=array( 'id'=>'notario_doc_legal_representante_legal', 'name'=>'notario_doc_legal_representante_legal', 'class'=>'form-control', 'value'=>set_value('notario_doc_legal_representante_legal'));
+$num_notario_doc_representante_legal			=array( 'id'=>'num_notario_doc_representante_legal', 'name'=>'num_notario_doc_representante_legal', 'class'=>'form-control', 'value'=>set_value('num_notario_doc_representante_legal'));
+$calle_notario_doc_representante_legal			=array( 'id'=>'calle_notario_doc_representante_legal', 'name'=>'calle_notario_doc_representante_legal', 'class'=>'form-control', 'value'=>set_value('calle_notario_doc_representante_legal'));
+$numero_dom__notario_doc_representante_legal	=array( 'id'=>'numero_dom__notario_doc_representante_legal', 'name'=>'numero_dom__notario_doc_representante_legal', 'class'=>'form-control', 'value'=>set_value('numero_dom__notario_doc_representante_legal'));
+$colonia_notario_doc_representante_legal		=array( 'id'=>'colonia_notario_doc_representante_legal', 'name'=>'colonia_notario_doc_representante_legal', 'class'=>'form-control', 'value'=>set_value('colonia_notario_doc_representante_legal'));
+$cp_notario_doc_representante_legal				=array( 'id'=>'cp_notario_doc_representante_legal	', 'name'=>'cp_notario_doc_representante_legal', 'class'=>'form-control', 'value'=>set_value('cp_notario_doc_representante_legal'));
+$municipio_notario_doc_representante_legal		=array( 'id'=>'municipio_notario_doc_representante_legal', 'name'=>'municipio_notario_doc_representante_legal', 'class'=>'form-control', 'value'=>set_value('municipio_notario_doc_representante_legal'));
+$estado_notario_doc_representante_legal			=array( 'id'=>'estado_notario_doc_representante_legal', 'name'=>'estado_notario_doc_representante_legal', 'class'=>'form-control', 'value'=>set_value('estado_notario_doc_representante_legal'));
 //fin variables Representante Legal
 //inicio Variables UPP
-$localidad_Datos_UPP						=array( 'id'=>'localidad_Datos_UPP', 'name'=>'localidad_Datos_UPP', 'class'=>'form-control', 'value'=>set_value('localidad_Datos_UPP'));
-$municipio_Datos_UPP						=array( 'id'=>'municipio_Datos_UPP', 'name'=>'municipio_Datos_UPP', 'class'=>'form-control', 'value'=>set_value('municipio_Datos_UPP'));
-$estado_Datos_UPP							=array( 'id'=>'estado_Datos_UPP', 'name'=>'estado_Datos_UPP', 'class'=>'form-control', 'value'=>set_value('estado_Datos_UPP'));
-$no_upp_DatosUPP							=array( 'id'=>'no_upp_DatosUPP', 'name'=>'no_upp_DatosUPP', 'class'=>'form-control', 'value'=>set_value('no_upp_DatosUPP'));
-$nombre_posesion_Datos_UPP					=array( 'id'=>'nombre_posesion_Datos_UPP', 'name'=>'nombre_posesion_Datos_UPP', 'class'=>'form-control', 'value'=>set_value('nombre_posesion_Datos_UPP'));
-$has_Datos_UPP								=array( 'id'=>'has_Datos_UPP', 'name'=>'has_Datos_UPP', 'class'=>'form-control', 'value'=>set_value('has_Datos_UPP'));
-$no_animales_Datos_UPP						=array( 'id'=>'no_animales_Datos_UPP', 'name'=>'no_animales_Datos_UPP', 'class'=>'form-control', 'value'=>set_value('no_animales_Datos_UPP'));
-$especie_apoyada_Datos_UPP					=array( 'id'=>'especie_apoyada_Datos_UPP', 'name'=>'especie_apoyada_Datos_UPP', 'class'=>'form-control', 'value'=>set_value('especie_apoyada_Datos_UPP'));
+$localidad_datos_upp						=array( 'id'=>'localidad_datos_uppv', 'name'=>'localidad_datos_upp', 'class'=>'form-control', 'value'=>set_value('localidad_datos_upp'));
+$municipio_datos_upp						=array( 'id'=>'municipio_datos_upp', 'name'=>'municipio_datos_upp', 'class'=>'form-control', 'value'=>set_value('municipio_datos_upp'));
+$estado_datos_upp							=array( 'id'=>'estado_datos_upp', 'name'=>'estado_datos_upp', 'class'=>'form-control', 'value'=>set_value('estado_datos_upp'));
+$no_upp_datos_upp							=array( 'id'=>'no_upp_datos_upp', 'name'=>'no_upp_datos_upp', 'class'=>'form-control', 'value'=>set_value('no_upp_datos_upp'));
+$nombre_posesion_datos_upp					=array( 'id'=>'nombre_posesion_datos_upp', 'name'=>'nombre_posesion_datos_upp', 'class'=>'form-control', 'value'=>set_value('nombre_posesion_datos_upp'));
+$has_datos_upp								=array( 'id'=>'has_datos_upp', 'name'=>'has_datos_upp', 'class'=>'form-control', 'value'=>set_value('has_datos_upp'));
+$no_animales_datos_upp						=array( 'id'=>'no_animales_datos_upp', 'name'=>'no_animales_datos_upp', 'class'=>'form-control', 'value'=>set_value('no_animales_datos_upp'));
+$especie_apoyada_datos_upp					=array( 'id'=>'especie_apoyada_datos_upp', 'name'=>'especie_apoyada_datos_upp', 'class'=>'form-control', 'value'=>set_value('especie_apoyada_datos_upp'));
 //fin de variables UPP
 //Inicio de las Variables de BANCO
-$fecha_de_cta_DatosBanco					=array( 'id'=>'fecha_de_cta_DatosBanco', 'name'=>'fecha_de_cta_DatosBanco', 'class'=>'form-control', 'value'=>set_value('fecha_de_cta_DatosBanco'));
-$clabe_DatosBanco							=array( 'id'=>'clabe_DatosBanco', 'name'=>'clabe_DatosBanco', 'class'=>'form-control', 'value'=>set_value('clabe_DatosBanco'));
-$cuenta_DatosBanco							=array( 'id'=>'cuenta_DatosBanco', 'name'=>'cuenta_DatosBanco', 'class'=>'form-control', 'value'=>set_value('cuenta_DatosBanco'));
-$nomina_DatosBanco							=array( 'id'=>'nomina_DatosBanco', 'name'=>'nomina_DatosBanco', 'class'=>'form-control', 'value'=>set_value('nomina_DatosBanco'));
-$nombre_banco_DatosBanco					=array( 'id'=>'nombre_banco_DatosBanco', 'name'=>'nombre_banco_DatosBanco', 'class'=>'form-control', 'value'=>set_value('nombre_banco_DatosBanco'));
+$fecha_cta_datos_banco						=array( 'id'=>'fecha_cta_datos_banco', 'name'=>'fecha_cta_datos_banco', 'class'=>'form-control', 'value'=>set_value('fecha_cta_datos_banco'));
+$clabe_datos_banco							=array( 'id'=>'clabe_datos_banco', 'name'=>'clabe_datos_banco', 'class'=>'form-control', 'value'=>set_value('clabe_datos_banco'));
+$cuenta_datos_banco							=array( 'id'=>'cuenta_datos_banco', 'name'=>'cuenta_datos_banco', 'class'=>'form-control', 'value'=>set_value('cuenta_datos_banco'));
+$nomina_datos_banco							=array( 'id'=>'nomina_datos_banco', 'name'=>'nomina_datos_banco', 'class'=>'form-control', 'value'=>set_value('nomina_datos_banco'));
+$nombre_banco_datos_banco					=array( 'id'=>'nombre_banco_datos_banco', 'name'=>'nombre_banco_datos_banco', 'class'=>'form-control', 'value'=>set_value('nombre_banco_datos_banco'));
 
 //Fin de variables de BANCO
 //Inicio de las Variables de PROVEDOR
-$fecha_cta_datos_banco					    =array( 'id'=>'nombre_DatosProveedor', 'name'=>'nombre_DatosProveedor', 'class'=>'form-control', 'value'=>set_value('nombre_DatosProveedor'));
-$calle_DatosProveedor						=array( 'id'=>'calle_DatosProveedor', 'name'=>'calle_DatosProveedor', 'class'=>'form-control', 'value'=>set_value('calle_DatosProveedor'));
-$numero_DatosProveedor						=array( 'id'=>'numero_DatosProveedor', 'name'=>'numero_DatosProveedor', 'class'=>'form-control', 'value'=>set_value('numero_DatosProveedor'));
-$localidad_DatosProveedor					=array( 'id'=>'localidad_DatosProveedor', 'name'=>'localidad_DatosProveedor', 'class'=>'form-control', 'value'=>set_value('localidad_DatosProveedor'));
-$cp_DatosProveedor					        =array( 'id'=>'cp_DatosProveedor', 'name'=>'cp_DatosProveedor', 'class'=>'form-control', 'value'=>set_value('cp_DatosProveedor'));
-$municipio_DatosProveedor					=array( 'id'=>'municipio_DatosProveedor', 'name'=>'municipio_DatosProveedor', 'class'=>'form-control', 'value'=>set_value('municipio_DatosProveedor'));
-$estado_DatosProveedor						=array( 'id'=>'estado_DatosProveedor', 'name'=>'estado_DatosProveedor', 'class'=>'form-control', 'value'=>set_value('estado_DatosProveedor'));
+$nombre_datos_proveedor					    =array( 'id'=>'nombre_datos_proveedor', 'name'=>'nombre_datos_proveedor', 'class'=>'form-control', 'value'=>set_value('nombre_datos_proveedor'));
+$calle_datos_proveedor						=array( 'id'=>'calle_datos_proveedor', 'name'=>'calle_datos_proveedor', 'class'=>'form-control', 'value'=>set_value('calle_datos_proveedor'));
+$numero_datos_proveedor						=array( 'id'=>'numero_datos_proveedor', 'name'=>'numero_datos_proveedor', 'class'=>'form-control', 'value'=>set_value('numero_datos_proveedor'));
+$localidad_datos_proveedor					=array( 'id'=>'localidad_datos_proveedor', 'name'=>'localidad_datos_proveedor', 'class'=>'form-control', 'value'=>set_value('localidad_datos_proveedor'));
+$cp_datos_proveedor					        =array( 'id'=>'cp_datos_proveedor', 'name'=>'cp_datos_proveedor', 'class'=>'form-control', 'value'=>set_value('cp_datos_proveedor'));
+$municipio_datos_proveedor					=array( 'id'=>'municipio_datos_proveedor', 'name'=>'municipio_datos_proveedor', 'class'=>'form-control', 'value'=>set_value('municipio_datos_proveedor'));
+$entidad_federativa_datos_proveedor			=array( 'id'=>'entidad_federativa_datos_proveedor', 'name'=>'entidad_federativa_datos_proveedor', 'class'=>'form-control', 'value'=>set_value('entidad_federativa_datos_proveedor'));
 //Fin de variables de PROVEDOR
 
 //Inicio de las Variables de Propiedad
 
-$ubicacion_predio_DatosPropiedad			=array( 'id'=>'ubicacion_predio_DatosPropiedad', 'name'=>'ubicacion_predio_DatosPropiedad', 'class'=>'form-control', 'value'=>set_value('ubicacion_predio_DatosPropiedad'));
-$docto_acreditcion_DatosPropiedad			=array( 'id'=>'docto_acreditcion_DatosPropiedad', 'name'=>'docto_acreditcion_DatosPropiedad', 'class'=>'form-control', 'value'=>set_value('docto_acreditcion_DatosPropiedad'));
-$num_acta_DatosPropiedad					=array( 'id'=>'num_acta_DatosPropiedad', 'name'=>'num_acta_DatosPropiedad', 'class'=>'form-control', 'value'=>set_value('num_acta_DatosPropiedad'));
-$fecha_acta_DatosPropiedad					=array( 'id'=>'fecha_acta_DatosPropiedad', 'name'=>'fecha_acta_DatosPropiedad', 'class'=>'form-control', 'value'=>set_value('fecha_acta_DatosPropiedad'));
-$nombre_notario_DatosPropiedad				=array( 'id'=>'nombre_notario_DatosPropiedad', 'name'=>'nombre_notario_DatosPropiedad', 'class'=>'form-control', 'value'=>set_value('nombre_notario_DatosPropiedad'));
-$num_notario_DatosPropiedad					=array( 'id'=>'num_notario_DatosPropiedad', 'name'=>'num_notario_DatosPropiedad', 'class'=>'form-control', 'value'=>set_value('num_notario_DatosPropiedad'));
-$objeto_DatosPropiedad						=array( 'id'=>'objeto_DatosPropiedad', 'name'=>'objeto_DatosPropiedad', 'class'=>'form-control', 'value'=>set_value('objeto_DatosPropiedad'));
+$ubicacion_predio_datos_propiedad			=array( 'id'=>'ubicacion_predio_datos_propiedad', 'name'=>'ubicacion_predio_datos_propiedad', 'class'=>'form-control', 'value'=>set_value('ubicacion_predio_datos_propiedad'));
+$docto_acreditcion_datos_propiedad			=array( 'id'=>'docto_acreditcion_datos_propiedad', 'name'=>'docto_acreditcion_datos_propiedad', 'class'=>'form-control', 'value'=>set_value('docto_acreditcion_datos_propiedad'));
+$num_acta_datos_propiedad					=array( 'id'=>'num_acta_datos_propiedad', 'name'=>'num_acta_datos_propiedad', 'class'=>'form-control', 'value'=>set_value('num_acta_datos_propiedad'));
+$fecha_acta_datos_propiedad					=array( 'id'=>'fecha_acta_datos_propiedad', 'name'=>'fecha_acta_datos_propiedad', 'class'=>'form-control', 'value'=>set_value('fecha_acta_datos_propiedad'));
+$nombre_notario_datos_propiedad				=array( 'id'=>'nombre_notario_datos_propiedad', 'name'=>'nombre_notario_datos_propiedad', 'class'=>'form-control', 'value'=>set_value('nombre_notario_datos_propiedad'));
+$num_notario_datos_propiedad				=array( 'id'=>'num_notario_datos_propiedad', 'name'=>'num_notario_datos_propiedad', 'class'=>'form-control', 'value'=>set_value('num_notario_datos_propiedad'));
+$objeto_datos_propiedad						=array( 'id'=>'objeto_datos_propiedad', 'name'=>'objeto_datos_propiedad', 'class'=>'form-control', 'value'=>set_value('objeto_datos_propiedad'));
 //Fin de variables de Propiedad
 
 
@@ -174,71 +174,129 @@ if ($accion == 'EDICION') {
 	$descripcion_proyecto['value'] = $data->descripcion_proyecto;
 
 	//personas fisicas
-	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
-	$ap_paterno_persona_fisica['value'] = $data->ap_paterno_persona_fisica;
-	$ap_materno_persona_fisica['value'] = $data->ap_materno_persona_fisica;
-	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
-	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
-	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
-	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
-	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
-	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
-	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
-	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
-	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
-	$nombre_persona_fisica['value'] = $data->nombre_persona_fisica;
-
+	$nombre_persona_fisica['value']	= $data->nombre_persona_fisica;			
+	$ap_paterno_persona_fisica['value'] = $data->ap_paterno_persona_fisica;				
+	$ap_materno_persona_fisica['value'] = $data->ap_materno_persona_fisica;			
+	$nombre_persona_fisica['value'] 	= $data->nombre_persona_fisica;			
+	$rfc_persona_fisica['value'] 		= $data->rfc_persona_fisica;					
+	$curp_persona_fisica['value'] 		= $data->curp_persona_fisica;			
+	$nacionalidad_persona_fisica['value'] = $data->nacionalidad_persona_fisica;	
+	$fecha_nacimiento_persona_fisica['value'] = $data->fecha_nacimiento_persona_fisica;	
+	$estado_civil_persona_fisica['value'] = $data->estado_civil_persona_fisica;		
+	$calle_persona_fisica['value'] 		= $data->calle_persona_fisica;			
+	$numero_persona_fisica['value'] 	= $data->numero_persona_fisica;			
+	$colonia_persona_fisica['value'] 	= $data->colonia_persona_fisica;			
+	$cp_persona_fisica['value']			= $data->cp_persona_fisica;					
+	$localidad_persona_fisica['value']  = $data->localidad_persona_fisica;	
+	$municipio_persona_fisica['value']  = $data->municipio_persona_fisica;		
+	$estado_persona_fisica['value'] 	= $data->estado_persona_fisica ;			
+	$telefono_persona_fisica['value'] 	= $data->telefono_persona_fisica;		
+	$num_celular_persona_fisica['value'] = $data->num_celular_persona_fisica;			
+	$correo_persona_fisica['value'] 	= $data->correo_persona_fisica;			
+	$id_oficial_persona_fisica['value'] = $data->id_oficial_persona_fisica ;			
+	$num_id_oficial_persona_fisica['value'] = $data->num_id_oficial_persona_fisica;
+// PEROSNAS MORALES
+	$nombre_persona_moral['value'] 		= $data->nombre_persona_moral;         	
+	$rfc_persona_moral['value'] 		= $data->rfc_persona_moral;              		
+	$calle_persona_moral['value'] 		= $data->calle_persona_moral;      	
+	$numero_persona_moral['value'] 		= $data->numero_persona_moral;   	
+	$colonia_persona_moral['value']		= $data->colonia_persona_moral;			 	
+	$cp_persona_moral['value'] 			= $data->cp_persona_moral;				 	
+	$localidad_persona_moral['value']	= $data->localidad_persona_moral;			  	
+	$municipio_persona_moral['value'] 	= $data->municipio_persona_moral;			  	
+	$estado_persona_moral['value'] 				= $data->estado_persona_moral;		  	
+	$telefono_oficina_persona_moral['value'] 	= $data->telefono_oficina_persona_moral;    	
+	$correo_persona_moral['value'] 				= $data->correo_persona_moral;		  	
+	$fecha_Inscripcion_rfc_persona_moral['value'] 	= $data->fecha_Inscripcion_rfc_persona_moral;	
+	$objeto_social_persona_moral['value'] 			= $data->objeto_social_persona_moral;		  	
+	$tipo_de_organismo_persona_moral['value'] 		= $data->tipo_de_organismo_persona_moral;	
+	$no_acta_constitutiva_persona_moral	['value'] 	= $data->no_acta_constitutiva_persona_moral;	
+	$fecha_de_constitucion_persona_moral['value'] 	= $data->fecha_de_constitucion_persona_moral;	
+	$nombre_licenciado_notario_persona_moral['value'] = $data->nombre_licenciado_notario_persona_moral;   
+	$notario_acta_const_persona_moral['value'] 		= $data->notario_acta_const_persona_moral;
+	$num_notario_act_const_persona_moral['value'] 	= $data->num_notario_act_const_persona_moral;
+	$calle_notario_acta_const_persona_moral['value'] = $data->calle_notario_acta_const_persona_moral;	     
+	$numero_notario_acta_const_persona_moral['value'] = $data->numero_notario_acta_const_persona_moral;   
+	$colonia_notario_acta_const_persona_moral['value'] = $data->colonia_notario_acta_const_persona_moral;
+	$cp_notario_acta_const_persona_moral['value'] = $data->cp_notario_acta_const_persona_moral;
+	$municipio_notario_acta_const_persona_moral['value'] = $data->municipio_notario_acta_const_persona_moral;
+	$estado_notario_acta_const_persona_moral['value'] = $data->estado_notario_acta_const_persona_moral;
+	$no_acta_asamblea_persona_moral['value'] 		= $data->no_acta_asamblea_persona_moral;
+	$fecha_de_acta_asamblea_persona_moral['value'] 	= $data->fecha_de_acta_asamblea_persona_moral;
+	$notario_acta_asamblea_persona_moral['value'] 	= $data->notario_acta_asamblea_persona_moral;
+	$num_dom_notario_act_asamblea_persona_moral	['value'] = $data->num_dom_notario_act_asamblea_persona_moral;
+	$calle_notario_acta_asamblea_persona_moral['value'] = $data->calle_notario_acta_asamblea_persona_moral;
+	$numero_notario_acta_asamblea_persona_moral['value'] = $data->numero_notario_acta_asamblea_persona_moral;
+	$colonia_notario_acta_asamblea_persona_moral['value'] = $data->colonia_notario_acta_asamblea_persona_moral;
+	$cp_notario_acta_asamblea_persona_moral['value'] = $data->cp_notario_acta_asamblea_persona_moral;    	
+	$municipio_notario_acta_asamblea_persona_moral['value'] = $data->municipio_notario_acta_asamblea_persona_moral;
+	$estado_notario_acta_asamblea_persona_moral['value'] = $data->estado_notario_acta_asamblea_persona_moral;
 	//REPRESENTANTES
-	$nombres_Representante_Legal['value'] = $data->nombre_representante_legal;
+	$apellido_paterno_representante_legal['value'] 	= $data->apellido_paterno_representante_legal;				
+	$nombre_representante_legal['value'] 			= $data->nombre_representante_legal;						
+	$caracter_representante_legal['value']			= $data->caracter_representante_legal;					
+	$rfc_representante_legal['value'] 				= $data->rfc_representante_legal;					
+	$curp_representante_legal['value'] 				= $data->curp_representante_legal;						
+	$nacionalidad_representante_legal['value'] 		= $data->nacionalidad_representante_legal;			
+	$fecha_de_nacimiento_representante_legal['value'] = $data->fecha_de_nacimiento_representante_legal;		
+	$estado_civil_representante_legal['value'] 		= $data->estado_civil_representante_legal;				
+	$calle_representante_legal['value'] 			= $data->calle_representante_legal;						
+	$numero_representante_legal['value'] 			= $data->numero_representante_legal;						
+	$colonia_representante_legal['value'] 			= $data->colonia_representante_legal;					
+	$cp_representante_legal['value'] 				= $data->cp_representante_legal;						
+	$localidad_representante_legal['value'] 		= $data->localidad_representante_legal;					
+	$municipio_representante_legal['value'] 		= $data->municipio_representante_legal;					
+	$estado_representante_legal['value'] 			= $data->estado_representante_legal;						
+	$telefono_representante_legal['value'] 			= $data->telefono_representante_legal;					
+	$celular_representante_legal['value'] 			= $data->celular_representante_legal;					
+	$correo_representante_legal['value'] 			= $data->correo_representante_legal;						
+	$tipo_documento_representante_legal['value']	= $data->tipo_documento_representante_legal;			
+	$numero_documento_representante_legal['value'] 	= $data->numero_documento_representante_legal;			
+	$nombre_licenciado_notario_representante_legal	['value'] = $data->nombre_licenciado_notario_representante_legal;
+	$notario_doc_legal_representante_legal['value'] = $data->notario_doc_legal_representante_legal;			
+	$num_notario_doc_representante_legal['value'] 	= $data->num_notario_doc_representante_legal;			
+	$calle_notario_doc_representante_legal['value'] = $data->calle_notario_doc_representante_legal;			
+	$numero_dom__notario_doc_representante_legal	['value'] = $data->numero_dom__notario_doc_representante_legal;
+	$colonia_notario_doc_representante_legal['value'] = $data->colonia_notario_doc_representante_legal;	
+	$cp_notario_doc_representante_legal	['value'] 	= $data->cp_notario_doc_representante_legal;		
+	$municipio_notario_doc_representante_legal['value'] = $data->municipio_notario_doc_representante_legal;		
+	$estado_notario_doc_representante_legal['value'] = $data->estado_notario_doc_representante_legal;
+//UPP
+	$no_upp_datos_upp['value']			= $data->folio_interno;							
+	$nombre_posesion_datos_upp['value']	= $data->folio_interno;					
+	$has_datos_upp['value']				= $data->folio_interno;								
+	$no_animales_datos_upp['value']		= $data->folio_interno;						
+	$especie_apoyada_datos_upp['value']	= $data->folio_interno;		
+//BANCO
+	$fecha_cta_datos_banco	['value']	= $data->folio_interno;					
+	$clabe_datos_banco['value']			= $data->folio_interno;							
+	$cuenta_datos_banco['value']		= $data->folio_interno;							
+	$nomina_datos_banco['value']		= $data->folio_interno;						
+	$nombre_banco_datos_banco['value']	= $data->folio_interno;	
+//PROVEEDOR
+	$nombre_datos_proveedor['value']		= $data->folio_interno;				
+	$calle_datos_proveedor	['value']		= $data->folio_interno;					
+	$numero_datos_proveedor['value']		= $data->folio_interno;						
+	$localidad_datos_proveedor['value']		= $data->folio_interno;					
+	$cp_datos_proveedor['value']			= $data->folio_interno;				
+	$municipio_datos_proveedor['value']		= $data->folio_interno;					
+	$entidad_federativa_datos_proveedor['value']	= $data->folio_interno;			
+//Inicio de las Variables de Propiedad
+	$ubicacion_predio_datos_propiedad	['value']	= $data->folio_interno;		
+	$docto_acreditcion_datos_propiedad	['value']	= $data->folio_interno;		
+	$num_acta_datos_propiedad['value']				= $data->folio_interno;					
+	$fecha_acta_datos_propiedad['value']			= $data->folio_interno;					
+	$nombre_notario_datos_propiedad['value']		= $data->folio_interno;			
+	$num_notario_datos_propiedad['value']			= $data->folio_interno;				
+	$objeto_datos_propiedad['value']				= $data->folio_interno;	
 
-	//datos upp
-	$localidad_Datos_UPP['value'] = $data->localidad_datos_upp;
-
-
-	//banco
-	$fecha_de_cta_DatosBanco['value'] = $data->fecha_cta_datos_banco;
-
-	//propiedad
-	$ubicacion_predio_DatosPropiedad['value'] = $data->ubicacion_predio_datos_propiedad;
-
-
-	//proveedor
-	$nombre_DatosProveedor['value'] = $data->nombre_datos_proveedor;
-
-
-
-
-
-	/*
-	$nombre_persona_fisica 				=array( 'id'=>'nombre_persona_fisica', 'name'=>'nombre_persona_fisica', 'class'=>'form-control', 'value'=>set_value('nombre_persona_fisica'));
-$ap_paterno_persona_fisica			=array( 'id'=>'ap_paterno_persona_fisica', 'name'=>'ap_paterno_persona_fisica', 'class'=>'form-control', 'value'=>set_value('ap_paterno_persona_fisica'));
-$ap_materno_persona_fisica			=array( 'id'=>'ap_materno_persona_fisica', 'name'=>'ap_materno_persona_fisica', 'class'=>'form-control', 'value'=>set_value('ap_materno_persona_fisica'));
-$nombre_persona_fisica				=array( 'id'=>'nombre_persona_fisica', 'name'=>'nombre_persona_fisica', 'class'=>'form-control', 'value'=>set_value('nombre_persona_fisica'));
-$rfc_persona_fisica					=array( 'id'=>'rfc_persona_fisica', 'name'=>'rfc_persona_fisica', 'class'=>'form-control', 'value'=>set_value('rfc_persona_fisica'));
-$curp_persona_fisica				=array( 'id'=>'curp_persona_fisica', 'name'=>'curp_persona_fisica', 'class'=>'form-control', 'value'=>set_value('curp_persona_fisica'));
-$nacionalidad_persona_fisica		=array( 'id'=>'nacionalidad_persona_fisica', 'name'=>'nacionalidad_persona_fisica', 'class'=>'form-control', 'value'=>set_value('nacionalidad_persona_fisica'));
-$fecha_nacimiento_persona_fisica	=array( 'id'=>'fecha_nacimiento_persona_fisica', 'name'=>'fecha_nacimiento_persona_fisica', 'class'=>'form-control', 'value'=>set_value('fecha_nacimiento_persona_fisica'));
-$estado_civil_persona_fisica		=array( 'id'=>'estado_civil_persona_fisica', 'name'=>'estado_civil_persona_fisica', 'class'=>'form-control', 'value'=>set_value('estado_civil_persona_fisica'));
-$calle_persona_fisica				=array( 'id'=>'calle_persona_fisica', 'name'=>'calle_persona_fisica', 'class'=>'form-control', 'value'=>set_value('calle_persona_fisica'));
-$numero_persona_fisica 				=array( 'id'=>'num__persona_fisica', 'name'=>'num__persona_fisica', 'class'=>'form-control', 'value'=>set_value('num__persona_fisica'));
-$colonia_persona_fisica				=array( 'id'=>'colonia_persona_fisica', 'name'=>'colonia_persona_fisica', 'class'=>'form-control', 'value'=>set_value('colonia_persona_fisica'));
-$cp_persona_fisica					=array( 'id'=>'cp__persona_fisica', 'name'=>'cp__persona_fisica', 'class'=>'form-control', 'value'=>set_value('cp__persona_fisica'));
-$localidad_persona_fisica			=array( 'id'=>'localidad_persona_fisica', 'name'=>'localidad_persona_fisica', 'class'=>'form-control', 'value'=>set_value('localidad_persona_fisica'));
-$municipio_persona_fisica			=array( 'id'=>'municipio_persona_fisica', 'name'=>'municipio_persona_fisica', 'class'=>'form-control', 'value'=>set_value('municipio_persona_fisica'));
-$estado_persona_fisica 				=array( 'id'=>'estado_persona_fisica', 'name'=>'estado_persona_fisica', 'class'=>'form-control', 'value'=>set_value('estado_persona_fisica'));
-$telefono_persona_fisica			=array( 'id'=>'telefono_persona_fisica', 'name'=>'telefono_persona_fisica', 'class'=>'form-control', 'value'=>set_value('telefono_persona_fisica'));
-$num_celular_persona_fisica			=array( 'id'=>'num_celular_persona_fisica', 'name'=>'num_celular_persona_fisica', 'class'=>'form-control', 'value'=>set_value('num_celular_persona_fisica'));
-$correo_persona_fisica				=array( 'id'=>'correo_persona_fisica', 'name'=>'correo_persona_fisica', 'class'=>'form-control', 'value'=>set_value('correo_persona_fisica'));
-$id_oficial_persona_fisica 			=array( 'id'=>'id_oficial_persona_fisica', 'name'=>'id_oficial_persona_fisica', 'class'=>'form-control', 'value'=>set_value('id_oficial_persona_fisica'));
-$num_id_oficial_persona_fisica		=array( 'id'=>'num_id_oficial_persona_fisica', 'name'=>'num_id_oficial_persona_fisica', 'class'=>'form-control', 'value'=>set_value('num_id_oficial_persona_fisica'));
-
-	*/
+//*/
 }
-<<<<<<< HEAD
+// <<<<<<< HEAD
 // var_dump($data);
-=======
+// =======
 //var_dump($data);
->>>>>>> 68da2f414834fcc50dc594b3ee6cdd3b0c5f9cd1
+//>>>>>>> 68da2f414834fcc50dc594b3ee6cdd3b0c5f9cd1
 //var_dump($SQL);
 ?>
 
