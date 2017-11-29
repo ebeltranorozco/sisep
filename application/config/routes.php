@@ -72,11 +72,9 @@ $route['programas_crud'] = 'crud_controller/programas_crud';
 $route['ddrs_crud'] = 'crud_controller/ddrs_crud';
 
 //CONVENIOS
-$route['ObtenerDelegacion'] = 'beneficiario/ObtenerDelegacion';
+$route['ObtenerDelegacion'] 	= 'beneficiario/ObtenerDelegacion';
 $route['ObtenerPersonaFisica'] 	= 'beneficiario/ObtenerPersonaFisica';
 $route['ObtenerPersonaMoral'] 	= 'beneficiario/ObtenerPersonaMoral';
-
-
 $route['ObtenerBeneficiario'] 	= 'beneficiario/ObtenerBeneficiario';
 $route['ObtenerRepresentante'] 	= 'beneficiario/ObtenerRepresentante';
 $route['ObtenerPropiedad'] 		= 'beneficiario/ObtenerPropiedad';

@@ -8,9 +8,17 @@ if (typeof jQuery === 'undefined') {
 $(function () {
 
 
+	//alert('cargando jquery para convenio');
+	var getUrl = window.location;
+	var base_url = getUrl .protocol + "//" + getUrl.host ;  //2017-11-29
+
+    if(base_url == 'http://localhost') {
+        base_url += '/sisep';
+        alert('Trabajando de Manera Local y en convenios');
+    }
 
 	// CARGANDO TODOS LOS COMBOS
-	$.getJSON("ObtenerDelegacion", function (datos) {				            
+	$.getJSON(base_url+"/ObtenerDelegacion", function (datos) {				            
 		$.each(datos, function(i, item) {
 			$.each( item,function(cNombreCampo,item){
 				//console.log(cNombreCampo); // nombre del campo
@@ -20,7 +28,7 @@ $(function () {
     }); // FIN DEL getJson
 
 
-    $.getJSON("ObtenerPersonaFisica", function (datos) {				            
+    $.getJSON(base_url+"/ObtenerPersonaFisica", function (datos) {				            
 		$.each(datos, function(i, item) {
 			$.each( item,function(cNombreCampo,item){
 				//console.log(cNombreCampo); // nombre del campo
@@ -29,7 +37,7 @@ $(function () {
 		});				            
     }); // FIN DEL getJson
 
-    $.getJSON("ObtenerPersonaMoral", function (datos) {				            
+    $.getJSON(base_url+"/ObtenerPersonaMoral", function (datos) {				            
 		$.each(datos, function(i, item) {
 			$.each( item,function(cNombreCampo,item){
 				//console.log(cNombreCampo); // nombre del campo
@@ -38,7 +46,7 @@ $(function () {
 		});				            
     }); // FIN DEL getJson
 
-    $.getJSON("ObtenerRepresentante", function (datos) {				            
+    $.getJSON(base_url+"/ObtenerRepresentante", function (datos) {				            
 		$.each(datos, function(i, item) {
 			$.each( item,function(cNombreCampo,item){
 				//console.log(cNombreCampo); // nombre del campo
@@ -47,7 +55,7 @@ $(function () {
 		});				            
     }); // FIN DEL getJson
 
-    $.getJSON("ObtenerPropiedad", function (datos) {				            
+    $.getJSON(base_url+"/ObtenerPropiedad", function (datos) {				            
 		$.each(datos, function(i, item) {
 			$.each( item,function(cNombreCampo,item){
 				//console.log(cNombreCampo); // nombre del campo
@@ -56,7 +64,7 @@ $(function () {
 		});				            
     }); // FIN DEL getJson
 
-    $.getJSON("ObtenerProveedor", function (datos) {				            
+    $.getJSON(base_url+"/ObtenerProveedor", function (datos) {				            
 		$.each(datos, function(i, item) {
 			$.each( item,function(cNombreCampo,item){
 				//console.log(cNombreCampo); // nombre del campo
@@ -65,7 +73,7 @@ $(function () {
 		});				            
     }); // FIN DEL getJson
 
-    $.getJSON("ObtenerUPP", function (datos) {				            
+    $.getJSON(base_url+"/ObtenerUPP", function (datos) {				            
 		$.each(datos, function(i, item) {
 			$.each( item,function(cNombreCampo,item){
 				//console.log(cNombreCampo); // nombre del campo
@@ -99,9 +107,9 @@ $(function () {
 	var ano 				= $("#ano").val();
 	var id_programa 		= $("#id_programa").val();
 	var id_componente 		= $("#id_componente").val();
-	var id_incentivo 		= $("#id_incentivo").val();
+	//var id_incentivo 		= $("#id_incentivo").val();
 
-	BuscarConvenio( tipo_solicitante,cesionado_usuario,ano,id_programa,id_componente,id_incentivo);
+	BuscarConvenio( tipo_solicitante,cesionado_usuario,ano,id_programa,id_componente);
 
 	/**********************************************************************************/
 
@@ -167,32 +175,7 @@ $(function () {
 	/*********************************************************************/
 	
 	
-	
-
-	//$("#divConvenio").hide();
-	//$("#divGrabar").hide();
-	//$("#divActualizar").hide();
-	//$("#idDivNombreConvenio").hide();
-	/*  SELECT */
-	//$("#idDivDelegaciones").hide();
-	//$("#idDivPersonaFisica").hide();
-	//$("#idDivPersonaMoral").hide();
-	//$("#idDivRepresentantes").hide();
-
-	
-	//$("#idDivBeneficiarios").hide();
-	//$("#idDivProveedores").hide();
-	//$("#idDivUPP").hide();
-	
-	//$("#idDivPropiedad").hide();
-	//$("#idDivApoyo").hide();
-	//$("#idDivSeguimiento").hide();
-	//$("#idDivTablaConceptos").hide();
-	
-
-
-	//$("#idBtnBuscarConvenio").click(function(){
-	function BuscarConvenio( tipo_solicitante,cesionado_usuario,ano,id_programa,id_componente,id_incentivo){
+	function BuscarConvenio( tipo_solicitante,cesionado_usuario,ano,id_programa,id_componente){
 		//alert('Buscando el convenio ...!');		
 		
 		var cTipo 		= tipo_solicitante;
@@ -200,7 +183,7 @@ $(function () {
 		var cAno 		= ano;
 		var cPrograma 	= id_programa;
 		var cComponente = id_componente;
-		var cIncentivo	= id_incentivo;		
+		//var cIncentivo	= id_incentivo;		
 		
 		var cNombreConvenio = 's/n';	
 
@@ -212,43 +195,15 @@ $(function () {
 			return;
 		}
 
-		var datos = { 'ano': cAno , 'programa':cPrograma , 'componente':cComponente , 'incentivo':cIncentivo, 'tipo' : cTipo, 'cesionado':cCesionado,'nombreconvenio':cNombreConvenio};
+		var datos = { 'ano': cAno , 'programa':cPrograma , 'componente':cComponente , 'tipo' : cTipo, 'cesionado':cCesionado,'nombreconvenio':cNombreConvenio};
 		//alert( baseUrlCorta+'/buscar_convenio');
 			$.ajax({
 					type: 'POST',
 					url: baseUrlCorta+ "/buscar_convenio",
 					data:datos,
-					success: function(Resp_Ok){
-						//console.log( Resp_Ok);
-						//$("#idDivNombreConvenio").show();
-						//$("#idDivNombreConvenio").html('Nombre del Convenio:[' + Resp_Ok['NOMBREPLANTILLA']+"]");
-						//$("#txtNombreConvenio").val(Resp_Ok['NOMBREPLANTILLA']);
-						//$("#divConvenio").show();
-						// CARGANDO LA INFORMACION DE LOS CATALOGOS 
+					success: function(Resp_Ok){					  
 
-				        /*
-				        $.getJSON("ObtenerBeneficiario", function (datos) {				            
-        					$.each(datos, function(i, item) {
-        						$.each( item,function(cNombreCampo,item){
-        							console.log(cNombreCampo); // nombre del campo
-        							$("#cboBeneficiario").append("<option value=" + cNombreCampo + ">" + cNombreCampo + "</option>");
-        						})							    
-							});				            
-				        }); // FIN DEL getJson 			        
-
-				        $.getJSON("ObtenerConcepto", function (datos) {				            
-        					$.each(datos, function(i, item) {
-        						$.each( item,function(cNombreCampo,item){
-        							console.log(cNombreCampo); // nombre del campo
-        							$("#cboApoyo").append("<option value=" + cNombreCampo + ">" + cNombreCampo + "</option>");
-        						})							    
-							});				            
-				        }); // FIN DEL getJson 
-
-				        */   
-
-				        console.log( Resp_Ok);
-				        //alert('esto es bueno');
+				        console.log( Resp_Ok);				        
 						
 						$("#divGrabar").show();
 						$("#divActualizar").hide();
