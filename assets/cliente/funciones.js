@@ -106,35 +106,37 @@ $(function () {
 	//alert($.fn.jquery);
 
 	//alert('entrando el jquery');
+    var getUrl = window.location;
+    var baseUrlCorta = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+    var baseUrlCortaCorta = getUrl .protocol + "//" + getUrl.host + "/";
+    var base_url = getUrl .protocol + "//" + getUrl.host ;  //2017-11-29
 
-	$('#idTablaPadron tbody').on( 'click', 'button', function () {
-        //var data = idTablaPadron.row( $(this).parents('tr') ).data();
-        //alert( data[0] +"'s salary is: "+ data[ 5 ] );        
-        //alert($(this).val());
-        if (confirm('Seguro procesar el registro')){
+    if(base_url == 'http://localhost') {
+        base_url += '/sisep';
+        alert('Trabajando de Manera Local');
+    }
 
-        	url = 'http://localhost/sisep/beneficiario/padron_individual';
-        	alert( url );
-	        var id = 2;
+    //alert(getUrl);
+    //alert(baseUrlCorta);
+    //alert(baseUrlCortaCorta);
 
-	        $.ajax({		    
-			    url : url,
-			    data : { id : 2 },		 		    
-			    type : 'POST',		 		    
-			    dataType : 'json',		    
-			    success : function(jsonResponse) {
-			    	alert('salio ok');
-			        console.log( jsonResponse);
-			    }			
-			});
+	$('#idTablaPadron tbody').on( 'click', 'button', function () {        
+        var i = this.parentNode.parentNode.rowIndex;          
+
+        var tabla = document.getElementById('idTablaPadron'); 
+        var id_padron_beneficiario  = tabla.rows[i].cells[0].innerHTML;
+        var nombre_beneficiario     = tabla.rows[i].cells[2].innerHTML;       
+
+        
+        if (confirm('Seguro procesar el registro ['+nombre_beneficiario+']')){
+        	
+            url = base_url + '/padron_individual?id='+id_padron_beneficiario;
+        	//alert( url );
+            //var url="http://localhost/sisep/beneficiario/genera_convenio?id="+id_padron_beneficiario;
+            abrirEnPestana(url);	                  
 	    }// fin del comfirm
     } );
-
-	/*
-    $('#idTablaPadron').on('click','input[type=button]',function(){
-    	alert($(this).val());
-	});
-	*/
+	
 
     $('#idTablaPadron').DataTable( {
     	dom: 'lBfrtip',/*Bfrtip*/
@@ -204,13 +206,7 @@ $(function () {
     } );
 
 
-	var getUrl = window.location;
-	var baseUrlCorta = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
-	var baseUrlCortaCorta = getUrl .protocol + "//" + getUrl.host + "/";
-
-	//alert(getUrl);
-	//alert(baseUrlCorta);
-	//alert(baseUrlCortaCorta);
+	
 	
 	$("#ajax-loading").hide(); // ocultando la imagen de carga del ajax
 	
@@ -253,10 +249,10 @@ $(function () {
     //$("#tablaDetalleMuestras td:nth-child(8), #tablaDetalleMuestras th:nth-child(8)").hide();  
 	
 	var cargando           = $("#ajax-loading");  // para el efecto del ajax
-	var getUrl             = window.location; // obtiene la url exactamente a donde se encuentra
-	var baseUrlCorta       = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
-    var base_url           = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
-	var baseUrlCortaCorta  = getUrl .protocol + "//" + getUrl.host + "/";
+	//var getUrl             = window.location; // obtiene la url exactamente a donde se encuentra
+	//var baseUrlCorta       = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+    //var base_url           = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+	//var baseUrlCortaCorta  = getUrl .protocol + "//" + getUrl.host + "/";
 		
 	 //$('[data-toggle="tooltip"]').tooltip(); //activando los tooltips
 	 /************************************************************/
@@ -269,7 +265,7 @@ $(function () {
         var cesionado_usuario = $("#cesionado_usuario").val();
         var id_padron_beneficiario = $("#id_padron_beneficiario").val();
         //var url="http://localhost/sisep/beneficiario/genera_convenio?t="+tipo_solicitante+"&c="+cesionado_usuario;
-        var url="http://localhost/sisep/beneficiario/genera_convenio?id="+id_padron_beneficiario;
+        var url= base_url + "/genera_convenio?id="+id_padron_beneficiario;
         abrirEnPestana(url);  
     })
     /********************************************************************************/
@@ -278,7 +274,8 @@ $(function () {
         // va a cargar 5 variables requeridas
         var tipo_solicitante = $("#tipo_solicitante").val();
         var cesionado_usuario = $("#cesionado_usuario").val();
-        var url="http://localhost/sisep/beneficiario/prepara_convenio?t="+tipo_solicitante+"&c="+cesionado_usuario;
+        var url= base_url+"/prepara_convenio?t="+tipo_solicitante+"&c="+cesionado_usuario;
+        alert( url );
         abrirEnPestana(url); 
     });
     /*********************************************************************************************/

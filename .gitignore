@@ -29,3 +29,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.sublime-project
 /tests/tests/
 /tests/results/
+/programas empleados/xampp-win32-5.5.30-7-VC11-installer.exe

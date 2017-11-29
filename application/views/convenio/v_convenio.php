@@ -75,7 +75,7 @@ ini_set("session.gc_maxlifetime","7200");//2017-07-11
 				<input type="hidden" id="ano" value="<?php echo $ano; ?>" />
 				<input type="hidden" id="id_programa" value="<?php echo $id_programa; ?>" />
 				<input type="hidden" id="id_componente" value="<?php echo $id_componente; ?>" />
-				<input type="hidden" id="id_incentivo" value="<?php echo $id_incentivo; ?>" />				
+				<!--<input type="hidden" id="id_incentivo" value="<?php echo $id_incentivo; ?>" />-->
 			</div>
 
 			<hr size="5">

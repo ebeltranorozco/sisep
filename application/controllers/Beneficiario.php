@@ -27,7 +27,7 @@ class Beneficiario extends CI_Controller {
 		$this->db->join( 'siseppersonasfisicas',' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `siseppersonasfisicas`.`id_padron_beneficiario`','left');
 		$this->db->where( 'id_programa', $_SESSION['id_programa']);
 		$this->db->where( 'id_componente', $_SESSION['id_componente']);
-		$this->db->where( 'id_incentivo', $_SESSION['id_incentivo']);
+		//$this->db->where( 'id_incentivo', $_SESSION['id_incentivo']);
 
 		$qryPadron = $this->db->get();
 
@@ -78,62 +78,20 @@ class Beneficiario extends CI_Controller {
 		$this->load->view('plantillas/footer',$data);
 
 	}
-	/*************************************************************** FUNCTION INDIVUDIAL DE EL PADRON DE BENEFICIARIO *****************/
-	public function padron_individual(){
+	/*************************************************************** FUNCTION INDIVUDIAL DE EL PADRON DE BENEFICIARIO *****************/	
+	public function padron_individual(){ // LLEGA EL ID_PADRON_BENEFICIARIO VIA GET		
 
-		if (!$this->input->is_ajax_request()) {
-            exit('No direct script access allowed');
-        }else {
-
-
-
-        		/*
-			$data = new stdClass();
-			//$data->menu_activo = 'servicios';
-			//$data->accion = 'ALTA';
-			$data->panel_title = 'ABC del Padron de Beneficiario';
-			$data->page_title = 'SISEP';
-			$id = $_POST['id']+3424234235435;
-
-			$this->db->select('*');
-			$this->db->from('siseppadronbeneficiarios');
-			$this->db->join( 'siseppersonasfisicas',' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `siseppersonasfisicas`.`id_padron_beneficiario`','left');
-			$this->db->where( 'siseppadronbeneficiarios.id_padron_beneficiario', $id);
-			
-
-			$qryPadron = $this->db->get()->row();
-			$data->qryPadron = $qryPadron;	
-
-			$this->load->view('plantillas/encabezado',$data);
-			$this->load->view('plantillas/menu',$data);		
-
-			*/
-
-			exit('no se que rollo');
-			die();
-
-			/*
-			if ($this->db->affected_rows()>0 ){				
-				$this->load->view('beneficiario/v_padron_individual',$data);				
-			}else {
-				$data->mensaje_error = 'Nada que Mostrar * Revise Consulta SQL *';				
-				$this->load->view('errors/users/v_error_user',$data);				
-			}
-			$this->load->view('plantillas/footer',$data);
-			*/
-		} // fin del ajax _request
-
-	}
-	/**************************************************************************************************/
-	public function individual(){
-
-		        		
+	    //$RespData = array(); // PARA LOS VALORES DE RETORNO DEL JSON
 		$data = new stdClass();
 		$data->menu_activo = 'primero';
 		$data->accion = 'ALTA';
 		$data->panel_title = 'ABC del Padron de Beneficiario';
 		$data->page_title = 'SISEP';
-		$id = 2; // temporal
+		$id = 99999999; // SIMULAR LA ALTA
+		if (isset($_GET['id'])){
+			$id = $_GET['id'];
+			$data->accion = 'EDICION';
+		}
 
 		$this->db->select('*,siseppadronbeneficiarios.id_padron_beneficiario as id_padron'); // campo ambiguo
 		$this->db->from('siseppadronbeneficiarios');
@@ -163,6 +121,7 @@ class Beneficiario extends CI_Controller {
 			$this->load->view('errors/users/v_error_user',$data);				
 		}
 		$this->load->view('plantillas/footer',$data);
+		
 	} // fin defunction individual
 	/************************************************************************************************************/
 	public function prepara_convenio(){
@@ -179,14 +138,14 @@ class Beneficiario extends CI_Controller {
 		$cAno = '2017';
 		$id_programa = $_SESSION['id_programa'];
 		$id_componente = $_SESSION['id_componente'];
-		$id_incentivo = $_SESSION['id_incentivo'];
+		//$id_incentivo = $_SESSION['id_incentivo'];
 
 		$data->tipo_solicitante = $tipo_solicitante;
 		$data->cesionado_usuario = $cesionado_usuario;
 		$data->ano = $cAno;
 		$data->id_programa = $id_programa;
 		$data->id_componente = $id_componente;
-		$data->id_incentivo = $id_incentivo;
+		//$data->id_incentivo = $id_incentivo;
 
 		// LLENANDO LOS COMBOS BOX
 		/*
@@ -226,14 +185,14 @@ class Beneficiario extends CI_Controller {
 	}
 	/******************************************AJAX DE JSON *****************************/
 	public function ObtenerDelegacion(){ // is ajax 
-		header('Content-Type: application/json');        
+		//header('Content-Type: application/json');        
         $queryAux = $this->db->query('select * from sisepdelegaciones')->result();                
         header('Content-type: application/json; charset=utf-8');
         echo json_encode ( $queryAux ) ;
 	}
 	/*************************************************/
 	public function ObtenerPersonaFisica(){ // is ajax 
-		header('Content-Type: application/json');        
+		//header('Content-Type: application/json');        
         $queryAux = $this->db->query('select * from sisepPersonasFisicas')->result();        
         //print_r( json_encode ( $delegacion ) );
         header('Content-type: application/json; charset=utf-8');
@@ -241,7 +200,7 @@ class Beneficiario extends CI_Controller {
 	}
 	/*************************************************/
 	public function ObtenerPersonaMoral(){ // is ajax 
-		header('Content-Type: application/json');        
+		//header('Content-Type: application/json');        
         $queryAux = $this->db->query('select * from sisepPersonasMorales')->result();        
         //print_r( json_encode ( $delegacion ) );
         header('Content-type: application/json; charset=utf-8');
@@ -249,7 +208,7 @@ class Beneficiario extends CI_Controller {
 	}
 	/*************************************************/
 	public function ObtenerBeneficiario(){ // is ajax 
-		header('Content-Type: application/json');        
+		//header('Content-Type: application/json');        
         $queryAux = $this->db->query('select * from datosbeneficiarios')->result();        
         //print_r( json_encode ( $delegacion ) );
         header('Content-type: application/json; charset=utf-8');
@@ -257,7 +216,7 @@ class Beneficiario extends CI_Controller {
 	}
 	/*************************************************/
 	public function ObtenerRepresentante(){ // is ajax 
-		header('Content-Type: application/json');        
+		//header('Content-Type: application/json');        
         $queryAux = $this->db->query('select * from sisepRepresentantesLegales')->result();        
         //print_r( json_encode ( $delegacion ) );
         header('Content-type: application/json; charset=utf-8');
@@ -265,7 +224,7 @@ class Beneficiario extends CI_Controller {
 	}
 	/*************************************************/
 	public function ObtenerPropiedad(){ // is ajax 
-		header('Content-Type: application/json');        
+		//header('Content-Type: application/json');        
         $queryAux = $this->db->query('select * from sisepDatosPropiedad')->result();        
         //print_r( json_encode ( $delegacion ) );
         header('Content-type: application/json; charset=utf-8');
@@ -273,7 +232,7 @@ class Beneficiario extends CI_Controller {
 	}
 	/*************************************************/
 	public function ObtenerProveedor(){ // is ajax 
-		header('Content-Type: application/json');        
+		//header('Content-Type: application/json');        
         $queryAux = $this->db->query('select * from sisepDatosProveedor')->result();        
         //print_r( json_encode ( $delegacion ) );
         header('Content-type: application/json; charset=utf-8');
@@ -281,7 +240,7 @@ class Beneficiario extends CI_Controller {
 	}
 	/*****************************************************/
 	public function ObtenerUPP(){ // is ajax 
-		header('Content-Type: application/json');        
+		//header('Content-Type: application/json');        
         $queryAux = $this->db->query('select * from sisepDatosUPP')->result();        
         //print_r( json_encode ( $delegacion ) );
         header('Content-type: application/json; charset=utf-8');
@@ -289,7 +248,7 @@ class Beneficiario extends CI_Controller {
 	}
 	/*****************************************************/
 	public function ObtenerConcepto(){ // is ajax 
-		header('Content-Type: application/json');        
+		//header('Content-Type: application/json');        
         $queryAux = $this->db->query('select * from datosconceptos')->result();        
         //print_r( json_encode ( $delegacion ) );
         header('Content-type: application/json; charset=utf-8');
@@ -297,7 +256,7 @@ class Beneficiario extends CI_Controller {
 	}
 	/*****************************************************/
 	public function ObtenerSeguimiento(){ // is ajax 
-		header('Content-Type: application/json');        
+		//header('Content-Type: application/json');        
         $queryAux = $this->db->query('select * from sisepSeguimientoRiego')->result();        
         //print_r( json_encode ( $delegacion ) );
         header('Content-type: application/json; charset=utf-8');
@@ -383,6 +342,7 @@ class Beneficiario extends CI_Controller {
 				$RespData['IDPADRON'] = $idPadron;
 				$RespData['PARAMETROS'] = array( 'ANO'=>$cAno, 'COMPONENTE'=>$cComponente,'INCENTIVO'=> $cIncentivo,'TIPO'=>$cTipo,'CESIONADO'=>$cCesionado);
 				
+				
 				$this->db->select('convenio');
 				$this->db->from('sisepcatplantillas');				
 				$this->db->where( 'id_programa',$cPrograma);
@@ -407,7 +367,7 @@ class Beneficiario extends CI_Controller {
 					//$this->db->join('sisepDatosBanco','sisepDatosBanco.idPadronBeneficiario = siseppadronbeneficiarios.`id_padron_beneficiario` ','left');
 					//$this->db->join('sisepRepresentantesLegales','sisepRepresentantesLegales.idPadronBeneficiario = siseppadronbeneficiarios.`id_padron_beneficiario` ','left');
 					
-					$this->db->join('sisepdelegaciones','sisepDelegaciones.id_delegacion > 0','full');					
+					$this->db->join('sisepdelegaciones','sisepdelegaciones.id_delegacion > 0','full');					
 					$this->db->where( 'siseppadronbeneficiarios.id_padron_beneficiario',$idPadron);
 					$cConsulta1 = $this->db->get_compiled_select();
 

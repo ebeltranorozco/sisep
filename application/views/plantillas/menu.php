@@ -25,11 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	                                    </td>
 	                                </tr>
 	                                
-	                                <tr>
-	                                    <td>
-	                                        <span class="glyphicon glyphicon-flash text-success"></span><a href="individual">Padron Inidividual</a>
-	                                    </td>
-	                                </tr>	                                
+	                                
 	                               
 	                            </table>
 	                        </div>

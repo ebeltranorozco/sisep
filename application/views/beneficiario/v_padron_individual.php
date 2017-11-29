@@ -191,7 +191,7 @@ if ($accion == 'EDICION') {
 	$localidad_persona_fisica['value']  = $data->localidad_persona_fisica;	
 	$municipio_persona_fisica['value']  = $data->municipio_persona_fisica;		
 	$estado_persona_fisica['value'] 	= $data->estado_persona_fisica ;			
-	$telefono_persona_fisica['value'] 	= $data->telefono_persona_fisica;		
+	$telefono_persona_fisica['value'] 	= $data->telefono_casa_persona_fisica;		
 	$num_celular_persona_fisica['value'] = $data->num_celular_persona_fisica;			
 	$correo_persona_fisica['value'] 	= $data->correo_persona_fisica;			
 	$id_oficial_persona_fisica['value'] = $data->id_oficial_persona_fisica ;			
