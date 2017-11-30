@@ -231,12 +231,12 @@ $(function () {
 	/***********************************************************/
 	
 	 $(".btnGrabar").click(function(){
-	 	cAccion = $(this).val();	 	
+	 	cAccion = $(this).val(); // ALTA O EDICION
 	 	
 	 	var cAno 		= $("#ano").val();
 		var cPrograma 	= $("#id_programa").val();
 		var cComponente = $("#id_componente").val();
-		var cIncentivo	= $("#id_incentivo").val();
+		//var cIncentivo	= $("#id_incentivo").val();
 		var cTipo 		= $("#tipo_solicitante").val()
 		var cCesionado	= $("#cesionado_usuario").val();		
 		var cNombreConvenio = $("#idNombreConvenio").val();

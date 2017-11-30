@@ -63,7 +63,8 @@ $route['confirmacion'] = 'auth/confirmacion'; // para get id , es para confirmar
 $route['padron'] = 'beneficiario/padron_beneficiario';
 $route['padron_individual'] = 'beneficiario/padron_individual'; // lleva un id de la tabla de padron de benficiario y es la full funciont
 $route['individual'] = 'beneficiario/individual'; // lleva un id de la tabla de padron de benficiario y es la full funciont
-$route['prepara_convenio'] = 'beneficiario/prepara_convenio'; 
+$route['prepara_convenio'] = 'beneficiario/prepara_convenio';
+$route['graba_padron_individual']  = 'beneficiario/graba_padron_individual' ; // es quien graba las correcciones al padron individual muchos campos..!
 
 // CATALOGOS
 $route['componentes_crud'] = 'crud_controller/componentes_crud';

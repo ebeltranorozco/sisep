@@ -311,620 +311,618 @@ if ($accion == 'EDICION') {
 ?>
 
 <div class="container-fluid">
+
 	<div class="panel panel-primary">
-	  <div class="panel-heading"><?php echo $panel_title ?></div>
-	  <div class="panel-body">
+		<form action="/my-handling-form-page" method="post" id='frmGrabaPadronIndividual'>
+		
+			<div class="panel-heading"><?php echo $panel_title ?></div>
+		  	<div class="panel-body">
 
-	  	<div class="row">
-	  		<div class="col-md-12 form-group">
-	  			<h6>	  				
- 					
- 					<ul class="nav nav-tabs">
-					  	<li class="active"><a data-toggle="tab" href="#home">Principal</a></li>
-					  	<li><a data-toggle="tab" href="#menu1">Fiscas</a></li>
-					  	<li><a data-toggle="tab" href="#menu2">Morales</a></li>
-					  	<li><a data-toggle="tab" href="#menu3">Representantes</a></li>
-					  	<li><a data-toggle="tab" href="#menu4">UPP</a></li>
-					  	<li><a data-toggle="tab" href="#menu5">Banco</a></li>
-					  	<li><a data-toggle="tab" href="#menu6">Propiedad</a></li>
-					  	<li><a data-toggle="tab" href="#menu7">Proveedor</a></li>
-					</ul>
+		  	<div class="row">
+		  		<div class="col-md-12 form-group">
+		  			<h6>	  				
+	 					
+	 					<ul class="nav nav-tabs">
+						  	<li class="active"><a data-toggle="tab" href="#home">Principal</a></li>
+						  	<li><a data-toggle="tab" href="#menu1">Fiscas</a></li>
+						  	<li><a data-toggle="tab" href="#menu2">Morales</a></li>
+						  	<li><a data-toggle="tab" href="#menu3">Representantes</a></li>
+						  	<li><a data-toggle="tab" href="#menu4">UPP</a></li>
+						  	<li><a data-toggle="tab" href="#menu5">Banco</a></li>
+						  	<li><a data-toggle="tab" href="#menu6">Propiedad</a></li>
+						  	<li><a data-toggle="tab" href="#menu7">Proveedor</a></li>
+						</ul>
 
-					<div class="tab-content">
-					  <div id="home" class="tab-pane fade in active">
-					    <h3>Principal <?php echo form_input($id_padron); ?></h3>
-					    <div class="row">
-					    	<div class="col-md-4">
-					    		
-					    		<?php echo form_label('Folio Interno:'); echo form_input($folio_interno); ?>
-					    	</div>
+						<div class="tab-content">
+							<div id="home" class="tab-pane fade in active">
+							    <h3>Principal <?php echo form_input($id_padron); ?></h3>
+							    <div class="row">
+							    	<div class="col-md-4">							    		
+							    		<?php echo form_label('Folio Interno:'); echo form_input($folio_interno); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Folio SURI:'); echo form_input($folio_suri); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Fecha Folio SURI:'); echo form_input($fecha_folio_suri); ?>
+							    	</div>
+							    </div> <!-- fin del row -->
+						    
+						    	<hr>
 
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Folio SURI:'); echo form_input($folio_suri); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Fecha Folio SURI:'); echo form_input($fecha_folio_suri); ?>
-					    	</div>
+							    <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Nombre Solicitante:'); echo form_input($nombre_solicitante); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Tipo Solicitante:'); echo form_input($tipo_solicitante); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Fecha Ventanilla:'); echo form_input($fecha_ventanilla); ?>
+							    	</div>
+							    </div>
+							    <hr>
 
-					    </div>
-					    <hr>
+							    <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Concepto:'); echo form_input($id_concepto); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Has:'); echo form_input($has_suri); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('DDR:'); echo form_input($id_ddr); ?>
+							    	</div>
+							    </div>
+							    <hr>
 
-					    <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Nombre Solicitante:'); echo form_input($nombre_solicitante); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Tipo Solicitante:'); echo form_input($tipo_solicitante); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Fecha Ventanilla:'); echo form_input($fecha_ventanilla); ?>
-					    	</div>
-					    </div>
-					    <hr>
+							    <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Apoyo Solicitado:'); echo form_input($apoyo_solicitado); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Aportación del Productor:'); echo form_input($aportacion_productor); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Producto Atender:'); echo form_input($producto_atender); ?>
+							    	</div>					    	
+							    </div>
+							    <hr>
 
-					    <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Concepto:'); echo form_input($id_concepto); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Has:'); echo form_input($has_suri); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('DDR:'); echo form_input($id_ddr); ?>
-					    	</div>
-					    </div>
-					    <hr>
+								<div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Usuario Cesionado:'); echo form_input($cesionado_usuario); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Nombre del Proyecto:'); echo form_input($nombre_proyecto); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Descripcion del Proyecto:'); echo form_input($descripcion_proyecto); ?>
+							    	</div>
+							    </div>
+							    <hr>						
+						  	</div> <!-- fin del id home (principal) -->
+						  	<!-- ***************************INICIO MENU 1 PERSONAS FISICAS*********************************************** -->
+						  	<div id="menu1" class="tab-pane fade">
+						    <h3>Datos Persona Fisica</h3>			
+								<div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Nombre:'); echo form_input($nombre_persona_fisica); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Apellido Paterno:'); echo form_input($ap_paterno_persona_fisica); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Apellido Materno:'); echo form_input($ap_materno_persona_fisica); ?>
+							    	</div>
+							    </div>						   
+							    <hr>
 
-					    <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Apoyo Solicitado:'); echo form_input($apoyo_solicitado); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Aportación del Productor:'); echo form_input($aportacion_productor); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Producto Atender:'); echo form_input($producto_atender); ?>
-					    	</div>					    	
-					    </div>
-					    <hr>
+							    <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('RFC:'); echo form_input($rfc_persona_fisica); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('CURP:'); echo form_input($curp_persona_fisica); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Nacionalidad:'); echo form_input($nacionalidad_persona_fisica); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							   	<div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Fecha de Nacimiento:'); echo form_input($fecha_nacimiento_persona_fisica); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Estado Civil:'); echo form_input($estado_civil_persona_fisica); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Calle:'); echo form_input($calle_persona_fisica); ?>
+							    	</div>
+							    </div>
+							    <hr>
+		                       	<div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Numero:'); echo form_input($numero_persona_fisica); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Colonia:'); echo form_input($colonia_persona_fisica); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Codigo Postal:'); echo form_input($cp_persona_fisica); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							    <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Localidad:'); echo form_input($localidad_persona_fisica); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Municipio:'); echo form_input($municipio_persona_fisica); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Estado:'); echo form_input($estado_persona_fisica); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							    <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Telefono:'); echo form_input($telefono_persona_fisica); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Numero de Celular:'); echo form_input($num_celular_persona_fisica); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Correo Electronico:'); echo form_input($correo_persona_fisica); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							    <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Identificacion Oficial:'); echo form_input($id_oficial_persona_fisica); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Numero de Identificacion Oficial:'); echo form_input($num_id_oficial_persona_fisica); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							</div>
+							<!-- ***************** INICIO MENU 2 PERSONAS MORALES******************************************************-->
+							<div id="menu2" class="tab-pane fade">
+							    <h3>Morales</h3>
+								<!--aqui inician  las variables-->
+		                         <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Nombre de la Sociedad:'); echo form_input($nombre_persona_moral); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('RFC'); echo form_input($rfc_persona_moral); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Calle:'); echo form_input($calle_persona_moral); ?>
+							    	</div>
+							    </div>
+							   
+							    <hr>
 
-						<div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Usuario Cesionado:'); echo form_input($cesionado_usuario); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Nombre del Proyecto:'); echo form_input($nombre_proyecto); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Descripcion del Proyecto:'); echo form_input($descripcion_proyecto); ?>
-					    	</div>
-					    </div>
+							    <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Numero:'); echo form_input($numero_persona_moral); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Colonia:'); echo form_input($colonia_persona_moral); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Codigo Postal:'); echo form_input($cp_persona_moral); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							   <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Localidad:'); echo form_input($localidad_persona_moral); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Municipio:'); echo form_input($municipio_persona_moral); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Estado:'); echo form_input($estado_persona_moral); ?>
+							    	</div>
+							    </div>
+							    <hr>
+		                       <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Telefono:'); echo form_input($telefono_oficina_persona_moral); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Correo:'); echo form_input($correo_persona_moral); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Fecha de Inscripcion al RFC:'); echo form_input($fecha_Inscripcion_rfc_persona_moral); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							     <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Objeto Social:'); echo form_input($objeto_social_persona_moral); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Tipo de Organismo:'); echo form_input($tipo_de_organismo_persona_moral); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('No. Acta Constitutiva:'); echo form_input($no_acta_constitutiva_persona_moral); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							     <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Fecha de Constitucion de la Persona Moral:'); echo form_input($fecha_de_constitucion_persona_moral); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Nombre de Notario:'); echo form_input($nombre_licenciado_notario_persona_moral); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Nombre de la Notaria:'); echo form_input($notario_acta_const_persona_moral); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							    <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Numero de Notario:'); echo form_input($num_notario_act_const_persona_moral); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Nombre de la Calle de la Notaria:'); echo form_input($calle_notario_acta_const_persona_moral); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Numero del Domicilio de Notaria:'); echo form_input($numero_notario_acta_const_persona_moral); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							    <div class="row">
+							    	
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Colonia de la Notaria:'); echo form_input($colonia_notario_acta_const_persona_moral); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Codigo Postal de la Notaria:'); echo form_input($cp_notario_acta_const_persona_moral); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Municipio:'); echo form_input($municipio_notario_acta_const_persona_moral); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							    
+							    <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Estado:'); echo form_input($estado_notario_acta_const_persona_moral); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Numero de Acta de Asamblea:'); echo form_input($no_acta_asamblea_persona_moral); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Fecha de Acta de Asamblea:'); echo form_input($fecha_de_acta_asamblea_persona_moral); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							     <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Notario que Emite Acta de Asamblea:'); echo form_input($notario_acta_asamblea_persona_moral); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Numero del Domicilio del Notario que Emite Acta de Asamblea:'); echo form_input($numero_notario_acta_asamblea_persona_moral); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Calle del Domicilio de Notaria:'); echo form_input($calle_notario_acta_asamblea_persona_moral); ?>
+							    	</div>
+							         		
+							    </div>
+							    <hr>
+							   
+							    <div class="row">
+							    	<div class="col-md-4">
+							    	   <?php echo form_label('Numero de Notaria:'); echo form_input($numero_notario_acta_asamblea_persona_moral); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Colonia de la Notaria:'); echo form_input($colonia_notario_acta_asamblea_persona_moral); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Codigo Postal de la Notaria:'); echo form_input($cp_notario_acta_asamblea_persona_moral); ?>
+							    	</div>
+							      </div>
+							    <hr>
+							    
+							    <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Municipio:'); echo form_input($municipio_notario_acta_asamblea_persona_moral); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Estado:'); echo form_input($estado_notario_acta_asamblea_persona_moral); ?>
+							    	</div>
 
-					    <hr>
-					<!-- *********************************************************************************** -->
-					  </div>
-					  
-					  	<div id="menu1" class="tab-pane fade">
-					    <h3>Datos Persona Fisica</h3>			
-						<div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Nombre:'); echo form_input($nombre_persona_fisica); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Apellido Paterno:'); echo form_input($ap_paterno_persona_fisica); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Apellido Materno:'); echo form_input($ap_materno_persona_fisica); ?>
-					    	</div>
-					    </div>
-					   
-					    <hr>
+							    </div>
+							    <hr>
+								
+							</div> <!-- FIN DEL MENU 2 -->							  
+							<!-- ******************INICIO MENU 3 REPRESENTANTES*****************************************************-->
+							<div id="menu3" class="tab-pane fade">
+						    <h3>Representantes</h3>
+						   	<!--// inicio variables representante Legal-->
+							  	<div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Apellido Paterno:'); echo form_input($apellido_paterno_representante_legal); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Apellido Materno:'); echo form_input($apellido_materno_representante_legal); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Nombre del Representante Legal:'); echo form_input($nombre_representante_legal); ?>
+							    	</div>
+							    </div>
+							   
+							    <hr>
 
-					    <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('RFC:'); echo form_input($rfc_persona_fisica); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('CURP:'); echo form_input($curp_persona_fisica); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Nacionalidad:'); echo form_input($nacionalidad_persona_fisica); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					   <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Fecha de Nacimiento:'); echo form_input($fecha_nacimiento_persona_fisica); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Estado Civil:'); echo form_input($estado_civil_persona_fisica); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Calle:'); echo form_input($calle_persona_fisica); ?>
-					    	</div>
-					    </div>
-					    <hr>
-                       <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Numero:'); echo form_input($numero_persona_fisica); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Colonia:'); echo form_input($colonia_persona_fisica); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Codigo Postal:'); echo form_input($cp_persona_fisica); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					     <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Localidad:'); echo form_input($localidad_persona_fisica); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Municipio:'); echo form_input($municipio_persona_fisica); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Estado:'); echo form_input($estado_persona_fisica); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					     <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Telefono:'); echo form_input($telefono_persona_fisica); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Numero de Celular:'); echo form_input($num_celular_persona_fisica); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Correo Electronico:'); echo form_input($correo_persona_fisica); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					    <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Identificacion Oficial:'); echo form_input($id_oficial_persona_fisica); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Numero de Identificacion Oficial:'); echo form_input($num_id_oficial_persona_fisica); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					   </div>
-					  <div id="menu2" class="tab-pane fade">
-					    <h3>Morales</h3>
-					<!--aqui inician  las variables-->
-                         <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Nombre de la Sociedad:'); echo form_input($nombre_persona_moral); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('RFC'); echo form_input($rfc_persona_moral); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Calle:'); echo form_input($calle_persona_moral); ?>
-					    	</div>
-					    </div>
-					   
-					    <hr>
-
-					    <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Numero:'); echo form_input($numero_persona_moral); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Colonia:'); echo form_input($colonia_persona_moral); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Codigo Postal:'); echo form_input($cp_persona_moral); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					   <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Localidad:'); echo form_input($localidad_persona_moral); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Municipio:'); echo form_input($municipio_persona_moral); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Estado:'); echo form_input($estado_persona_moral); ?>
-					    	</div>
-					    </div>
-					    <hr>
-                       <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Telefono:'); echo form_input($telefono_oficina_persona_moral); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Correo:'); echo form_input($correo_persona_moral); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Fecha de Inscripcion al RFC:'); echo form_input($fecha_Inscripcion_rfc_persona_moral); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					     <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Objeto Social:'); echo form_input($objeto_social_persona_moral); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Tipo de Organismo:'); echo form_input($tipo_de_organismo_persona_moral); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('No. Acta Constitutiva:'); echo form_input($no_acta_constitutiva_persona_moral); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					     <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Fecha de Constitucion de la Persona Moral:'); echo form_input($fecha_de_constitucion_persona_moral); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Nombre de Notario:'); echo form_input($nombre_licenciado_notario_persona_moral); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Nombre de la Notaria:'); echo form_input($notario_acta_const_persona_moral); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					    <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Numero de Notario:'); echo form_input($num_notario_act_const_persona_moral); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Nombre de la Calle de la Notaria:'); echo form_input($calle_notario_acta_const_persona_moral); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Numero del Domicilio de Notaria:'); echo form_input($numero_notario_acta_const_persona_moral); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					    <div class="row">
-					    	
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Colonia de la Notaria:'); echo form_input($colonia_notario_acta_const_persona_moral); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Codigo Postal de la Notaria:'); echo form_input($cp_notario_acta_const_persona_moral); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Municipio:'); echo form_input($municipio_notario_acta_const_persona_moral); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					    
-					    <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Estado:'); echo form_input($estado_notario_acta_const_persona_moral); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Numero de Acta de Asamblea:'); echo form_input($no_acta_asamblea_persona_moral); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Fecha de Acta de Asamblea:'); echo form_input($fecha_de_acta_asamblea_persona_moral); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					     <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Notario que Emite Acta de Asamblea:'); echo form_input($notario_acta_asamblea_persona_moral); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Numero del Domicilio del Notario que Emite Acta de Asamblea:'); echo form_input($numero_notario_acta_asamblea_persona_moral); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Calle del Domicilio de Notaria:'); echo form_input($calle_notario_acta_asamblea_persona_moral); ?>
-					    	</div>
-					         		
-					    </div>
-					    <hr>
-					   
-					    <div class="row">
-					    	<div class="col-md-4">
-					    	   <?php echo form_label('Numero de Notaria:'); echo form_input($numero_notario_acta_asamblea_persona_moral); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Colonia de la Notaria:'); echo form_input($colonia_notario_acta_asamblea_persona_moral); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Codigo Postal de la Notaria:'); echo form_input($cp_notario_acta_asamblea_persona_moral); ?>
-					    	</div>
-					      </div>
-					    <hr>
-					    
-					    <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Municipio:'); echo form_input($municipio_notario_acta_asamblea_persona_moral); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Estado:'); echo form_input($estado_notario_acta_asamblea_persona_moral); ?>
-					    	</div>
-
-					    </div>
-					    <hr>
-<!--aqui cierran  las variables-->
-					  </div>
-					  <div id="menu3" class="tab-pane fade">
-					    <h3>Representantes</h3>
-					   <!--// inicio variables representante Legal-->
-					  <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Apellido Paterno:'); echo form_input($apellido_paterno_representante_legal); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Apellido Materno:'); echo form_input($apellido_materno_representante_legal); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Nombre del Representante Legal:'); echo form_input($nombre_representante_legal); ?>
-					    	</div>
-					    </div>
-					   
-					    <hr>
-
-					    <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Caracter del Representante Legal:'); echo form_input($caracter_representante_legal); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('RFC:'); echo form_input($rfc_representante_legal); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('CURP:'); echo form_input($curp_representante_legal); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					   <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Nacionalidad:'); echo form_input($nacionalidad_representante_legal); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Fecha de Nacimiento:'); echo form_input($fecha_de_nacimiento_representante_legal); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Estado Civil:'); echo form_input($estado_civil_representante_legal); ?>
-					    	</div>
-					    </div>
-					    <hr>
-                       <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Calle:'); echo form_input($calle_representante_legal); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Numero:'); echo form_input($numero_representante_legal); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Colonia:'); echo form_input($colonia_representante_legal); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					     <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Codigo Postal:'); echo form_input($cp_representante_legal); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Localidad:'); echo form_input($localidad_representante_legal); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Municipio:'); echo form_input($municipio_representante_legal); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					     <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Fecha de Constitucion del representante Legal:'); echo form_input($fecha_const_representante_legal); ?> 
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Estado:'); echo form_input($estado_representante_legal); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Telefono:'); echo form_input($telefono_representante_legal); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					    <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Numero de Celular:'); echo form_input($celular_representante_legal); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Correo Electronico:'); echo form_input($correo_representante_legal); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Tipo de Documento que Acredite al Representante Legal:'); echo form_input($tipo_documento_representante_legal); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					    <div class="row">
-					    	
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Numero de Documento:'); echo form_input($numero_documento_representante_legal); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Nombre del Notario:'); echo form_input($nombre_licenciado_notario_representante_legal); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Documento Legal de Notario:'); echo form_input($notario_doc_legal_representante_legal); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					    
-					    <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Notario No.:'); echo form_input($num_notario_doc_representante_legal); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Calle de la notaria:'); echo form_input($calle_notario_doc_representante_legal); ?>
-					    	</div> 
-					    	<div class="col-md-4">
-					    		<?php echo form_label('NUmero del Domicilio:'); echo form_input($numero_dom__notario_doc_representante_legal); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					     <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Colonia:'); echo form_input($colonia_notario_doc_representante_legal); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Codigo Postal:'); echo form_input($cp_notario_doc_representante_legal); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Municipio:'); echo form_input($municipio_notario_doc_representante_legal); ?>
-					    	</div>
-					         		
-					    </div>
-					    <hr>
-					   
-					    <div class="row">
-					    	<div class="col-md-4">
-					    	   <?php echo form_label('Estado:'); echo form_input($estado_notario_doc_representante_legal); ?>
-					    	</div>
-					    	</div>
-					    <hr>
-					    
-					    <!--// variables representante -->
-
-					  </div>
-					  <div id="menu4" class="tab-pane fade">
-					    <h3>UPP</h3>
-					  <!--aqui inician  las variables-->
-						 <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Localidad:'); echo form_input($localidad_datos_upp); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Municipio:'); echo form_input($municipio_datos_upp); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Estado:'); echo form_input($estado_datos_upp); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					    <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Numero de UPP:'); echo form_input($no_upp_datos_upp); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Nombre  o Posecion de UPP:'); echo form_input($nombre_posesion_datos_upp); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Hectareas:'); echo form_input($has_datos_upp); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					    <div class="row">
-					    	
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Numero de Animales'); echo form_input($no_animales_datos_upp); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Especie Apoyada:'); echo form_input($especie_apoyada_datos_upp); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					    </div>
-					  <div id="menu5" class="tab-pane fade">
-					    <h3>Datos del Banco</h3>
-					  	 <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Fecha de Estado de Cuenta:'); echo form_input($fecha_cta_datos_banco); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Clabe Interbancaria:'); echo form_input($clabe_datos_banco); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Numero de Cuenta Bancaria:'); echo form_input($cuenta_datos_banco); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					    <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Nomina:'); echo form_input($nomina_datos_banco); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Nombre del Banco:'); echo form_input($nombre_banco_datos_banco); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					    </div>
-
-					  <div id="menu6" class="tab-pane fade">
-					    <h3>Propiedad</h3>
-					   <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Ubicacion del Predio:'); echo form_input($ubicacion_predio_datos_propiedad); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Documento que Acredita la Propiedad:'); echo form_input($docto_acreditcion_datos_propiedad); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Numero de Acta:'); echo form_input($num_acta_datos_propiedad); ?>
-					    	</div>
-					    </div>
-					    <hr>
-					    <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Fecha del documento:'); echo form_input($fecha_acta_datos_propiedad); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Nombre del Notario:'); echo form_input($nombre_notario_datos_propiedad); ?>
-					    	</div>
-					   			<div class="col-md-4">
-					    		<?php echo form_label('Numero de Notario:'); echo form_input($num_notario_datos_propiedad); ?>
-					    	</div>
-					    </div>
-					    <hr>
-							<div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Objeto de la Propiedad:'); echo form_input($objeto_datos_propiedad); ?>
-					    	</div>
-					 </div>
-					    <hr>
- 					</div>
-					  <div id="menu7" class="tab-pane fade">
-					    <h3>Proveedor</h3>
-					    <div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Nombre del Proveedor:'); echo form_input($nombre_datos_proveedor); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Calle:'); echo form_input($calle_datos_proveedor); ?>
-					    	</div>
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Numero de Domicilio:'); echo form_input($numero_datos_proveedor); ?>
-					    	</div>
-					    </div>
-					      <hr>
-					         <div class="row">
-					    	    <div class="col-md-4">
-					    		<?php echo form_label('Localidad:'); echo form_input($localidad_datos_proveedor); ?>
-					    	    </div>
-					    		<div class="col-md-4">
-					    		<?php echo form_label('Municipio:'); echo form_input($municipio_datos_proveedor); ?>
-					    		</div>
-					   			<div class="col-md-4">
-					    		<?php echo form_label('Codigo Postal:'); echo form_input($cp_datos_proveedor); ?>
-					    		</div>
-					    </div>
-					    <hr>
-						<div class="row">
-					    	<div class="col-md-4">
-					    		<?php echo form_label('Estado:'); echo form_input($entidad_federativa_datos_proveedor); ?>
-					    	 </div>
-					   </div> 
-					    <hr>
-		           	</div>
-
- 				</h6>
-
-	  		</div>
-	  	</div>
-	    
-	    <input type="button" id="btnGeneraConvenio" value="Genera Convenio" class="btn btn-info">
-	    <input type="button" id="btnPreparaConvenio"  value="Edita Convenio" class="btn btn-info">
-	  </div>
-	  <div class="panel-footer">
-	    <input type="button" name="btnGrabar" value="Grabar" class="btn btn-primary" />
-
-	    
-	  </div>
+							    <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Caracter del Representante Legal:'); echo form_input($caracter_representante_legal); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('RFC:'); echo form_input($rfc_representante_legal); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('CURP:'); echo form_input($curp_representante_legal); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							   	<div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Nacionalidad:'); echo form_input($nacionalidad_representante_legal); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Fecha de Nacimiento:'); echo form_input($fecha_de_nacimiento_representante_legal); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Estado Civil:'); echo form_input($estado_civil_representante_legal); ?>
+							    	</div>
+							    </div>
+							    <hr>
+		                       	<div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Calle:'); echo form_input($calle_representante_legal); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Numero:'); echo form_input($numero_representante_legal); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Colonia:'); echo form_input($colonia_representante_legal); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							    <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Codigo Postal:'); echo form_input($cp_representante_legal); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Localidad:'); echo form_input($localidad_representante_legal); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Municipio:'); echo form_input($municipio_representante_legal); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							    <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Fecha de Constitucion del representante Legal:'); echo form_input($fecha_const_representante_legal); ?> 
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Estado:'); echo form_input($estado_representante_legal); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Telefono:'); echo form_input($telefono_representante_legal); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							    <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Numero de Celular:'); echo form_input($celular_representante_legal); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Correo Electronico:'); echo form_input($correo_representante_legal); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Tipo de Documento que Acredite al Representante Legal:'); echo form_input($tipo_documento_representante_legal); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							    <div class="row">
+							    	
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Numero de Documento:'); echo form_input($numero_documento_representante_legal); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Nombre del Notario:'); echo form_input($nombre_licenciado_notario_representante_legal); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Documento Legal de Notario:'); echo form_input($notario_doc_legal_representante_legal); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							    
+							    <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Notario No.:'); echo form_input($num_notario_doc_representante_legal); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Calle de la notaria:'); echo form_input($calle_notario_doc_representante_legal); ?>
+							    	</div> 
+							    	<div class="col-md-4">
+							    		<?php echo form_label('NUmero del Domicilio:'); echo form_input($numero_dom__notario_doc_representante_legal); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							    <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Colonia:'); echo form_input($colonia_notario_doc_representante_legal); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Codigo Postal:'); echo form_input($cp_notario_doc_representante_legal); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Municipio:'); echo form_input($municipio_notario_doc_representante_legal); ?>
+							    	</div>							         		
+							    </div>
+							    <hr>
+							   
+							    <div class="row">
+							    	<div class="col-md-4">
+							    	   <?php echo form_label('Estado:'); echo form_input($estado_notario_doc_representante_legal); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							</div>
+							<!-- ******************INICIO MENU 4*****************************************************-->
+							<div id="menu4" class="tab-pane fade">
+							    <h3>UPP</h3>
+							  	<!--aqui inician  las variables-->
+								<div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Localidad:'); echo form_input($localidad_datos_upp); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Municipio:'); echo form_input($municipio_datos_upp); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Estado:'); echo form_input($estado_datos_upp); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							    <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Numero de UPP:'); echo form_input($no_upp_datos_upp); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Nombre  o Posecion de UPP:'); echo form_input($nombre_posesion_datos_upp); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Hectareas:'); echo form_input($has_datos_upp); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							    <div class="row">
+							    	
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Numero de Animales'); echo form_input($no_animales_datos_upp); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Especie Apoyada:'); echo form_input($especie_apoyada_datos_upp); ?>
+							    	</div>
+							    </div>
+							    <hr>
+						    </div>
+							<!-- ******************INICIO MENU 5*****************************************************-->
+							<div id="menu5" class="tab-pane fade">
+							    <h3>Datos del Banco</h3>
+							  	 <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Fecha de Estado de Cuenta:'); echo form_input($fecha_cta_datos_banco); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Clabe Interbancaria:'); echo form_input($clabe_datos_banco); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Numero de Cuenta Bancaria:'); echo form_input($cuenta_datos_banco); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							    <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Nomina:'); echo form_input($nomina_datos_banco); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Nombre del Banco:'); echo form_input($nombre_banco_datos_banco); ?>
+							    	</div>
+							    </div>
+							    <hr>
+						    </div>
+							<!-- ******************INICIO MENU 6 PROPIEDAD*****************************************************-->
+							<div id="menu6" class="tab-pane fade">
+							    <h3>Propiedad</h3>
+							   <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Ubicacion del Predio:'); echo form_input($ubicacion_predio_datos_propiedad); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Documento que Acredita la Propiedad:'); echo form_input($docto_acreditcion_datos_propiedad); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Numero de Acta:'); echo form_input($num_acta_datos_propiedad); ?>
+							    	</div>
+							    </div>
+							    <hr>
+							    <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Fecha del documento:'); echo form_input($fecha_acta_datos_propiedad); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Nombre del Notario:'); echo form_input($nombre_notario_datos_propiedad); ?>
+							    	</div>
+							   			<div class="col-md-4">
+							    		<?php echo form_label('Numero de Notario:'); echo form_input($num_notario_datos_propiedad); ?>
+							    	</div>
+							    </div>
+							    <hr>
+								<div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Objeto de la Propiedad:'); echo form_input($objeto_datos_propiedad); ?>
+							    	</div>
+							 	</div>
+							    <hr>
+		 					</div>
+							<!-- ******************INICIO MENU 7 PROVEEDOR*****************************************************-->
+							<div id="menu7" class="tab-pane fade">
+							    <h3>Proveedor</h3>
+							    <div class="row">
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Nombre del Proveedor:'); echo form_input($nombre_datos_proveedor); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Calle:'); echo form_input($calle_datos_proveedor); ?>
+							    	</div>
+							    	<div class="col-md-4">
+							    		<?php echo form_label('Numero de Domicilio:'); echo form_input($numero_datos_proveedor); ?>
+							    	</div>
+							    </div>
+							    <hr>
+						        <div class="row">
+						    	    <div class="col-md-4">
+						    			<?php echo form_label('Localidad:'); echo form_input($localidad_datos_proveedor); ?>
+						    	    </div>
+						    		<div class="col-md-4">
+						    			<?php echo form_label('Municipio:'); echo form_input($municipio_datos_proveedor); ?>
+						    		</div>
+						   			<div class="col-md-4">
+						    			<?php echo form_label('Codigo Postal:'); echo form_input($cp_datos_proveedor); ?>
+						    		</div>
+						    	</div>
+						    	<hr>
+								<div class="row">
+						    		<div class="col-md-4">
+						    			<?php echo form_label('Estado:'); echo form_input($entidad_federativa_datos_proveedor); ?>
+						    	 	</div>
+						   		</div> 
+						    	<hr>
+							</div> <!-- fin del id menu7 -->
+							<!---  ****************************FIN DE TODOS LOS SUBMENUS **********************-->
+			           	</div> <!-- fin del tab content -->
+	 				</h6>
+		  		</div> <!-- fin del <div class="col-md-12 form-group"> -->
+		  	</div> <!-- fin del row principal  -->
+		    
+		    <input type="button" id="btnGeneraConvenio" value="Genera Convenio" class="btn btn-info" />
+		    <input type="button" id="btnPreparaConvenio"  value="Edita Convenio" class="btn btn-info" />
+		  </div>
+		  <div class="panel-footer">
+		    <input type="button" id="btnGrabarPadron" value="Grabar" class="btn btn-primary" />
+		  </div>
+		</form>   <!-- fin del form -->
 	</div>
 </div>

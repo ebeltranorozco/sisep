@@ -462,17 +462,39 @@ $(function () {
                     
                 }
             }); // fin del ajax    
-
-
-
-
-
-
-
-
-
         }// fin de grabar el oficio de apertura
     });
     /**********************************************************************************************/
+    $("#btnGrabarPadron").click(function(){ // graba el montonal de campos del padron
+        var accion = 'ALTA';
+
+
+
+        if (confirm('Realizar la [' +accion + '] al Padron')){
+            //captar variables
+            //var cadena = $(this).serialize();
+            var dataString = $('#frmGrabaPadronIndividual').serialize();
+            console.log( dataString);
+            
+            $.ajax({            
+                data: dataString,
+                method: 'POST',
+                url: base_url+'/graba_padron_individual',
+                success: function (htmlResponse){
+                    //console.log('entro a la funcion sucesso');
+                    console.log(htmlResponse);
+                    //alert(htmlResponse);
+                    
+                    if (htmlResponse['STATUS']=='OK'){
+                        //$("#divBtnGrabaIDRPlaguicidas").hide();
+                        alert('Grabado con Exito');
+                    }
+                    
+                }
+            }); // fin del ajax    
+        }// fin de confirmar la accion 
+    });
+    /*************************************************************************************/
+    
     
 }); // FIN DEL JQUERY
