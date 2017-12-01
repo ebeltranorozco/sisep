@@ -159,22 +159,15 @@ $(function () {
 		if (boton == 'tablaconceptos') {
 			var cpo = $("#cboTablaConceptos").val();
 			var cpo = 'tablaconceptos'; // fijo			
-		}
-		
-
-		
+		}		
 		if (cpo){
 			//alert(cpo);
 			cpo = '<strong>((' +cpo + '))</strong>';
 			CKEDITOR.instances['editor1'].insertHtml(cpo);
 		}
-		
-
 
 	}); // fin de clase insertar campo
-	/*********************************************************************/
-	
-	
+	/******************************************************************************************/	
 	function BuscarConvenio( tipo_solicitante,cesionado_usuario,ano,id_programa,id_componente){
 		//alert('Buscando el convenio ...!');		
 		
@@ -257,7 +250,7 @@ $(function () {
 
 	 	
  		if (confirm('Seguro de '+cAccion+' Información')){
- 			var datos = { 'ano': cAno , 'programa':cPrograma , 'componente':cComponente , 'incentivo':cIncentivo, 'tipo' : cTipo, 'cesionado':cCesionado,'convenio':cConvenio,'nombreconvenio':cNombreConvenio,'accion':cAccion};
+ 			var datos = { 'ano': cAno , 'programa':cPrograma , 'componente':cComponente , 'tipo' : cTipo, 'cesionado':cCesionado,'convenio':cConvenio,'nombreconvenio':cNombreConvenio,'accion':cAccion};
 			$.ajax({
 				type: 'POST',
 				url: baseUrlCorta+ "/grabar_convenio",
@@ -273,7 +266,6 @@ $(function () {
  		}
 	 	
 	 })
-	
-	 
+	 /*********************************************************************************************/	 
 
 }); 

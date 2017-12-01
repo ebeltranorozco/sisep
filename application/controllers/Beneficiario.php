@@ -305,8 +305,7 @@ class Beneficiario extends CI_Controller {
 	        }
 	        
 	        header('Content-type: application/json; charset=utf-8');
-			echo  json_encode($RespData);				
-
+			echo  json_encode($RespData);
 		}
 	}
 	/*****************************************************/	
@@ -324,21 +323,21 @@ class Beneficiario extends CI_Controller {
 				$cAno 		= $query->id_ano_fiscal;
 				$cPrograma	= $query->id_programa;
 				$cComponente= $query->id_componente;
-				$cIncentivo = $query->id_incentivo;
+				//$cIncentivo = $query->id_incentivo;
 				$cTipo		= $query->tipo_solicitante;
 				$cCesionado = $query->cesionado_usuario;
 
 				$convenio = NULL;
 
 				$RespData['IDPADRON'] = $idPadron;
-				$RespData['PARAMETROS'] = array( 'ANO'=>$cAno, 'COMPONENTE'=>$cComponente,'INCENTIVO'=> $cIncentivo,'TIPO'=>$cTipo,'CESIONADO'=>$cCesionado);
+				$RespData['PARAMETROS'] = array( 'ANO'=>$cAno, 'COMPONENTE'=>$cComponente,'TIPO'=>$cTipo,'CESIONADO'=>$cCesionado);
 				
 				
 				$this->db->select('convenio');
 				$this->db->from('sisepcatplantillas');				
 				$this->db->where( 'id_programa',$cPrograma);
 				$this->db->where( 'id_componente', $cComponente);
-				$this->db->where( 'id_incentivo', $cIncentivo);
+				//$this->db->where( 'id_incentivo', $cIncentivo);
 				$this->db->where( 'tipo_usuario', $cTipo);
 				$this->db->where( 'cesionado_usuario', $cCesionado);
 				$this->db->where( 'id_ano_fiscal',$cAno);
@@ -351,12 +350,12 @@ class Beneficiario extends CI_Controller {
 					/// HAY Q REALIZAR AHORA LA CONSULTA A LA BASE DE DATOS...
 					$this->db->select('*');
 					$this->db->from('siseppadronbeneficiarios');
-					//$this->db->join('sisepDetConceptos','sisepDetConceptos.idPadronBeneficiario = siseppadronbeneficiarios.`id_padron_beneficiario` ','left');
-					//$this->db->join('sisepPersonasFisicas','sisepPersonasFisicas.idPadronBeneficiario = siseppadronbeneficiarios.`id_padron_beneficiario` ','left');
-					//$this->db->join('sisepPersonasMorales','sisepPersonasMorales.idPadronBeneficiario = siseppadronbeneficiarios.`id_padron_beneficiario` ','left');
-					//$this->db->join('sisepDatosPropiedad','sisepDatosPropiedad.idPadronBeneficiario = siseppadronbeneficiarios.`id_padron_beneficiario` ','left');
-					//$this->db->join('sisepDatosBanco','sisepDatosBanco.idPadronBeneficiario = siseppadronbeneficiarios.`id_padron_beneficiario` ','left');
-					//$this->db->join('sisepRepresentantesLegales','sisepRepresentantesLegales.idPadronBeneficiario = siseppadronbeneficiarios.`id_padron_beneficiario` ','left');
+					$this->db->join('conceptos_inversion','conceptos_inversion.id_concepto = siseppadronbeneficiarios.`id_concepto` ','left');
+					$this->db->join('siseppersonasfisicas','siseppersonasfisicas.id_padron_beneficiario = siseppadronbeneficiarios.`id_padron_beneficiario` ','left');
+					$this->db->join('siseppersonasmorales','siseppersonasmorales.id_padron_beneficiario = siseppadronbeneficiarios.`id_padron_beneficiario` ','left');
+					$this->db->join('sisepdatospropiedad','sisepdatospropiedad.id_padron_beneficiario = siseppadronbeneficiarios.`id_padron_beneficiario` ','left');
+					$this->db->join('sisepdatosbanco','sisepdatosbanco.id_padron_beneficiario = siseppadronbeneficiarios.`id_padron_beneficiario` ','left');
+					$this->db->join('siseprepresentanteslegales','siseprepresentanteslegales.id_padron_beneficiario = siseppadronbeneficiarios.`id_padron_beneficiario` ','left');
 					
 					$this->db->join('sisepdelegaciones','sisepdelegaciones.id_delegacion > 0','full');					
 					$this->db->where( 'siseppadronbeneficiarios.id_padron_beneficiario',$idPadron);
@@ -375,7 +374,7 @@ class Beneficiario extends CI_Controller {
 					/*
 					SELECT * FROM `sisepPadronBeneficiarios` 
 					LEFT JOIN `sisepDetConceptos` 
-					ON sisepDetConceptos.idPadronBeneficiario = sisepPadronBeneficiarios.`﻿idPadronBeneficiario` 
+					ON sisepDetConceptos.id_padron_beneficiario = sisepPadronBeneficiarios.`﻿idPadronBeneficiario` 
 					*/
 
 
