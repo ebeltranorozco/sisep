@@ -355,9 +355,11 @@ class Beneficiario extends CI_Controller {
 					$this->db->join('siseppersonasmorales','siseppersonasmorales.id_padron_beneficiario = siseppadronbeneficiarios.`id_padron_beneficiario` ','left');
 					$this->db->join('sisepdatospropiedad','sisepdatospropiedad.id_padron_beneficiario = siseppadronbeneficiarios.`id_padron_beneficiario` ','left');
 					$this->db->join('sisepdatosbanco','sisepdatosbanco.id_padron_beneficiario = siseppadronbeneficiarios.`id_padron_beneficiario` ','left');
-					$this->db->join('siseprepresentanteslegales','siseprepresentanteslegales.id_padron_beneficiario = siseppadronbeneficiarios.`id_padron_beneficiario` ','left');
-					
-					$this->db->join('sisepdelegaciones','sisepdelegaciones.id_delegacion > 0','full');					
+					$this->db->join('siseprepresentanteslegales','siseprepresentanteslegales.id_padron_beneficiario = siseppadronbeneficiarios.`id_padron_beneficiario` ','left');					
+					$this->db->join('sisepdelegaciones','sisepdelegaciones.id_delegacion > 0','full');
+					$this->db->join('incentivos_federales','incentivos_federales.id_incentivo > 0','full');
+					$this->db->join('programas_federales','programas_federales.id_programa > 0','full');
+					$this->db->join('componentes_federales','componentes_federales.id_componente > 0','full');
 					$this->db->where( 'siseppadronbeneficiarios.id_padron_beneficiario',$idPadron);
 					$cConsulta1 = $this->db->get_compiled_select();
 

@@ -187,6 +187,19 @@ ini_set("session.gc_maxlifetime","7200");//2017-07-11
 								<hr size="1">
 								<button value='tablaconceptos' class="insertar-campo btn-primary form-control">Insertar</button>
 							</div>
+
+							<!--2017-12-01 anexado para meter combo con programas, componente e incentivos manualmente-->
+							<div id="idDivTablaControl" class="form-group col-xs-6 col-sm-2" >
+								<label>Tabla Control</label>						
+								<select id="cboTablaControl" class="form-control">
+									<option value="0">Seleccione</option>
+									<option value="nombre_programa">nombre programa</option>
+									<option value="nombre_componente">nombre componente</option>
+									<option value="nombre_incentivo">nombre incentivo</option>
+								</select>
+								<hr size="1">
+								<button value='tablacontrol' class="insertar-campo btn-primary form-control">Insertar</button>
+							</div>
 						</div> <!-- FIN DEL ROW  DE LOS BOTONES -->
 
 						<div id='divConvenio'  class="row">						

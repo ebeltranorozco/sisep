@@ -126,6 +126,7 @@ $(function () {
 	$(".insertar-campo").click(function(){
 		
 		var boton = $(this).val();
+		//alert('ENTRO');
 		if (boton == 'delegacion') {
 			var cpo = $("#cboDelegaciones").val();
 		}
@@ -159,9 +160,12 @@ $(function () {
 		if (boton == 'tablaconceptos') {
 			var cpo = $("#cboTablaConceptos").val();
 			var cpo = 'tablaconceptos'; // fijo			
-		}		
-		if (cpo){
-			//alert(cpo);
+		}
+		if (boton == 'tablacontrol') {		
+			var cpo = $("#cboTablaControl").val();			
+		}	
+		//alert(cpo);	
+		if (cpo){			
 			cpo = '<strong>((' +cpo + '))</strong>';
 			CKEDITOR.instances['editor1'].insertHtml(cpo);
 		}
