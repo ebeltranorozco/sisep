@@ -97,7 +97,7 @@ class Beneficiario extends CI_Controller {
 		$this->db->from('siseppadronbeneficiarios');
 		$this->db->join( 'siseppersonasfisicas',' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `siseppersonasfisicas`.`id_padron_beneficiario`','left');
 		$this->db->join( 'siseppersonasmorales',' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `siseppersonasmorales`.`id_padron_beneficiario`','left');
-		$this->db->join( 'siseprepresentanteslegales', ' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `siseprepresentanteslegales`.`id_padron_beneficiario`','left');
+		=>['$this->db->join( 'siseprepresentanteslegales', ' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `siseprepresentanteslegales`.`id_padron_beneficiario`','left');']
 		$this->db->join( 'sisepdatosupp', ' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `sisepdatosupp`.`id_padron_beneficiario`','left');
 		$this->db->join( 'sisepdatosbanco', ' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `sisepdatosbanco`.`id_padron_beneficiario`','left');
 		$this->db->join( 'sisepdatospropiedad', ' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `sisepdatospropiedad`.`id_padron_beneficiario`','left');
@@ -576,12 +576,29 @@ class Beneficiario extends CI_Controller {
 			if ($datos['tipo_solicitante'] == 'F') { // se trata de una persona fisica
 				// hay q preguntar si existe ese id en la tabla de personas fisicas				
 				$qryTmp = $this->db->query('select id_persona_fisica from siseppersonasfisicas where id_padron_beneficiario ='.$id_padron_beneficiario)->row();
-				if ($this->db->affected_rows()>0){ $accion = 'ALTA';}else {$accion = 'EDICION';}
+				if ($this->db->affected_rows()==0){ $accion = 'ALTA';}else {$accion = 'EDICION';}
 				
 				$data = array(
 					'ap_paterno_persona_fisica'			=> $datos['ap_paterno_persona_fisica'],
 					'ap_materno_persona_fisica'			=> $datos['ap_materno_persona_fisica'],
-					'nombre_persona_fisica'				=> $datos['nombre_persona_fisica']
+					'nombre_persona_fisica'				=> $datos['nombre_persona_fisica'],
+					'rfc_persona_fisica'				=> $datos['rfc_persona_fisica'],
+					'curp_persona_fisica'									=> $datos['curp_persona_fisica'],
+					'nacionalidad_persona_fisica'									=> $datos['nacionalidad_persona_fisica'],
+					''									=> $datos['fecha_nacimiento_persona_fisica'],
+					''									=> $datos['estado_civil_persona_fisica'],
+					''									=> $datos['calle_persona_fisica'],
+					''									=> $datos['num__persona_fisica'],
+					''									=> $datos['colonia_persona_fisica'],
+					''									=> $datos['cp__persona_fisica'],
+					''									=> $datos['localidad_persona_fisica'],
+					''									=> $datos['municipio_persona_fisica'],
+					''									=> $datos['estado_persona_fisica'],
+					''									=> $datos['telefono_persona_fisica'],
+					''									=> $datos['num_celular_persona_fisica'],
+					''									=> $datos['correo_persona_fisica'],
+					''									=> $datos['id_oficial_persona_fisica'],
+					''									=> $datos['num_id_oficial_persona_fisica']
 				);
 				/*
 				,
@@ -613,10 +630,10 @@ class Beneficiario extends CI_Controller {
 			}// fin del if ($datos['tipo_solicitante']) == 'F')
 
 			// AHORA LA TABLA DE PERSONAS MORALES
-			/*
+			
 			if ($datos['tipo_solicitante'] == 'M') { // se trata de una persona moral				
 				$qryTmp = $this->db->query('select id_persona_moral from siseppersonasmorales where id_padron_beneficiario ='.$id_padron)->row();
-				if ($this->db->affected_rows()>0){ $accion = 'ALTA';}else {$accion = 'EDICION';}
+				if ($this->db->affected_rows()==0){ $accion = 'ALTA';}else {$accion = 'EDICION';}
 
 				
 				
@@ -659,13 +676,61 @@ class Beneficiario extends CI_Controller {
 					
 				);
 				if ($accion = 'ALTA'){
-					$cSQL = $this->db->set($data)->get_compiled_insert('siseppersonasfisicas');					
+					$cSQL = $this->db->set($data)->get_compiled_insert('siseppersonasmorales');					
 				}else {
 					$this->db->where('id_padron_beneficiario',$id_padron);
-					$cSQL = $this->db->set($data)->get_compiled_update('siseppersonasfisicas');
+					$cSQL = $this->db->set($data)->get_compiled_update('siseppersonasmorales');
 				}
 				$qryTmp = $this->db->query($cSQL);
 			}// fin del if ($datos['tipo_solicitante']) == 'M')
+			
+			// ahora los representantes
+			$qryTmp = $this->db->query('select id_persona_moral from siseppersonasmorales where id_padron_beneficiario ='.$id_padron)->row();
+			if ($this->db->affected_rows()==0){ $accion = 'ALTA';}else {$accion = 'EDICION';}
+
+			$data = array(
+				''=>['apellido_paterno_representante_legal'],
+				''=>['apellido_materno_representante_legal'],
+				''=>['nombre_representante_legal'],
+				''=>['caracter_representante_legal'],
+				''=>['rfc_representante_legal'],
+				''=>['curp_representante_legal'],
+				''=>['nacionalidad_representante_legal'],
+				''=>['fecha_de_nacimiento_representante_legal'],
+				''=>['estado_civil_representante_legal'],
+				''=>['calle_representante_legal'],
+				''=>['numero_representante_legal'],
+				''=>['colonia_representante_legal'],
+				''=>['cp_representante_legal'],
+				''=>['localidad_representante_legal'],
+				''=>['municipio_representante_legal'],
+				''=>['fecha_const_representante_legal'],
+				''=>['estado_representante_legal'],
+				''=>['telefono_representante_legal'],
+				''=>['celular_representante_legal'],
+				''=>['correo_representante_legal'],
+				''=>['tipo_documento_representante_legal'],
+				''=>['numero_documento_representante_legal'],
+				''=>['nombre_licenciado_notario_representante_legal'],
+				''=>['notario_doc_legal_representante_legal'],
+				''=>['num_notario_doc_representante_legal'],
+				''=>['calle_notario_doc_representante_legal'],
+				''=>['numero_dom__notario_doc_representante_legal'],
+				''=>['colonia_notario_doc_representante_legal'],
+				''=>['cp_notario_doc_representante_legal'],
+				''=>['municipio_notario_doc_representante_legal'],
+				''=>['estado_notario_doc_representante_legal']);
+
+				if ($accion = 'ALTA'){
+					$cSQL = $this->db->set($data)->get_compiled_insert('siseppersonasmorales');					
+				}else {
+					$this->db->where('id_padron_beneficiario',$id_padron);
+					$cSQL = $this->db->set($data)->get_compiled_update('siseppersonasmorales');
+				}
+				$qryTmp = $this->db->query($cSQL);
+
+				//la tabla q le sigue
+
 			*/
 
 			 	/*  VARIABLES QUE LLEGAN
@@ -686,37 +751,7 @@ class Beneficiario extends CI_Controller {
 				nombre_proyecto
 				descripcion_proyecto
 				
-				apellido_paterno_representante_legal
-				apellido_materno_representante_legal
-				nombre_representante_legal
-				caracter_representante_legal
-				rfc_representante_legal
-				curp_representante_legal
-				nacionalidad_representante_legal
-				fecha_de_nacimiento_representante_legal
-				estado_civil_representante_legal
-				calle_representante_legal
-				numero_representante_legal
-				colonia_representante_legal
-				cp_representante_legal
-				localidad_representante_legal
-				municipio_representante_legal
-				fecha_const_representante_legal
-				estado_representante_legal
-				telefono_representante_legal
-				celular_representante_legal
-				correo_representante_legal
-				tipo_documento_representante_legal
-				numero_documento_representante_legal
-				nombre_licenciado_notario_representante_legal
-				notario_doc_legal_representante_legal
-				num_notario_doc_representante_legal
-				calle_notario_doc_representante_legal
-				numero_dom__notario_doc_representante_legal
-				colonia_notario_doc_representante_legal
-				cp_notario_doc_representante_legal
-				municipio_notario_doc_representante_legal
-				estado_notario_doc_representante_legal
+				
 				localidad_datos_upp
 				municipio_datos_upp
 				estado_datos_upp

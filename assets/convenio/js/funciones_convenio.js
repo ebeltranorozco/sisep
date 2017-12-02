@@ -257,7 +257,7 @@ $(function () {
 
 	 	
  		if (confirm('Seguro de '+cAccion+' Información')){
- 			var datos = { 'ano': cAno , 'programa':cPrograma , 'componente':cComponente , 'incentivo':cIncentivo, 'tipo' : cTipo, 'cesionado':cCesionado,'convenio':cConvenio,'nombreconvenio':cNombreConvenio,'accion':cAccion};
+ 			var datos = { 'ano': cAno , 'programa':cPrograma , 'componente':cComponente ,  'tipo' : cTipo, 'cesionado':cCesionado,'convenio':cConvenio,'nombreconvenio':cNombreConvenio,'accion':cAccion};
 			$.ajax({
 				type: 'POST',
 				url: baseUrlCorta+ "/grabar_convenio",
