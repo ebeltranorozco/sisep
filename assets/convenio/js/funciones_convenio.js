@@ -126,6 +126,7 @@ $(function () {
 	$(".insertar-campo").click(function(){
 		
 		var boton = $(this).val();
+		//alert('ENTRO');
 		if (boton == 'delegacion') {
 			var cpo = $("#cboDelegaciones").val();
 		}
@@ -160,21 +161,17 @@ $(function () {
 			var cpo = $("#cboTablaConceptos").val();
 			var cpo = 'tablaconceptos'; // fijo			
 		}
-		
-
-		
-		if (cpo){
-			//alert(cpo);
+		if (boton == 'tablacontrol') {		
+			var cpo = $("#cboTablaControl").val();			
+		}	
+		//alert(cpo);	
+		if (cpo){			
 			cpo = '<strong>((' +cpo + '))</strong>';
 			CKEDITOR.instances['editor1'].insertHtml(cpo);
 		}
-		
-
 
 	}); // fin de clase insertar campo
-	/*********************************************************************/
-	
-	
+	/******************************************************************************************/	
 	function BuscarConvenio( tipo_solicitante,cesionado_usuario,ano,id_programa,id_componente){
 		//alert('Buscando el convenio ...!');		
 		
@@ -257,7 +254,11 @@ $(function () {
 
 	 	
  		if (confirm('Seguro de '+cAccion+' Información')){
+<<<<<<< HEAD
  			var datos = { 'ano': cAno , 'programa':cPrograma , 'componente':cComponente ,  'tipo' : cTipo, 'cesionado':cCesionado,'convenio':cConvenio,'nombreconvenio':cNombreConvenio,'accion':cAccion};
+=======
+ 			var datos = { 'ano': cAno , 'programa':cPrograma , 'componente':cComponente , 'tipo' : cTipo, 'cesionado':cCesionado,'convenio':cConvenio,'nombreconvenio':cNombreConvenio,'accion':cAccion};
+>>>>>>> 8440ea658ec05636a01b2c84b9483f5d7195f3ad
 			$.ajax({
 				type: 'POST',
 				url: baseUrlCorta+ "/grabar_convenio",
@@ -273,7 +274,6 @@ $(function () {
  		}
 	 	
 	 })
-	
-	 
+	 /*********************************************************************************************/	 
 
 }); 
