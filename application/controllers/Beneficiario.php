@@ -97,7 +97,7 @@ class Beneficiario extends CI_Controller {
 		$this->db->from('siseppadronbeneficiarios');
 		$this->db->join( 'siseppersonasfisicas',' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `siseppersonasfisicas`.`id_padron_beneficiario`','left');
 		$this->db->join( 'siseppersonasmorales',' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `siseppersonasmorales`.`id_padron_beneficiario`','left');
-		=>['$this->db->join( 'siseprepresentanteslegales', ' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `siseprepresentanteslegales`.`id_padron_beneficiario`','left');']
+		$this->db->join( 'siseprepresentanteslegales', ' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `siseprepresentanteslegales`.`id_padron_beneficiario`','left');
 		$this->db->join( 'sisepdatosupp', ' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `sisepdatosupp`.`id_padron_beneficiario`','left');
 		$this->db->join( 'sisepdatosbanco', ' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `sisepdatosbanco`.`id_padron_beneficiario`','left');
 		$this->db->join( 'sisepdatospropiedad', ' `siseppadronbeneficiarios`.`id_padron_beneficiario` = `sisepdatospropiedad`.`id_padron_beneficiario`','left');
@@ -584,43 +584,24 @@ class Beneficiario extends CI_Controller {
 					'ap_materno_persona_fisica'			=> $datos['ap_materno_persona_fisica'],
 					'nombre_persona_fisica'				=> $datos['nombre_persona_fisica'],
 					'rfc_persona_fisica'				=> $datos['rfc_persona_fisica'],
-					'curp_persona_fisica'									=> $datos['curp_persona_fisica'],
-					'nacionalidad_persona_fisica'									=> $datos['nacionalidad_persona_fisica'],
-					''									=> $datos['fecha_nacimiento_persona_fisica'],
-					''									=> $datos['estado_civil_persona_fisica'],
-					''									=> $datos['calle_persona_fisica'],
-					''									=> $datos['num__persona_fisica'],
-					''									=> $datos['colonia_persona_fisica'],
-					''									=> $datos['cp__persona_fisica'],
-					''									=> $datos['localidad_persona_fisica'],
-					''									=> $datos['municipio_persona_fisica'],
-					''									=> $datos['estado_persona_fisica'],
-					''									=> $datos['telefono_persona_fisica'],
-					''									=> $datos['num_celular_persona_fisica'],
-					''									=> $datos['correo_persona_fisica'],
-					''									=> $datos['id_oficial_persona_fisica'],
-					''									=> $datos['num_id_oficial_persona_fisica']
+					'curp_persona_fisica'				=> $datos['curp_persona_fisica'],
+					'nacionalidad_persona_fisica'		=> $datos['nacionalidad_persona_fisica'],
+					'fecha_nacimiento_persona_fisica'	=> $datos['fecha_nacimiento_persona_fisica'],
+					'estado_civil_persona_fisica'		=> $datos['estado_civil_persona_fisica'],
+					'calle_persona_fisica'				=> $datos['calle_persona_fisica'],
+					'numero_persona_fisica'			    => $datos['num__persona_fisica'],
+					'colonia_persona_fisica'			=> $datos['colonia_persona_fisica'],
+					'cp_persona_fisica'				    => $datos['cp_persona_fisica'],
+					'localidad_persona_fisica'          => $datos['localidad_persona_fisica'],
+					'municipio_persona_fisica'			=> $datos['municipio_persona_fisica'],
+					'estado_persona_fisica'			    => $datos['estado_persona_fisica'],
+					'telefono_casa_persona_fisica'		=> $datos['telefono_persona_fisica'],
+					'num_celular_persona_fisica'		=> $datos['num_celular_persona_fisica'],
+					'correo_persona_fisica'			    => $datos['correo_persona_fisica'],
+					'id_oficial_persona_fisica'		    => $datos['id_oficial_persona_fisica'],
+					'num_id_oficial_persona_fisica'  	=> $datos['num_id_oficial_persona_fisica']
 				);
-				/*
-				,
-														=> $datos['rfc_persona_fisica'],
-														=> $datos['curp_persona_fisica'],
-														=> $datos['nacionalidad_persona_fisica'],
-														=> $datos['fecha_nacimiento_persona_fisica'],
-														=> $datos['estado_civil_persona_fisica'],
-														=> $datos['calle_persona_fisica'],
-														=> $datos['num__persona_fisica'],
-														=> $datos['colonia_persona_fisica'],
-														=> $datos['cp__persona_fisica'],
-														=> $datos['localidad_persona_fisica'],
-														=> $datos['municipio_persona_fisica'],
-														=> $datos['estado_persona_fisica'],
-														=> $datos['telefono_persona_fisica'],
-														=> $datos['num_celular_persona_fisica'],
-														=> $datos['correo_persona_fisica'],
-														=> $datos['id_oficial_persona_fisica'],
-														=> $datos['num_id_oficial_persona_fisica']
-														*/
+				
 				if ($accion = 'ALTA'){
 					$cSQL = $this->db->set($data)->get_compiled_insert('siseppersonasfisicas');					
 				}else {
@@ -635,45 +616,43 @@ class Beneficiario extends CI_Controller {
 			if ($datos['tipo_solicitante'] == 'M') { // se trata de una persona moral				
 				$qryTmp = $this->db->query('select id_persona_moral from siseppersonasmorales where id_padron_beneficiario ='.$id_padron)->row();
 				if ($this->db->affected_rows()==0){ $accion = 'ALTA';}else {$accion = 'EDICION';}
-
-				
-				
+						
 				$data = array(
-					=> $datos['nombre_persona_moral'],
-				=> $datos['rfc_persona_moral'],
-				=> $datos['calle_persona_moral'],
-				=> $datos['numero_persona_moral'],
-				=> $datos['colonia_persona_moral'],
-				=> $datos['cp_persona_moral'],
-				=> $datos['localidad_persona_moral'],
-				=> $datos['municipio_persona_moral'],
-				=> $datos['estado_persona_moral'],
-				=> $datos['telefono_oficina_persona_moral'],
-				=> $datos['correo_persona_moral'],
-				=> $datos['fecha_Inscripcion_rfc_persona_moral'],
-				=> $datos['objeto_social_persona_moral'],
-				=> $datos['tipo_de_organismo_persona_moral'],
-				=> $datos['no_acta_constitutiva_persona_moral'],
-				=> $datos['fecha_de_constitucion_persona_moral'],
-				=> $datos['nombre_licenciado_notario_persona_moral'],
-				=> $datos['notario_acta_const_persona_moral'],
-				=> $datos['num_notario_act_const_persona_moral'],
-				=> $datos['calle_notario_acta_const_persona_moral'],
-				=> $datos['numero_notario_acta_const_persona_moral'],
-				=> $datos['colonia_notario_acta_const_persona_moral'],
-				=> $datos['cp_notario_acta_const_persona_moral'],
-				=> $datos['municipio_notario_acta_const_persona_moral'],
-				=> $datos['estado_notario_acta_const_persona_moral'],
-				=> $datos['no_acta_asamblea_persona_moral'],
-				=> $datos['fecha_de_acta_asamblea_persona_moral'],
-				=> $datos['notario_acta_asamblea_persona_moral'],
-				=> $datos['numero_notario_acta_asamblea_persona_moral'],
-				=> $datos['calle_notario_acta_asamblea_persona_moral'],
-				=> $datos['numero_notario_acta_asamblea_persona_moral'],
-				=> $datos['colonia_notario_acta_asamblea_persona_moral'],
-				=> $datos['cp_notario_acta_asamblea_persona_moral'],
-				=> $datos['municipio_notario_acta_asamblea_persona_moral'],
-				=> $datos['estado_notario_acta_asamblea_persona_moral'],
+				'nombre_persona_moral'					=> $datos['nombre_persona_moral'],
+				'rfc_persona_moral'						=> $datos['rfc_persona_moral'],
+				'calle_persona_moral'					=> $datos['calle_persona_moral'],
+				'numero_persona_moral'					=> $datos['numero_persona_moral'],
+				'colonia_persona_moral'					=> $datos['colonia_persona_moral'],
+				'cp_persona_moral'						=> $datos['cp_persona_moral'],
+				'localidad_persona_moral'				=> $datos['localidad_persona_moral'],
+				'municipio_persona_moral'				=> $datos['municipio_persona_moral'],
+				'estado_persona_moral'					=> $datos['estado_persona_moral'],
+				'telefono_oficina_persona_moral'		=> $datos['telefono_oficina_persona_moral'],
+				'correo_persona_moral'					=> $datos['correo_persona_moral'],
+				'fecha_Inscripcion_rfc_persona_moral'	=> $datos['fecha_Inscripcion_rfc_persona_moral'],
+				'objeto_social_persona_moral'			=> $datos['objeto_social_persona_moral'],
+				'tipo_de_organismo_persona_moral'		=> $datos['tipo_de_organismo_persona_moral'],
+				'no_acta_constitutiva_persona_moral'	=> $datos['no_acta_constitutiva_persona_moral'],
+				'fecha_de_constitucion_persona_moral'			=> $datos['fecha_de_constitucion_persona_moral'],
+				'nombre_licenciado_notario_persona_moral'		=> $datos['nombre_licenciado_notario_persona_moral'],
+				'notario_acta_const_persona_moral'				=> $datos['notario_acta_const_persona_moral'],
+				'num_notario_act_const_persona_moral'			=> $datos['num_notario_act_const_persona_moral'],
+				'calle_notario_acta_const_persona_moral'		=> $datos['calle_notario_acta_const_persona_moral'],
+				'numero_notario_acta_const_persona_moral'		=> $datos['numero_notario_acta_const_persona_moral'],
+				'colonia_notario_acta_const_persona_moral'		=> $datos['colonia_notario_acta_const_persona_moral'],
+				'cp_notario_acta_const_persona_moral'			=> $datos['cp_notario_acta_const_persona_moral'],
+				'municipio_notario_acta_const_persona_moral'	=> $datos['municipio_notario_acta_const_persona_moral'],
+				'estado_notario_acta_const_persona_moral'		=> $datos['estado_notario_acta_const_persona_moral'],
+				'no_acta_asamblea_persona_moral'				=> $datos['no_acta_asamblea_persona_moral'],
+				'fecha_de_acta_asamblea_persona_moral'			=> $datos['fecha_de_acta_asamblea_persona_moral'],
+				'notario_acta_asamblea_persona_moral'			=> $datos['notario_acta_asamblea_persona_moral'],
+				'num_dom_notario_act_asamblea_persona_moral'	=> $datos['num_dom_notario_act_asamblea_persona_moral'],
+				'calle_notario_acta_asamblea_persona_moral'		=> $datos['calle_notario_acta_asamblea_persona_moral'],
+				'numero_notario_acta_asamblea_persona_moral'	=> $datos['numero_notario_acta_asamblea_persona_moral'],
+				'colonia_notario_acta_asamblea_persona_moral'	=> $datos['colonia_notario_acta_asamblea_persona_moral'],
+				'cp_notario_acta_asamblea_persona_moral'		=> $datos['cp_notario_acta_asamblea_persona_moral'],
+				'municipio_notario_acta_asamblea_persona_moral'	=> $datos['municipio_notario_acta_asamblea_persona_moral'],
+				'estado_notario_acta_asamblea_persona_moral'	=> $datos['estado_notario_acta_asamblea_persona_moral'],
 					
 				);
 				if ($accion = 'ALTA'){
@@ -690,37 +669,37 @@ class Beneficiario extends CI_Controller {
 			if ($this->db->affected_rows()==0){ $accion = 'ALTA';}else {$accion = 'EDICION';}
 
 			$data = array(
-				''=>['apellido_paterno_representante_legal'],
-				''=>['apellido_materno_representante_legal'],
-				''=>['nombre_representante_legal'],
-				''=>['caracter_representante_legal'],
-				''=>['rfc_representante_legal'],
-				''=>['curp_representante_legal'],
-				''=>['nacionalidad_representante_legal'],
-				''=>['fecha_de_nacimiento_representante_legal'],
-				''=>['estado_civil_representante_legal'],
-				''=>['calle_representante_legal'],
-				''=>['numero_representante_legal'],
-				''=>['colonia_representante_legal'],
-				''=>['cp_representante_legal'],
-				''=>['localidad_representante_legal'],
-				''=>['municipio_representante_legal'],
-				''=>['fecha_const_representante_legal'],
-				''=>['estado_representante_legal'],
-				''=>['telefono_representante_legal'],
-				''=>['celular_representante_legal'],
-				''=>['correo_representante_legal'],
-				''=>['tipo_documento_representante_legal'],
-				''=>['numero_documento_representante_legal'],
-				''=>['nombre_licenciado_notario_representante_legal'],
-				''=>['notario_doc_legal_representante_legal'],
-				''=>['num_notario_doc_representante_legal'],
-				''=>['calle_notario_doc_representante_legal'],
-				''=>['numero_dom__notario_doc_representante_legal'],
-				''=>['colonia_notario_doc_representante_legal'],
-				''=>['cp_notario_doc_representante_legal'],
-				''=>['municipio_notario_doc_representante_legal'],
-				''=>['estado_notario_doc_representante_legal']);
+				'apellido_paterno_representante_legal'		=>['apellido_paterno_representante_legal'],
+				'apellido_materno_representante_legal'		=>['apellido_materno_representante_legal'],
+				'nombre_representante_legal'				=>['nombre_representante_legal'],
+				'caracter_representante_legal'				=>['caracter_representante_legal'],
+				'rfc_representante_legal'					=>['rfc_representante_legal'],
+				'curp_representante_legal'					=>['curp_representante_legal'],
+				'nacionalidad_representante_legal'			=>['nacionalidad_representante_legal'],
+				'fecha_de_nacimiento_representante_legal'	=>['fecha_de_nacimiento_representante_legal'],
+				'estado_civil_representante_legal'			=>['estado_civil_representante_legal'],
+				'calle_representante_legal'					=>['calle_representante_legal'],
+				'numero_representante_legal'				=>['numero_representante_legal'],
+				'colonia_representante_legal'				=>['colonia_representante_legal'],
+				'cp_representante_legal'					=>['cp_representante_legal'],
+				'localidad_representante_legal'				=>['localidad_representante_legal'],
+				'municipio_representante_legal'				=>['municipio_representante_legal'],
+				'fecha_const_representante_legal'			=>['fecha_const_representante_legal'],
+				'estado_representante_legal'				=>['estado_representante_legal'],
+				'telefono_representante_legal'				=>['telefono_representante_legal'],
+				'celular_representante_legal'				=>['celular_representante_legal'],
+				'correo_representante_legal'				=>['correo_representante_legal'],
+				'tipo_documento_representante_legal'		=>['tipo_documento_representante_legal'],
+				'numero_documento_representante_legal'		=>['numero_documento_representante_legal'],
+				'nombre_licenciado_notario_representante_legal'	=>['nombre_licenciado_notario_representante_legal'],
+				'notario_doc_legal_representante_legal'			=>['notario_doc_legal_representante_legal'],
+				'num_notario_doc_representante_legal'			=>['num_notario_doc_representante_legal'],
+				'calle_notario_doc_representante_legal'			=>['calle_notario_doc_representante_legal'],
+				'numero_dom__notario_doc_representante_legal'	=>['numero_dom__notario_doc_representante_legal'],
+				'cp_notario_doc_representante_legalcolonia_notario_doc_representante_legal'	=>['colonia_notario_doc_representante_legal'],
+				'cp_notario_doc_representante_legal'			=>['cp_notario_doc_representante_legal'],
+				'municipio_notario_doc_representante_legal'		=>['municipio_notario_doc_representante_legal'],
+				'estado_notario_doc_representante_legal'		=>['estado_notario_doc_representante_legal']);
 
 				if ($accion = 'ALTA'){
 					$cSQL = $this->db->set($data)->get_compiled_insert('siseppersonasmorales');					
@@ -730,7 +709,103 @@ class Beneficiario extends CI_Controller {
 				}
 				$qryTmp = $this->db->query($cSQL);
 
-				//la tabla q le sigue
+				//la tabla q le sigue  juan jose Revisar los ID
+				$qryTmp = $this->db->query('select id_datos_propiedad from sisepdatospropiedad where id_padron_beneficiario ='.$id_padron)->row();
+			if ($this->db->affected_rows()==0){ $accion = 'ALTA';}else {$accion = 'EDICION';}
+
+			$data = array(
+				'id_datos_propiedad'				=>['id_datos_propiedad'],
+				'ubicacion_predio_datos_propiedad'	=>['ubicacion_predio_datos_propiedad'],
+				'docto_acreditcion_datos_propiedad'	=>['docto_acreditcion_datos_propiedad'],
+				'num_acta_datos_propiedad'			=>['num_acta_datos_propiedad'],
+				'fecha_acta_datos_propiedad'		=>['fecha_acta_datos_propiedad'],
+				'nombre_notario_datos_propiedad'	=>['nombre_notario_datos_propiedad'],
+				'num_notario_datos_propiedad'		=>['num_notario_datos_propiedad'],
+				'objeto_datos_propiedad'			=>['objeto_datos_propiedad'],
+				'id_padron_beneficiario'			=>['id_padron_beneficiario'],
+				
+				if ($accion = 'ALTA'){
+					$cSQL = $this->db->set($data)->get_compiled_insert('sisepdatospropiedad');					
+				}else {
+					$this->db->where('id_padron_beneficiario',$id_padron);
+					$cSQL = $this->db->set($data)->get_compiled_update('sisepdatospropiedad');
+				}
+				$qryTmp = $this->db->query($cSQL);
+
+				//la tabla q le sigue  termina
+
+		//la tabla q le sigue juan jose
+	$qryTmp = $this->db->query('select id_datos_banco from sisepdatosbanco where id_padron_beneficiario ='.$id_padron)->row();
+			if ($this->db->affected_rows()==0){ $accion = 'ALTA';}else {$accion = 'EDICION';}
+
+			$data = array(
+				'id_datos_banco'			=>['id_datos_banco'],
+				'fecha_cta_datos_banco'		=>['fecha_cta_datos_banco'],
+				'clabe_datos_banco'			=>['clabe_datos_banco'],
+				'cuenta_datos_banco'		=>['cuenta_datos_banco'],
+				'nomina_datos_banco'		=>['nomina_datos_banco'],
+				'nombre_banco_datos_banco'	=>['nombre_banco_datos_banco'],
+				'id_padron_beneficiario'	=>['id_padron_beneficiario'],
+								
+				if ($accion = 'ALTA'){
+					$cSQL = $this->db->set($data)->get_compiled_insert('sisepdatosbanco');					
+				}else {
+					$this->db->where('id_padron_beneficiario',$id_padron);
+					$cSQL = $this->db->set($data)->get_compiled_update('sisepdatosbanco');
+				}
+				$qryTmp = $this->db->query($cSQL);
+
+		//tabla siguiente juan jose
+
+					$qryTmp = $this->db->query('select id_datos_proveedor from sisepdatosproveedor where id_padron_beneficiario ='.$id_padron)->row();
+			if ($this->db->affected_rows()==0){ $accion = 'ALTA';}else {$accion = 'EDICION';}
+
+			$data = array(
+				'id_datos_proveedor'				=>['id_datos_proveedor'],
+				'nombre_datos_proveedor'			=>['nombre_datos_proveedor'],
+				'calle_datos_proveedor'				=>['calle_datos_proveedor'],
+				'numero_datos_proveedor'			=>['numero_datos_proveedor'],
+				'localidad_datos_proveedor'			=>['localidad_datos_proveedor'],
+				'cp_datos_proveedor'				=>['cp_datos_proveedor'],
+				'municipio_datos_proveedor'			=>['municipio_datos_proveedor'],
+				'entidad_federativa_datos_proveedor'=>['entidad_federativa_datos_proveedor'],
+				'id_padron_beneficiario'			=>['id_padron_beneficiario'],
+								
+				if ($accion = 'ALTA'){
+					$cSQL = $this->db->set($data)->get_compiled_insert('sisepdatosproveedor');					
+				}else {
+					$this->db->where('id_padron_beneficiario',$id_padron);
+					$cSQL = $this->db->set($data)->get_compiled_update('sisepdatosproveedor');
+				}
+				$qryTmp = $this->db->query($cSQL);
+
+				//termina
+				//tabla siguiente juan jose
+
+					$qryTmp = $this->db->query('select id_datos_upp from sisepdatosupp where id_padron_beneficiario ='.$id_padron)->row();
+			if ($this->db->affected_rows()==0){ $accion = 'ALTA';}else {$accion = 'EDICION';}
+
+			$data = array(
+				'id_datos_upp'				=>['id_datos_upp'],
+				'localidad_datos_upp'		=>['localidad_datos_upp'],
+				'municipio_datos_upp'		=>['municipio_datos_upp'],
+				'estado_datos_upp'			=>['estado_datos_upp'],
+				'no_upp_datos_upp'			=>['no_upp_datos_upp'],
+				'nombre_posesion_datos_upp'	=>['nombre_posesion_datos_upp'],
+				'has_datos_upp'				=>['has_datos_upp'],
+				'no_animales_datos_upp'		=>['no_animales_datos_upp'],
+				'especie_apoyada_datos_upp'	=>['especie_apoyada_datos_upp	'],
+				'id_padron_beneficiario'	=>['id_padron_beneficiario'],
+								
+				if ($accion = 'ALTA'){
+					$cSQL = $this->db->set($data)->get_compiled_insert('sisepdatosupp');					
+				}else {
+					$this->db->where('id_padron_beneficiario',$id_padron);
+					$cSQL = $this->db->set($data)->get_compiled_update('sisepdatosupp');
+				}
+				$qryTmp = $this->db->query($cSQL);
+
+				//termina
 
 			*/
 
