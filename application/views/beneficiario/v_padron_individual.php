@@ -33,7 +33,7 @@ $estado_civil_persona_fisica		=array( 'id'=>'estado_civil_persona_fisica', 'name
 $calle_persona_fisica				=array( 'id'=>'calle_persona_fisica', 'name'=>'calle_persona_fisica', 'class'=>'form-control', 'value'=>set_value('calle_persona_fisica'));
 $numero_persona_fisica 				=array( 'id'=>'num__persona_fisica', 'name'=>'num__persona_fisica', 'class'=>'form-control', 'value'=>set_value('num__persona_fisica'));
 $colonia_persona_fisica				=array( 'id'=>'colonia_persona_fisica', 'name'=>'colonia_persona_fisica', 'class'=>'form-control', 'value'=>set_value('colonia_persona_fisica'));
-$cp_persona_fisica					=array( 'id'=>'cp__persona_fisica', 'name'=>'cp__persona_fisica', 'class'=>'form-control', 'value'=>set_value('cp__persona_fisica'));
+$cp_persona_fisica					=array( 'id'=>'cp_persona_fisica', 'name'=>'cp_persona_fisica', 'class'=>'form-control', 'value'=>set_value('cp_persona_fisica'));
 $localidad_persona_fisica			=array( 'id'=>'localidad_persona_fisica', 'name'=>'localidad_persona_fisica', 'class'=>'form-control', 'value'=>set_value('localidad_persona_fisica'));
 $municipio_persona_fisica			=array( 'id'=>'municipio_persona_fisica', 'name'=>'municipio_persona_fisica', 'class'=>'form-control', 'value'=>set_value('municipio_persona_fisica'));
 $estado_persona_fisica 				=array( 'id'=>'estado_persona_fisica', 'name'=>'estado_persona_fisica', 'class'=>'form-control', 'value'=>set_value('estado_persona_fisica'));
