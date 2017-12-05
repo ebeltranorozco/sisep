@@ -1,4 +1,5 @@
 <?php
+//ini_set('memory_limit', '-1'); // bug no resuelto para el error de memoria --> Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate 53 bytes) in C:\xampp\htdocs\sisep\system\database\drivers\mysqli\mysqli_result.php on line 237
 /**
  * CodeIgniter
  *

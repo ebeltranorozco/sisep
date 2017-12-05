@@ -50,7 +50,7 @@ $calle_persona_moral	             		 =array( 'id'=>'calle_persona_moral', 'name'
 $numero_persona_moral	              		 =array( 'id'=>'numero_persona_moral', 'name'=>'numero_persona_moral', 'class'=>'form-control', 'value'=>set_value('numero_persona_moral'));
 $colonia_persona_moral				 		 =array( 'id'=>'colonia_persona_moral', 'name'=>'colonia_persona_moral', 'class'=>'form-control', 'value'=>set_value('colonia_persona_moral'));
 $cp_persona_moral					 		 =array( 'id'=>'cp_persona_moral', 'name'=>'cp_persona_moral', 'class'=>'form-control', 'value'=>set_value('cp_persona_moral'));
-$localidad_persona_moral			  		 =array( 'id'=>'localidadPersonaMoral', 'name'=>'localidadPersonaMoral', 'class'=>'form-control', 'value'=>set_value('localidadPersonaMoral'));
+$localidad_persona_moral			  		 =array( 'id'=>'localidad_persona_moral', 'name'=>'localidad_persona_moral', 'class'=>'form-control', 'value'=>set_value('localidad_persona_moral'));
 $municipio_persona_moral			  		 =array( 'id'=>'municipio_persona_moral', 'name'=>'municipio_persona_moral', 'class'=>'form-control', 'value'=>set_value('municipio_persona_moral'));
 $estado_persona_moral				  		 =array( 'id'=>'estado_persona_moral', 'name'=>'estado_persona_moral', 'class'=>'form-control', 'value'=>set_value('estado_persona_moral'));
 $telefono_oficina_persona_moral	      		 =array( 'id'=>'telefono_oficina_persona_moral', 'name'=>'telefono_oficina_persona_moral', 'class'=>'form-control', 'value'=>set_value('telefono_oficina_persona_moral'));
@@ -114,7 +114,7 @@ $municipio_notario_doc_representante_legal		=array( 'id'=>'municipio_notario_doc
 $estado_notario_doc_representante_legal			=array( 'id'=>'estado_notario_doc_representante_legal', 'name'=>'estado_notario_doc_representante_legal', 'class'=>'form-control', 'value'=>set_value('estado_notario_doc_representante_legal'));
 //fin variables Representante Legal
 //inicio Variables UPP
-$localidad_datos_upp						=array( 'id'=>'localidad_datos_uppv', 'name'=>'localidad_datos_upp', 'class'=>'form-control', 'value'=>set_value('localidad_datos_upp'));
+$localidad_datos_upp						=array( 'id'=>'localidad_datos_upp', 'name'=>'localidad_datos_upp', 'class'=>'form-control', 'value'=>set_value('localidad_datos_upp'));
 $municipio_datos_upp						=array( 'id'=>'municipio_datos_upp', 'name'=>'municipio_datos_upp', 'class'=>'form-control', 'value'=>set_value('municipio_datos_upp'));
 $estado_datos_upp							=array( 'id'=>'estado_datos_upp', 'name'=>'estado_datos_upp', 'class'=>'form-control', 'value'=>set_value('estado_datos_upp'));
 $no_upp_datos_upp							=array( 'id'=>'no_upp_datos_upp', 'name'=>'no_upp_datos_upp', 'class'=>'form-control', 'value'=>set_value('no_upp_datos_upp'));
@@ -264,11 +264,14 @@ if ($accion == 'EDICION') {
 	$municipio_notario_doc_representante_legal['value'] = $data->municipio_notario_doc_representante_legal;		
 	$estado_notario_doc_representante_legal['value'] = $data->estado_notario_doc_representante_legal;
 //UPP
+	$localidad_datos_upp['value']		= $data->localidad_datos_upp;
+	$municipio_datos_upp['value']		= $data->municipio_datos_upp;
+	$estado_datos_upp['value']			= $data->estado_datos_upp;
 	$no_upp_datos_upp['value']			= $data->no_upp_datos_upp;							
 	$nombre_posesion_datos_upp['value']	= $data->nombre_posesion_datos_upp;					
 	$has_datos_upp['value']				= $data->has_datos_upp;								
 	$no_animales_datos_upp['value']		= $data->no_animales_datos_upp;						
-	$especie_apoyada_datos_upp['value']	= $data->especie_apoyada_datos_upp;		
+	$especie_apoyada_datos_upp['value']	= $data->especie_apoyada_datos_upp;	
 //BANCO
 	$fecha_cta_datos_banco	['value']	= $data->fecha_cta_datos_banco;					
 	$clabe_datos_banco['value']			= $data->clabe_datos_banco;							
@@ -303,7 +306,7 @@ if ($accion == 'EDICION') {
 //*/
 }
 // <<<<<<< HEAD
-// var_dump($data);
+//var_dump($data);
 // =======
 //var_dump($data);
 //>>>>>>> 68da2f414834fcc50dc594b3ee6cdd3b0c5f9cd1

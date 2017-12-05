@@ -14,7 +14,7 @@ $(function () {
 
     if(base_url == 'http://localhost') {
         base_url += '/sisep';
-        alert('Trabajando de Manera Local y en convenios');
+        console.log('Trabajando de Manera Local y en convenios');
     }
 
 	// CARGANDO TODOS LOS COMBOS
@@ -254,18 +254,17 @@ $(function () {
 
 	 	
  		if (confirm('Seguro de '+cAccion+' Información')){
-<<<<<<< HEAD
- 			var datos = { 'ano': cAno , 'programa':cPrograma , 'componente':cComponente ,  'tipo' : cTipo, 'cesionado':cCesionado,'convenio':cConvenio,'nombreconvenio':cNombreConvenio,'accion':cAccion};
-=======
+
  			var datos = { 'ano': cAno , 'programa':cPrograma , 'componente':cComponente , 'tipo' : cTipo, 'cesionado':cCesionado,'convenio':cConvenio,'nombreconvenio':cNombreConvenio,'accion':cAccion};
->>>>>>> 8440ea658ec05636a01b2c84b9483f5d7195f3ad
+ 			//var datos = { 'ano': cAno , 'programa':cPrograma , 'componente':cComponente , 'tipo' : cTipo, 'cesionado':cCesionado,'convenio':cConvenio,'nombreconvenio':cNombreConvenio,'accion':cAccion};
+
 			$.ajax({
 				type: 'POST',
 				url: baseUrlCorta+ "/grabar_convenio",
 				data:datos,
 				success: function(Resp_Ok){
 					console.log( Resp_Ok);
-					alert(cAccion + ' Termino Correctamente (reload)');
+					alert(cAccion + ' Termino Correctamente (refrescando...)');
 					//$(".btnGrabar").hide();
 					location.reload();
 

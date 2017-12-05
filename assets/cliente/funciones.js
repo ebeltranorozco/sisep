@@ -113,7 +113,7 @@ $(function () {
 
     if(base_url == 'http://localhost') {
         base_url += '/sisep';
-        alert('Trabajando de Manera Local');
+        console.log('TRABAJANDO DE MANERA LOCAL');
     }
 
     //alert(getUrl);

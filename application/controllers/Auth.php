@@ -292,7 +292,7 @@ class Auth extends CI_Controller {
 						$_SESSION['alias_usuario'] = $qryUser->alias_usuario;
 						$_SESSION['programa'] = $qryUser->nombre_programa;
 						$_SESSION['componente'] = $qryUser->nombre_componente;
-						$_SESSION['incentivo'] = $qryUser->nombre_incentivo;
+						//$_SESSION['incentivo'] = $qryUser->nombre_incentivo;
 						$_SESSION['nombre_usuario'] = $qryUser->nombre_usuario;
 						$_SESSION['id_programa'] = $qryUser->id_programa;
 						$_SESSION['id_componente'] = $qryUser->id_componente;
