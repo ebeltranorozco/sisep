@@ -21,7 +21,10 @@ $producto_real						=array('id'=>'producto_real','name'=>'producto_real','class'
 $ddr 								=array('id'=>'ddr_real','name'=>'ddr_real','class'=>'form-control','value'=>set_value('ddr_real'),'readonly'=>TRUE);
 $nombre_proyecto 					=array('id'=>'nombre_proyecto','name'=>'nombre_proyecto','class'=>'form-control','value'=>set_value('nombre_proyecto'),'readonly'=>TRUE);
 
+$no_oficio['value'] = '311.2017.12.05';
 
+$fecha_oficio['value'] = '2017-12-05';
+$fecha_acuse['value'] = '2017-12-10';
 ?>
 <div class="container-fluid">
 	<div class="panel panel-primary">
@@ -94,7 +97,7 @@ $nombre_proyecto 					=array('id'=>'nombre_proyecto','name'=>'nombre_proyecto','
 	  	</div>
 
 		<div class="row">
-	  		<div class="col-md-12">
+	  		<div class="col-md-12" id='idDivGrabarOficioApertura'>
 	  			<input type="button" name="btnGrabarApertura" id="btnGrabarApertura" value="Grabar Oficio" />	  			
 	  		</div>	  		
 	  	</div>

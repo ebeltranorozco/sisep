@@ -118,12 +118,89 @@ class Seguimiento_controller extends CI_Controller {
  	/***************************************************************/
  	public function graba_oficio_apertura(){
  		$RespData = array();
+ 		if (!$this->input->is_ajax_request()) {
+ 			$RespData['STATUS'] = 'ERROR';
+ 			$RespData['MSG_ERROR'] = 'No direct script access allowed';
+ 		  	//exit('No direct script access allowed');
+		}else {
+			//captando las variables
+			$enc = isset($_POST['enc']) ? $_POST['enc'] : false;
+			$det = isset($_POST['det']) ? $_POST['det'] : false;	
+			//$enc = $this->input->post( 'enc');
+			//$det = $this->input->post( 'det');
+			if ($enc && $det)	{
+				$this->db->trans_begin();
 
+				$detallado = $det[0];
+				for ($nPos=0;$nPos<count($detallado);$nPos+=9){
 
+					$id_padron_beneficiario  = $detallado[$nPos];
+                    $nombre_beneficiario     = $detallado[$nPos+1];
+                    $folio_suri              = $detallado[$nPos+2];
+                    $id_concepto             = $detallado[$nPos+3];
+                    $concepto                = $detallado[$nPos+4];
+                    $ddr                     = $detallado[$nPos+5];
+                    $haz                     = $detallado[$nPos+6];
+                    $apoyo                   = $detallado[$nPos+7];
+                    $aportacion              = $detallado[$nPos+8];
 
- 		// aqi me quede
- 		
- 		header('Content-type: application/json; charset=utf-8');
+                    $data =  array(
+						'id_padron_beneficiario'			=> $id_padron_beneficiario,
+						'id_programa'						=> $_SESSION['id_programa'],
+						'id_componente'						=> $_SESSION['id_componente'],
+						'id_ddr'							=> $ddr,
+						'id_concepto'						=> $id_concepto,
+						'folio_suri_seguimiento' 			=> $folio_suri,
+						'nombre_beneficiario_seguimiento' 	=> $nombre_beneficiario,
+						'has_seguimiento'					=> $haz,
+						'aportacion_federal_seguimiento'	=> $apoyo,
+						'aportacion_productor_seguimiento'	=> $aportacion,
+						'no_oficio_apertura_seguimiento'	=> $enc['no_oficio'],
+						'fecha_oficio_apertura_seguimiento'	=> $enc['fecha_oficio'],
+						'fecha_acuse_apertura_seguimiento'	=> $enc['fecha_acuse']
+					);
+					// buscando con el folio suri y el id_componente la accion a ajercer
+					$this->db->select('*');
+					$this->db->from('seguimientos');
+					$this->db->where( 'id_componente', $_SESSION['id_componente']);
+					$this->db->where( 'nombre_beneficiario_seguimiento', $nombre_beneficiario);
+					$qryTmp = $this->db->get()->row();
+					$RespData['SQL_ACCION'] = $this->db->last_query();
+					$RespData['QUERY_SEGUIMIENTO'] = $qryTmp;
+					$accion = 'ALTA';
+					if ($this->db->affected_rows()>0){ $accion = 'EDICION'; $id_seguimiento=$qryTmp->id_seguimiento;}
+
+					if ($accion = 'EDICION') {						
+						//$this->db->where( 'id_seguimiento', $id_seguimiento);
+						$cSql = $this->db->set($data)->get_compiled_update('seguimientos');
+					}else {
+						$cSql = $this->db->set($data)->get_compiled_insert('seguimientos');
+					}
+
+					$this->db->query( $cSql) ;
+					$RespData['SQL']  = $cSql;
+					if ($this->db->trans_status() === FALSE) {	break; }
+
+				}// fin del for de la tabla que graba el oficio de apertura
+
+				if ($this->db->trans_status() === FALSE) {
+					$this->db->trans_rollback();
+					$RespData['STATUS'] = 'ERROR';
+					$RespData['MSG_ERROR'] = $this->db->_error_message();			        	
+			    } else {        
+			       	$this->db->trans_commit();
+			       	$RespData['STATUS'] = 'OK';
+			    }
+				
+			}else {
+				$RespData['STATUS'] = 'ERROR';
+				$RespData['MSG_ERROR'] = 'información recibida esta incompleta; verifique parametros enviados';
+			}
+		} 
+		header('Content-type: application/json; charset=utf-8');
+ 		//header('Content-type: application/json;');
  		echo json_encode($RespData); 
  	}
+ 	/***********************************************************************/
+ 	
  } // fin del controller

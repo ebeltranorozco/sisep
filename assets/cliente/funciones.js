@@ -419,45 +419,47 @@ $(function () {
     /********************************************************************************************/
 	$("#btnGrabarApertura").click(function(){
 
-
-
         if (confirm('Grabar el Oficio')){
             //captar variables
             var no_oficio       = $("#no_oficio_apertura").val();
             var fecha_oficio    = $("#fecha_oficio_apertura").val();
             var fecha_acuse     = $("#fecha_acuse_oficio_apertura").val();
 
-
             //leyendo la tabla
             var detallado = new Array();
+            var data = { enc:{'no_oficio':no_oficio,'fecha_oficio':fecha_oficio,'fecha_acuse': fecha_acuse},det:[]}
+            
             $('#idTablaTmpDetalleSeguimiento tr').each(function () {
 
-                    var analito = $(this).find("td").eq(0).html();
-                    var resultado = $(this).find("td").eq(1).html();
-                    var lc = $(this).find("td").eq(2).html();
-                    var lmp = $(this).find("td").eq(3).html();
-                    var tecnica = $(this).find("td").eq(4).html();
-                    if (analito) {
-                        detallado.push( analito,resultado,lc,lmp,tecnica);  
-                    }           
+                    var id_padron_beneficiario  = $(this).find("td").eq(0).html();
+                    var nombre_beneficiario     = $(this).find("td").eq(1).html();
+                    var folio_suri              = $(this).find("td").eq(2).html();
+                    var id_concepto             = $(this).find("td").eq(3).html();
+                    var concepto                = $(this).find("td").eq(4).html();
+                    var ddr                     = $(this).find("td").eq(5).html();
+                    var haz                     = $(this).find("td").eq(6).html();
+                    var apoyo                   = $(this).find("td").eq(7).html();
+                    var aportacion              = $(this).find("td").eq(8).html();
 
+                    if (id_padron_beneficiario) {
+                        detallado.push( id_padron_beneficiario,nombre_beneficiario,folio_suri,id_concepto,concepto,ddr,haz,apoyo,aportacion);
+                    }
                 });
             console.log( detallado);
-
-            var data = { enc:{'no_oficio':no_oficio,'fecha_oficio':fecha_oficio,'fecha_acuse': fecha_acuse},det:[]}
+            data.det.push( detallado );            
             
             $.ajax({            
                 data: data,
                 method: 'POST',
                 url: base_url+'/graba_oficio_apertura',
                 success: function (htmlResponse){
-                    console.log('entro a la funcion sucesso');
+                    console.log('termino sucesso el regreso de la funcion graba_oficio_apertura');
                     console.log(htmlResponse);
                     //alert(htmlResponse);
                     
                     if (htmlResponse['SITUACION_REGISTRO']=='EXITO'){
-                        $("#divBtnGrabaIDRPlaguicidas").hide();
-                        alert('Informe de Resultado Grabado');
+                        $("#idDivGrabarOficioApertura").hide();
+                        alert('Oficio de Apertura Grabado');
                     }
                     
                 }
