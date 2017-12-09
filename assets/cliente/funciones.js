@@ -497,6 +497,42 @@ $(function () {
         }// fin de confirmar la accion 
     });
     /*************************************************************************************/
+    $("#btnEnviarCorreoOficioApertura").click(function(){
+        if (confirm('Seguro Enviar Correo de Confirmación')){
+            url = base_url + '/enviar_correo';            
+            abrirEnPestana(url);
+        }
+    });
+    /*************************************************************************************/
+    $("#cboDDR").change(function(){
+        //alert('entro');
+        $('#idTablaDetalleTmpCartasApertura tbody').empty();
+        $('#idTablaDetalleCartasApertura tbody').empty();
+        var id_ddr = $(this).val();
+        //alert( id_ddr);
+        //rellenar la tabla tmp con el nuevo id
+        $.ajax({
+            data: id_ddr,
+            dataType: 'json',
+            method: 'POST',
+            url: base_url+'/obtener_cartas_apertura',
+            success: function (htmlResponse){
+                console.log(htmlResponse);
+                   
+                if (htmlResponse['STATUS']=='OK'){
+                    alert('Resolviendo las cartas de apertura retornadas');
+                }                    
+            }// fin de la funcion sucess del ajax
+        }); // fin del ajax
+    });
+    /***************************************************************************************/
+    $("#cboDDR").click(function(){
+        //alert('entro2');
+        //$('#idTablaDetalleTmpCartasApertura tbody').empty();
+        //$('#idTablaDetalleCartasApertura tbody').empty();
+    });
+   
     
+    /*************************************************************************************/
     
 }); // FIN DEL JQUERY

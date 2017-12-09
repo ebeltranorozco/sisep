@@ -80,8 +80,7 @@ $fecha_acuse['value'] = '2017-12-10';
 		</div>
 		<div class="row">
 			<div class="col-md-4"><?php echo form_label('DDR del Proyecto:'); echo form_input($ddr); ?></div>
-			<div class="col-md-8"><?php echo form_label('Nombre del Proyecto:'); echo form_input($nombre_proyecto); ?></div>
-			
+			<div class="col-md-8"><?php echo form_label('Nombre del Proyecto:'); echo form_input($nombre_proyecto); ?></div>			
 		</div>
 
 		<div class="row">
@@ -97,9 +96,12 @@ $fecha_acuse['value'] = '2017-12-10';
 	  	</div>
 
 		<div class="row">
-	  		<div class="col-md-12" id='idDivGrabarOficioApertura'>
+	  		<div class="col-md-4" id='idDivGrabarOficioApertura'>
 	  			<input type="button" name="btnGrabarApertura" id="btnGrabarApertura" value="Grabar Oficio" />	  			
-	  		</div>	  		
+	  		</div>
+			<div class="col-md-4" id='idDivEnviarCorreoOficioApertura'>
+	  			<input type="button" name="btnEnviarCorreoOficioApertura" id="btnEnviarCorreoOficioApertura" value="Enviar Correo Confirmación" />	  			
+	  		</div>
 	  	</div>
 
 

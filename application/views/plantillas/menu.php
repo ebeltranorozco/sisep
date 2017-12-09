@@ -88,7 +88,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	                                </tr>
 	                                <tr>
 	                                    <td>
-	                                        <a href="#">Registro de Cartas de Autorización</a> <span class="label label-info">2</span>
+	                                        <a href="registro_cartas_autorizacion">Registro de Cartas de Autorización</a> <span class="label label-info">2</span>
 	                                    </td>
 	                                </tr>
 	                                <tr>

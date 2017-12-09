@@ -111,6 +111,43 @@ class Utilerias{
          } // fin del if len
       } // fin del if _mcadena
       return $mRet;
-   }// fin de la function   
+   }// fin de la function 
+   /************************************* 2017-12-06 *********************************/
+   public function email() {
+
+      $config = Array(
+         'protocol' => 'smtp',
+         'smtp_host' => 'smtp.gmail.com',
+         'smtp_user' => 'sisep.sagarpa', //Su Correo de Gmail Aqui
+         'smtp_pass' => 'sagarpa2018', // Su Password de Gmail aqui
+         'smtp_port' => '465', //587
+         'smtp_crypto' => 'ssl', //tls
+         'mailtype' => 'html',
+         'wordwrap' => TRUE,
+         'charset' => 'utf-8'
+      );
+      
+      $CI = & get_instance();
+      //$CI->load->helper('url');
+      //$CI->load->library('session');
+      $CI->config->item('base_url');
+
+      $CI->load->library('email',$config);
+
+      $subject = 'Bienvenido a mi app';
+
+      $msg = 'Mensaje de prueba';
+
+      $CI->email
+         ->from('sisep.sagarpa@gmail.com')
+         ->to('sistemas@laria.mx')
+         ->subject($subject)
+         ->message($msg)
+         ->send();
+
+      echo $CI->email->print_debugger();
+
+   } 
+   // **********************************************************************//
 }
 

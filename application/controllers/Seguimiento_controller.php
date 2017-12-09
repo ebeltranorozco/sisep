@@ -168,9 +168,9 @@ class Seguimiento_controller extends CI_Controller {
 					$RespData['SQL_ACCION'] = $this->db->last_query();
 					$RespData['QUERY_SEGUIMIENTO'] = $qryTmp;
 					$accion = 'ALTA';
-					if ($this->db->affected_rows()>0){ $accion = 'EDICION'; $id_seguimiento=$qryTmp->id_seguimiento;}
+					if (!is_null($qryTmp)){ $accion = 'EDICION'; $id_seguimiento=$qryTmp->id_seguimiento;}
 
-					if ($accion = 'EDICION') {						
+					if ($accion == 'EDICION') {						
 						//$this->db->where( 'id_seguimiento', $id_seguimiento);
 						$cSql = $this->db->set($data)->get_compiled_update('seguimientos');
 					}else {
@@ -190,6 +190,53 @@ class Seguimiento_controller extends CI_Controller {
 			    } else {        
 			       	$this->db->trans_commit();
 			       	$RespData['STATUS'] = 'OK';
+			       	// 2017-12-06 --> enviando el correo a los usuarios
+			       	$this->load->library('utilerias');
+			       	//$nImporte = $this->utilerias->conv_cadena_float($_POST['importe']);
+			       	//$RespData['ERROR_CORREO'] = $this->utilerias->email();
+			       	$config = Array(
+				        'protocol' => 'smtp',
+				        'smtp_host' => 'smtp.gmail.com',
+				        'smtp_user' => 'sisep.sagarpa', //Su Correo de Gmail Aqui
+				        'smtp_pass' => 'sagarpa2018', // Su Password de Gmail aqui
+				        'smtp_port' => '465', //587
+				        'smtp_crypto' => 'ssl', //tls
+				        'mailtype' => 'html',
+				        'wordwrap' => TRUE,
+				        'charset' => 'utf-8'
+				    );
+				    $config = array(
+						'protocol' 		=> 'smtp',
+					 	'smtp_host' 	=> 'smtp.googlemail.com',
+					 	'smtp_user' 	=> 'ebeltran@laria.mx', //Su Correo de Gmail Aqui
+					 	'smtp_pass' 	=> 'inf61010', // Su Password de Gmail aqui
+					 	'smtp_port' 	=> '465', //587
+					 	'smtp_crypto' 	=> 'ssl', //tls
+					 	'mailtype' 		=> 'html',
+					 	'wordwrap' 		=> TRUE,
+					 	'charset' 		=> 'utf-8'
+					 );
+
+				    $this->load->library('email',$config);				    
+				 	$this->email->set_newline("\r\n");
+				 	$this->email->from('muestras@laria.mx');
+				 	$this->email->subject('Nueva Muestra de Analisis');
+				 	$this->email->to('ebeltranorozco77@gmail.com');
+				 	$this->email->message('prueba de envio de correo');
+				 	$this->email->send();
+
+				    
+				    /*$subject = 'Bienvenido a mi app';
+
+				    $msg = 'Mensaje de prueba';
+
+				    $this->email
+				        ->from('ebeltran@laria.mx')
+				        ->to('sistemas@laria.mx')
+				        ->subject($subject)
+				        ->message($msg)
+				        ->send();
+				        */
 			    }
 				
 			}else {
@@ -202,5 +249,77 @@ class Seguimiento_controller extends CI_Controller {
  		echo json_encode($RespData); 
  	}
  	/***********************************************************************/
- 	
+ 	public function enviar_correo(){
+
+ 	}
+ 	/***********************************************************************/
+ 	public function registro_cartas_autorizacion(){ // segunda opcion de menu
+ 		$data = new stdClass();
+		$data->menu_activo = 'tercero';		
+		$data->accion = 'ALTA';
+		$data->panel_title = 'Registro de Cartas de Autorizacion';
+		$data->page_title = 'SISEP';
+		$id_ddr = 133; // temporal		
+		
+		
+
+		$this->load->library('table'); 		
+
+ 		$template = array (
+            'table_open'          => '<table id="idTablaTmpDetalleCartasAperturaDDR" border="0" class="table table-condensed table-bordered" cellpadding="4" cellspacing="0" >'
+      	);		
+ 		$this->table->set_template($template);
+
+ 		$this->table->set_heading('ID','Nombre','SURI','ID Concepto','Concepto','DDR','HAS','Apoyo','Aportacion','Acciones');
+		
+ 		$cCpo = 'id_padron_beneficiario,nombre_beneficiario_seguimiento,folio_suri_seguimiento,seguimientos.id_concepto,nombre_concepto,id_ddr,has_seguimiento,aportacion_federal_seguimiento,aportacion_productor_seguimiento';
+		$cCpo .= ',';			
+		$cBtn = '"<button type=button name=btnSelecionaCartaApertura  class="'.'"btn btn-info btn-xs"'.'"   onclick="'.'"SeleccionaRowDetalladoCartasApertura(this,0)"'.'" >Seleccionar"';
+		$cBtn .= '"</button>"';
+		$cCpo .= $cBtn;
+		
+		$this->db->select( $cCpo);
+ 		$this->db->from('seguimientos');
+ 		$this->db->join('conceptos_inversion','seguimientos.id_concepto = conceptos_inversion.id_concepto','LEFT');			
+ 		$cSql = $this->db->get_compiled_select();
+		$qryCartas = $this->db->query($cSql)->result_array();	
+		$data->cartas_aceptacionTmp=$qryCartas;
+		$data->sql = $cSql;
+
+		$template2 = array (
+            'table_open'          => '<table id="idTablaDetalleCartasAperturaDDR" border="0" class="table table-condensed table-bordered" cellpadding="4" cellspacing="0" >'
+      	);		
+ 		$this->table->set_template($template2);
+ 		$this->table->set_heading('ID','Nombre','SURI','ID Concepto','Concepto','DDR','HAS','Apoyo','Aportacion','Acciones');		
+		$data->cartas_aceptacion = $qryCartas;
+
+		$data->DDRCombo = listData('ddrs_federales','nombre_ddr', 'id_ddr'); 				
+
+	 	$this->load->view('plantillas/encabezado',$data);
+		$this->load->view('plantillas/menu',$data);		
+		$this->load->view('seguimiento/v_registro_cartas_aceptacion',$data);
+		$this->load->view('plantillas/footer',$data);	
+ 	}
+ 	/*************************************************************************/
+ 	public function obtener_cartas_apertura(){ // is ajax, retorna las cartas de un ddr que no han sido seleccionadas
+ 		if (!$this->input->is_ajax_request()) {
+ 			$RespData['STATUS'] = 'ERROR';
+ 			$RespData['MSG_ERROR'] = 'No direct script access allowed'; 		 
+		}else {
+			//$id_ddr = $_POST['id_ddr'];
+			$id_ddr = 136;
+			$qryTmp = $this->db->query('select * from seguimientos where id_ddr ='.$id_ddr)->result(); // despues validare con los que estan vacios
+			$RespData['SQL'] = $this->db->last_query();
+			if ($this->db->affected_rows()>0){
+				$RespData['STATUS'] = 'OK';
+				$RespData['CONSULTA'] = $qryTmp;
+			}else{
+				$RespData['STATUS'] = 'ERROR';
+ 				$RespData['MSG_ERROR'] = 'No hay registros'; 		 
+			}
+		}
+		header('Content-type: application/json; charset=utf-8'); 		
+ 		echo json_encode($RespData); 
+ 	} 
+ 	/*******************************************************************************/
  } // fin del controller
