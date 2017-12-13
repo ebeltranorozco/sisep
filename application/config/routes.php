@@ -96,10 +96,15 @@ $route['listado_autorizaciones'] = 'seguimiento_controller/listado_autorizacione
 $route['registro_cartas_autorizacion'] = 'seguimiento_controller/registro_cartas_autorizacion'; //segundo submenu
 $route['obtener_cartas_apertura'] = 'seguimiento_controller/obtener_cartas_apertura'; // 2017-12-08
 
+
 $route['apertura'] = 'seguimiento_controller/apertura';
 $route['buscar_beneficiarios'] = 'seguimiento_controller/buscar_beneficiarios'; // es ajax para buscar beneficiario
 
 $route['graba_oficio_apertura'] = 'seguimiento_controller/graba_oficio_apertura'; // graba el oficio de apertura
+$route['grabar_oficio_remesa'] = 'seguimiento_controller/grabar_oficio_remesa'; //graba el oficio remesa 2017-12-11
 
 // enviar correo
 $route['enviar_correo'] = 'seguimiento_controller/enviar_correo';
+
+// impresiones en pdf
+$route['generar_oficio_remesa'] = 'impresiones_controller/generar_oficio_remesa'; //2017-12-11

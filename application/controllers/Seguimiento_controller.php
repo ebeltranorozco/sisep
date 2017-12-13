@@ -306,9 +306,18 @@ class Seguimiento_controller extends CI_Controller {
  			$RespData['STATUS'] = 'ERROR';
  			$RespData['MSG_ERROR'] = 'No direct script access allowed'; 		 
 		}else {
-			//$id_ddr = $_POST['id_ddr'];
-			$id_ddr = 136;
-			$qryTmp = $this->db->query('select * from seguimientos where id_ddr ='.$id_ddr)->result(); // despues validare con los que estan vacios
+			$id_ddr = 0;
+			if (isset($_POST['id_ddr'])){ $id_ddr = $_POST['id_ddr']; }
+			$this->db->select('*');
+			$this->db->from('seguimientos');
+			$this->db->join('conceptos_inversion','seguimientos.id_concepto = conceptos_inversion.id_concepto','left');			
+			$this->db->where( 'id_ddr',$id_ddr);
+			//$this->db->where ('no_oficio_remesa') // isnull 
+			//where('archived IS NOT NULL', null, false)
+			//$this->db->where(array('archived' => NULL));
+			//produces
+			//WHERE `archived` IS NULL 
+			$qryTmp = $this->db->get()->result(); // despues validare con los que estan vacios
 			$RespData['SQL'] = $this->db->last_query();
 			if ($this->db->affected_rows()>0){
 				$RespData['STATUS'] = 'OK';
@@ -321,5 +330,65 @@ class Seguimiento_controller extends CI_Controller {
 		header('Content-type: application/json; charset=utf-8'); 		
  		echo json_encode($RespData); 
  	} 
+ 	/*******************************************************************************/
+ 	public function grabar_oficio_remesa(){ // is ajax, actualiza los campos no_oficio_remesa_seguimiento y fechas en tabla seguimientos
+ 		$RespData = array();
+ 		if (!$this->input->is_ajax_request()) {
+ 			$RespData['STATUS'] = 'ERROR';
+ 			$RespData['MSG_ERROR'] = 'No direct script access allowed'; 		 
+		}else {
+			//var data = { 'no_oficio_apertura':no_oficio_apertura,'fecha_oficio_apertura': fecha_oficio_apertura,'fecha_acuse_oficio_apertura':fecha_acuse_oficio_apertura};
+
+			$enc = isset($_POST['enc']) ? $_POST['enc'] : false; //condicion si existe que tome la variable si no lo 
+			$det = isset($_POST['det']) ? $_POST['det'] : false;	
+
+			if ($enc && $det)	{
+
+				$no_oficio_remesa_seguimiento 		= $enc['no_oficio_apertura'];
+				$fecha_oficio_remesa_seguimiento 	= $enc['fecha_oficio_apertura'];
+				$fecha_acuse_remesa_seguimiento 	= $enc['fecha_acuse_oficio_apertura'];
+
+				$detallado = $det[0];
+				for ($nPos=0;$nPos<count($detallado);$nPos+=2){
+					
+					$id_padron_beneficiario 	= $detallado[$nPos];
+					
+					$datos_detallado = array (
+						'id_padron_beneficiario'			=> $id_padron_beneficiario,
+						'no_oficio_remesa_seguimiento'		=> $no_oficio_remesa_seguimiento,
+						'fecha_oficio_remesa_seguimiento'	=> $fecha_oficio_remesa_seguimiento,
+						'fecha_acuse_remesa_seguimiento'	=> $fecha_acuse_remesa_seguimiento
+					); 
+					$data[] = $datos_detallado;
+					
+				} // fin del for
+
+				$qryTmp = $this->db->update_batch('seguimientos',$data,'id_padron_beneficiario');
+				$cSql = $this->db->last_query();
+				$RespData['SQL'] = ' tabla seguimientos:['.$cSql."] ";
+				$RespData['RESULTADO_DET'] = $this->db->affected_rows();
+				
+				
+				if ($this->db->affected_rows()>0){
+					$RespData['STATUS'] = 'OK';
+					$RespData['CONSULTA'] = $qryTmp;
+				}else{
+					$RespData['STATUS'] = 'ERROR';
+	 				$RespData['MSG_ERROR'] = 'No hay registros'; 		 
+				}
+			}else{
+				$RespData['STATUS'] = 'ERROR';
+	 			$RespData['MSG_ERROR'] = 'información llego incompleta'; 		 
+			}
+		}
+		header('Content-type: application/json; charset=utf-8'); 		
+ 		echo json_encode($RespData); 
+ 	} 
+ 	/*******************************************************************************/
+ 	
+ 	/*******************************************************************************/
+
+ 	/*******************************************************************************/
+
  	/*******************************************************************************/
  } // fin del controller

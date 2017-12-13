@@ -85,16 +85,20 @@ $fecha_acuse['value'] = '2017-12-10';
 	  	</div><!-- fin del panel body -->
 	  	<div class="panel-footer">
 			<div class="row">
-		  		<div class="col-md-3" id='idDivGrabarOficioApertura'>
-		  			<input type="button" class="btn btn-primary" name="btnGrabarOficio" id="btnGrabarOficio" value="Grabar Oficio" />	  			
+		  		<div class="col-md-3" id='idDivGrabarOficioRemesa'>
+		  			<input type="button" class="btn btn-primary" name="btnGrabarOficioRemesa" id="btnGrabarOficioRemesa" value="Grabar Oficio" />	  			
 		  		</div>
-				<div class="col-md-3" id='idDivEnviarCorreoOficioApertura'>
+				<div class="col-md-3" id='idDivEnviarCorreoOficioRemesa'>
 		  			<input type="button" class="btn btn-info" name="btnEditarOficioAceptacion" id="btnEnviarCorreoOficioApertura" value="Editar Plantilla del Oficio" />	  			
 		  		</div>
-		  		<div class="col-md-3" id='idDivGrabarOficioApertura'>
-		  			<input type="button" class="btn btn-info" name="btnGeneraOficio" id="btnGeneraOficio" value="Generar Oficio" />	  			
-		  		</div>
-				
+		  		<div class="col-md-3" id='idDivGeneraOficioRemesa'>					
+		  			<input type="button"  class="btn btn-info" name="btnGeneraOficioRemesa" id="btnGeneraOficioRemesa" value="Generar Oficio" />
+		  				<!--
+
+		  					$accion = $accion . '<a target= "new" href= "'.base_url('impresiones_controller/idr_aflatoxinas/').$registro->ID_DETALLE_MUESTRA.'">';
+							$accion = $accion . '<button type="button" data-toggle="tooltip"  title="IDR Aflatoxinas" class="btn btn-default btn-xs" aria-label="Left Align"><span class="glyphicon glyphicon-print" aria-hidden="true"></span></button></a>';
+						-->
+		  		</div>				
 		  	</div>
 	  	</div>
 	</div><!-- fin del panel primary-->

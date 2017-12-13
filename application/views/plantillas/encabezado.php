@@ -19,6 +19,7 @@ ini_set("session.gc_maxlifetime","7200");//2017-07-11
       <!-- DATATABLES CDN -->      
       <link rel="stylesheet" type="text/css" href="assets/DataTables/datatables.min.css"/>
       <script type="text/javascript" src="assets/DataTables/datatables.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
       <style type="text/css">
         .centrado-porcentual2{    
           position: fixed;

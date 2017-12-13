@@ -35,6 +35,69 @@ function randomString( nLong  ) {
   return text;
 }
 /************************************/
+function SeleccionaCartaAutorizacion(thisbutton){   
+    
+        var i = thisbutton.parentNode.parentNode.rowIndex;     
+        //document.getElementById("idTablaTmpBeneficiarios").deleteRow(i);     
+        //var nombre = $(i).parents("tr").find("td").eq(0).html();    
+
+        var tabla = document.getElementById('idTablaDetalleTmpCartasApertura'); 
+        /*
+        cHtml = cHtml + '<td>'+obj[i].id_seguimiento+'</td>';
+                            cHtml = cHtml + '<td>'+obj[i].id_padron_beneficiario+'</td>';
+                            cHtml = cHtml + '<td>'+obj[i].nombre_beneficiario_seguimiento+'</td>';
+                            cHtml = cHtml + '<td>'+obj[i].folio_suri_seguimiento+'</td>';
+                            cHtml = cHtml + '<td>'+obj[i].id_concepto+'</td>';
+                            cHtml = cHtml + '<td>'+obj[i].nombre_concepto+'</td>';
+                            cHtml = cHtml + '<td>'+obj[i].has_seguimiento+'</td>';
+                            cHtml = cHtml + '<td>'+obj[i].aportacion_federal_seguimiento+'</td>';
+                            cHtml = cHtml + '<td>'+obj[i].aportacion_productor_seguimiento+'</td>';
+        */
+        var id_seguimiento                      = tabla.rows[i].cells[0].innerHTML;
+        var id_padron_beneficiario              = tabla.rows[i].cells[1].innerHTML;
+        var nombre_beneficiario_seguimiento     = tabla.rows[i].cells[2].innerHTML;
+        var folio_suri_seguimiento              = tabla.rows[i].cells[3].innerHTML;
+        var id_concepto                         = tabla.rows[i].cells[4].innerHTML;
+        var nombre_concepto                     = tabla.rows[i].cells[5].innerHTML;
+        var has_seguimiento                     = tabla.rows[i].cells[6].innerHTML;
+        var aportacion_federal_seguimiento      = tabla.rows[i].cells[7].innerHTML;
+        var aportacion_productor_seguimiento    = tabla.rows[i].cells[8].innerHTML;
+
+        /*
+        var folio_interno           = tabla.rows[i].cells[1].innerHTML;    
+        var fecha_folio_suri        = tabla.rows[i].cells[3].innerHTML;
+        var sistema_producto        = tabla.rows[i].cells[7].innerHTML;
+        var ddr                     = tabla.rows[i].cells[11].innerHTML;
+        var nombre_proyecto         = tabla.rows[i].cells[10].innerHTML;
+        */
+        
+        if (confirm('Seleccionar al cliente ['+nombre_beneficiario_seguimiento+']' )){ 
+            // asignamos los valores al la otra tabla
+            document.getElementById("idTablaDetalleTmpCartasApertura").deleteRow(i);        
+
+            cHtml = '<tr>';
+            cHtml = cHtml + '<td>'+id_seguimiento+'</td>';
+            cHtml = cHtml + '<td>'+id_padron_beneficiario+'</td>';
+            cHtml = cHtml + '<td>'+nombre_beneficiario_seguimiento+'</td>';
+            cHtml = cHtml + '<td>'+folio_suri_seguimiento+'</td>';
+            cHtml = cHtml + '<td>'+id_concepto+'</td>';
+            cHtml = cHtml + '<td>'+nombre_concepto+'</td>';
+            cHtml = cHtml + '<td>'+has_seguimiento+'</td>';
+            cHtml = cHtml + '<td>'+aportacion_federal_seguimiento+'</td>';
+            cHtml = cHtml + '<td>'+aportacion_productor_seguimiento+'</td>';
+            cHtml = cHtml + '<td>';
+            //cHtml += '<button type="button" class="btn btn-info btn-xs" onclick="SeleccionaCartaAutorizacion(this)" ><span class="glyphicon glyphicon-ok"></span></button>';
+            cHtml += '</td>';
+            cHtml = cHtml + '</tr>';
+                                        
+            $("#idTablaDetalleCartasApertura tbody").append(cHtml);
+
+            //$("#btnAgregaBeneficiarios").show();
+            //$("#idDivBuscarBeneficiarioApertura").html( '');  // quito los nombres que se buscaron..!
+        } // fin del confirmar    
+    
+    }// fin de funcion SeleccionaCartaAutorizacion
+    /****************************************************************************************/
 function btnSeleccionaBeneficiario(thisButton){   
     
     var i = thisButton.parentNode.parentNode.rowIndex;     
@@ -512,27 +575,168 @@ $(function () {
         //alert( id_ddr);
         //rellenar la tabla tmp con el nuevo id
         $.ajax({
-            data: id_ddr,
+            data: {'id_ddr':id_ddr},
             dataType: 'json',
-            method: 'POST',
+            type: 'POST',
             url: base_url+'/obtener_cartas_apertura',
             success: function (htmlResponse){
                 console.log(htmlResponse);
                    
                 if (htmlResponse['STATUS']=='OK'){
-                    alert('Resolviendo las cartas de apertura retornadas');
+                    //alert('Resolviendo las cartas de apertura retornadas');
+                    //var obj = jQuery.parseJSON(htmlResponse['CONSULTA'][0]); // esto funciono
+                    var obj = htmlResponse['CONSULTA'];
+                    console.log(obj); 
+
+                    $.each(obj,function(i,value){
+                        cHtml = '<tr>';
+                        cHtml = cHtml + '<td>'+obj[i].id_seguimiento+'</td>';
+                        cHtml = cHtml + '<td>'+obj[i].id_padron_beneficiario+'</td>';
+                        cHtml = cHtml + '<td>'+obj[i].nombre_beneficiario_seguimiento+'</td>';
+                        cHtml = cHtml + '<td>'+obj[i].folio_suri_seguimiento+'</td>';
+                        cHtml = cHtml + '<td>'+obj[i].id_concepto+'</td>';
+                        cHtml = cHtml + '<td>'+obj[i].nombre_concepto+'</td>';
+                        cHtml = cHtml + '<td>'+obj[i].has_seguimiento+'</td>';
+                        cHtml = cHtml + '<td>'+obj[i].aportacion_federal_seguimiento+'</td>';
+                        cHtml = cHtml + '<td>'+obj[i].aportacion_productor_seguimiento+'</td>';
+                        cHtml = cHtml + '<td>';
+                        cHtml += '<button type="button" class="btn btn-info btn-xs" onclick="SeleccionaCartaAutorizacion(this)" ><span class="glyphicon glyphicon-ok"></span></button>';
+                        cHtml += '</td>';
+                        cHtml = cHtml + '</tr>';
+                                                    
+                        $("#idTablaDetalleTmpCartasApertura tbody").append(cHtml);
+                        console.log(value);
+                    });
                 }                    
             }// fin de la funcion sucess del ajax
         }); // fin del ajax
     });
     /***************************************************************************************/
+    
+    
     $("#cboDDR").click(function(){
         //alert('entro2');
         //$('#idTablaDetalleTmpCartasApertura tbody').empty();
         //$('#idTablaDetalleCartasApertura tbody').empty();
     });
-   
-    
+    /************************************************************************************/
+    $("#btnGrabarOficioRemesa").click(function(){
+        var no_oficio_apertura              = $("#no_oficio_apertura").val();
+        var fecha_oficio_apertura           = $("#fecha_oficio_apertura").val();
+        var fecha_acuse_oficio_apertura     = $("#fecha_acuse_oficio_apertura").val();
+        
+        if (!no_oficio_apertura || !fecha_oficio_apertura || $("#idTablaDetalleCartasApertura >tbody >tr").length==0){
+            alert('información incompleta; debe llenar todos los campos requeridos ');
+        }else {
+            // inicio del ajax
+            //var id_ddr = $(this).val();
+            //alert( id_ddr);
+            //rellenar la tabla tmp con el nuevo id
+
+            if (confirm('Grabar el oficio')){
+
+
+                var data = { enc:{'no_oficio_apertura':no_oficio_apertura,'fecha_oficio_apertura': fecha_oficio_apertura,'fecha_acuse_oficio_apertura':fecha_acuse_oficio_apertura},det:[]}
+                    
+                var detallado = new Array();
+
+                $('#idTablaDetalleCartasApertura tr').each(function () {
+                    var id_padron_beneficiario = $(this).find("td").eq(1).html();                
+                    if (id_padron_beneficiario) {
+                        detallado.push( id_padron_beneficiario);  
+                    }
+                });
+                console.log( detallado);
+                data.det.push(detallado);
+
+                $.ajax({
+                    data: data,
+                    dataType: 'json',
+                    type: 'POST',
+                    url: base_url+'/grabar_oficio_remesa',
+                    success: function (htmlResponse){
+                        console.log(htmlResponse);
+                           
+                        if (htmlResponse['STATUS']=='OK'){
+                            //alert('Resolviendo las cartas de apertura retornadas');
+                            //var obj = jQuery.parseJSON(htmlResponse['CONSULTA'][0]); // esto funciono
+                            //var obj = htmlResponse['CONSULTA'];
+                            //console.log(obj);
+
+                            $("#idDivGrabarOficioRemesa").hide();
+                            $("#idDivGeneraOficioRemesa").show();                        
+                        }                    
+                    }// fin de la funcion sucess del ajax
+                }); // fin del ajax
+            } // fin del confirm
+        }// fin del of no_oficio fecha y lenght del tr de la tabla
+    });    
+    /*************************************************************************************/
+    $("#btnGeneraOficioRemesa").click(function(){ // se cancelo y se manejo mediante impresiones_controller
+        //variables temporales
+        var id_programa     = 36;
+        var id_componente   = 3658;
+        var id_ddr          = 136;
+
+        if (confirm('Generar el Oficio')){
+            
+            var data = { enc:{'id_programa':id_programa,'id_componente': id_componente,'id_ddr':id_ddr},det:[]}
+            data.det.push(208); // padrones de beneficiario simulado
+            data.det.push(2);
+
+            
+            $.ajax({
+                data: data,
+                dataType: 'json',
+                type: 'POST',
+                url: base_url+'/generar_oficio_remesa',
+                success: function (htmlResponse){
+                    console.log(htmlResponse);
+                       
+                    if (htmlResponse['STATUS']=='OK'){
+                        //abrirEnPestana(htmlResponse['PLANTILLA']);
+                        $("#idDivGrabarOficioRemesa").hide();
+                        //$("#idDivGeneraOficioRemesa").hide();
+                        //cargar el oficio en una pestaña nueva
+                        //alert(htmlResponse['PLANTILLA']);
+
+                        //var pdf = new jsPDF();
+                        //pdf.text(30, 30, 'Hello world!');
+                        //pdf.save('hello_world.pdf');
+
+                        var pdf = new jsPDF('p', 'pt', 'a4');
+                        var specialElementHandlers = {
+                            '#editor': function (element, renderer) {
+                                return true;
+                            }
+                        };
+                        //var options = { pagesplit: true };
+
+                        //pdf.addHTML(htmlResponse['PLANTILLA'], options, function() { pdf.save("test.pdf"); });
+
+                        //alert($("#idDivPrueba").html());
+                        
+                        $('body').append('<div id="idDivWhile"></div>');
+                        $("#idDivWhile").html( htmlResponse['PLANTILLA']);
+                        pdf.fromHTML($('#idDivWhile').html(), 15, 15, {
+                            'width': 170,
+                            'elementHandlers': specialElementHandlers
+                        });
+                        pdf.save('sample-file.pdf');
+
+
+                    }                    
+                }// fin de la funcion sucess del ajax
+            }); // fin del ajax
+
+        } // fin de generar el oficio
+    });
+    /*************************************************************************************/
+
+    /*************************************************************************************/
+
+    /*************************************************************************************/
+
     /*************************************************************************************/
     
 }); // FIN DEL JQUERY
