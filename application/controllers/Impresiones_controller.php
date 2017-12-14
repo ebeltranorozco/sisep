@@ -7,7 +7,10 @@ class Impresiones_controller extends CI_Controller {
         if (!isset($_SESSION['logeado'])){      
       redirect();     
     }
-  }// fin del constructor    
+  }// fin del constructor   
+  public function index(){
+    echo 'index';
+  } 
   /***************************************************************/
   public function idr_microbiologia( $idDetalleMuestra = null) {
   	// lo primero es obtener los datos necesarios ..!
@@ -72,6 +75,7 @@ class Impresiones_controller extends CI_Controller {
         if ($this->db->affected_rows()>0){
           $RespData['STATUS'] = 'OK';
           $RespData['PLANTILLA'] =  $qryTmp->plantilla_enc_plantilla;
+          $RespData['NOMBRE_PLANTILLA'] = $qryTmp->nombre_enc_plantilla;
         }else{        
           $RespData['STATUS'] = 'ERROR';
           $RespData['MSG_ERROR'] = 'consulta no arrojo resultados';  
@@ -119,6 +123,15 @@ class Impresiones_controller extends CI_Controller {
     $RespData['MSG_ERROR'] = 'información llego incompleta';
     header('Content-type: application/json; charset=utf-8');    
     echo json_encode($RespData); 
+  }
+  /**************************************************************************************/
+  public function correo_prueba(){ // una funcion para probar la utileria de enviar correos.
+    //enviar_correo_general( $email_from, $email_to, $email_bcc, $email_bco,$email_titulo,$email_msg,$email_file = null){
+    //enviar_correo_general(                               $email_from,          $email_to, $email_bcc=null, $email_bco=null,$email_titulo='Correo',$email_msg='Mensaje',$email_file = null){
+     //$this->utilerias->enviar_correo_general( 'sisep.sagarpa@laria.mx','sistemas@laria.mx',                ,                ,   'Titulo del Correo','Mensaje del Correo');
+    $cRet = $this->utilerias->enviar_correo_general( 'sisep.sagarpa@laria.mx','sistemas@laria.mx');
+    var_dump($cRet);
+
   }
 
 } // fin del impresiones_controller

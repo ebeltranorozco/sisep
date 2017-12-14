@@ -93,6 +93,10 @@ $fecha_acuse['value'] = '2017-12-10';
 		  		</div>
 		  		<div class="col-md-3" id='idDivGeneraOficioRemesa'>					
 		  			<input type="button"  class="btn btn-info" name="btnGeneraOficioRemesa" id="btnGeneraOficioRemesa" value="Generar Oficio" />
+		  			<!--enviar_correo_general( $email_from, $email_to, $email_bcc, $email_bco,$email_titulo,$email_msg,$email_file = null){-->
+		  			<!--<input type="button" onclick="<?php //echo base_url('impresiones_controller/correo_prueba')?>" name="btnCorreoPrueba" id="btnCorreoPrueba" value="Enviar correo General de Prueba">-->
+		  			<button onclick="location.href='<?php echo base_url();?>impresiones_controller/correo_prueba'">Register</button>
+
 		  				<!--
 
 		  					$accion = $accion . '<a target= "new" href= "'.base_url('impresiones_controller/idr_aflatoxinas/').$registro->ID_DETALLE_MUESTRA.'">';

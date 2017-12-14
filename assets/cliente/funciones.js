@@ -722,7 +722,8 @@ $(function () {
                             'width': 170,
                             'elementHandlers': specialElementHandlers
                         });
-                        pdf.save('sample-file.pdf');
+                        var cNombreFile = htmlResponse['NOMBRE_PLANTILLA']+".PDF";
+                        pdf.save(cNombreFile);
 
 
                     }                    
