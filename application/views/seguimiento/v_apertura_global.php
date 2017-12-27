@@ -28,14 +28,14 @@
             <tbody>
               <?php foreach($oficios_apertura as $oficio){ ?>
                 <tr>
-                  <td><?php echo $oficio->id_seguimiento_enc;?></td>
-                  <td><?php echo $oficio->no_oficio_seguimiento_enc;?></td>
-                  <td><?php echo $oficio->fecha_oficio_seguimiento_enc;?></td>
-                  <td><?php echo $oficio->fecha_acuse_seguimiento_enc;?></td>
+                  <td><?php echo $oficio->id_seguimiento;?></td>
+                  <td><?php echo $oficio->no_oficio_apertura_seguimiento;?></td>
+                  <td><?php echo $oficio->fecha_oficio_apertura_seguimiento;?></td>
+                  <td><?php echo $oficio->fecha_acuse_apertura_seguimiento;?></td>
                   
                   <td>                  
                     <!--<button class="btn btn-warning btn-xs" onclick="edit_oficio(<?php echo $oficio->id_seguimiento_enc;?>)"><i class="glyphicon glyphicon-pencil"></i></button>-->
-                    <button class="btn btn-warning btn-xs" onclick="window.location.href='<?php echo base_url('apertura?id=').$oficio->id_seguimiento_enc;?>'"><i class="glyphicon glyphicon-pencil"></i></button>
+                    <button class="btn btn-warning btn-xs" onclick="window.location.href='<?php echo base_url('apertura?id=').$oficio->id_seguimiento;?>'"><i class="glyphicon glyphicon-pencil"></i></button>
                     
                     <button class="btn btn-danger btn-xs" onclick="alert('pendiente de desarrollo');"><i class="glyphicon glyphicon-remove"></i></button>                  
                   </td>

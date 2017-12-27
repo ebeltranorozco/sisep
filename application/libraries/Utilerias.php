@@ -149,109 +149,41 @@ class Utilerias{
 
    } 
    /**************************************************************************/
-   public function enviar_correo_general( $email_from, $email_to, $email_bcc=NULL, $email_bco=NULL,$email_titulo='Correo',$email_msg='Mensaje',$email_file = NULL){
-   $RespData =  array();
+   public function enviar_correo_general( $email_to, $email_subject='Correo SISEP',$email_msg='Sin cuerpo en el Mensaje',$email_cc=NULL, $email_cco=NULL,$email_file = NULL){   
+      $cRet = 'OK';
+      if ( $email_to){
 
+         $config2 = array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'smtp.gmail.com',
+            'smtp_user' => 'sisep.sagarpa@gmail.com', //Su Correo de Gmail Aqui
+            'smtp_pass' => 'sagarpa2018', // Su Password de Gmail aqui
+            'smtp_port' => '587', //587
+            'smtp_crypto' => 'tls', //tls
+            'mailtype' => 'html',
+            'wordwrap' => TRUE,
+            'charset' => 'utf-8'
+         );
+        
+         $CI = & get_instance();      
+         $CI->load->library('email',$config2);
+         $CI->email->set_newline("\r\n");
+         $CI->email->from('sisep.sagarpa@gmail.com','Web Master SISEP');
+         $CI->email->to($email_to);
+         if ($email_cc) { $CI->email->cc( $email_cc); }  
+         if ($email_cco) { $CI->email->bcc( $email_cco); }  
 
-   /*
-$ci = get_instance();
-$ci->load->library('email');
-$config['protocol'] = "smtp";
-$config['smtp_host'] = "ssl://smtp.gmail.com";
-$config['smtp_port'] = "465";
-$config['smtp_user'] = "blablabla@gmail.com"; 
-$config['smtp_pass'] = "yourpassword";
-$config['charset'] = "utf-8";
-$config['mailtype'] = "html";
-$config['newline'] = "\r\n";
-
-$ci->email->initialize($config);
-
-$ci->email->from('blablabla@gmail.com', 'Blabla');
-$list = array('xxx@gmail.com');
-$ci->email->to($list);
-$this->email->reply_to('my-email@gmail.com', 'Explendid Videos');
-$ci->email->subject('This is an email test');
-$ci->email->message('It is working. Great!');
-$ci->email->send();
-   */
-   $config2 = array(
-      'protocol' => 'smtp',
-      'smtp_host' => 'smtp.gmail.com',
-      'smtp_user' => 'sisep.sagarpa@gmail.com', //Su Correo de Gmail Aqui
-      'smtp_pass' => 'sagarpa2018', // Su Password de Gmail aqui
-      'smtp_port' => '465', //587
-      'smtp_crypto' => 'ssl', //tls
-      'mailtype' => 'html',
-      'wordwrap' => TRUE,
-      'charset' => 'utf-8'
-   );
-   $config = array(
-             'protocol' => 'smtp',
-             'smtp_timeout' => '60',
-             'smtp_host' => 'smtp.googlemail.com',
-             'smtp_user' => 'ebeltran@laria.mx', //Su Correo de Gmail Aqui
-             'smtp_pass' => 'inf61010', // Su Password de Gmail aqui
-             'smtp_port' => '465', //587
-             'smtp_crypto' => 'ssl', //tls
-             'mailtype' => 'html',
-             'wordwrap' => TRUE,
-             'charset' => 'utf-8',
-             'newline' => "\r\n",
-             'crlf' => "\r\n"
-          );
-
-
-   
-
-   if ( $email_from && $email_to){
-
-
-     //phpinfo();
-
-
-      $CI = & get_instance();
-      //$CI->load->library('email',$config);
-      $CI->load->library('email');
-      $CI->email->initialize($config);
-      
-      $CI->email
-         ->from('sisep.sagarpa@gmail.com')
-         ->to('sistemas@laria.mx')
-         ->subject('prueba de un correo')
-         ->message('prueba de un mensaje')
-         ->send();
-
-      echo $CI->email->print_debugger();
-/*      
-      //$CI->email->initialize($config);
-      $CI->email->set_newline("\r\n");
-      $CI->email->from($email_from);
-      $CI->email->to($email_to);
-      if ($email_bcc) { $CI->email->bcc( $email_bcc); }
-      if ($email_bco) { $CI->email->subject($email_titulo); }
-      $CI->email->message($email_msg);
-      if ($email_file){ $CI->email->attach( $email_file); }
-
-      if (!$CI->email->send() ){         
-            $RespData['STATUS'] = 'ERROR';
-            $RespData['MSG_ERROR'] = 'Ocurrio un Error al Enviar el Correo \n Volver a Intentar mas Tarde \n Sentimos los inconvenientes';         
-            //log_message( 'debug',$CI->email->print_debugger());
-            $cRet = $CI->email->print_debugger(array('headers')); //headers, subject, body.
-            $RespData['ERROR_CORREO'] = $cRet;
-            
-         }else {
-            $RespData['STATUS'] = 'OK';
-         }
-*/         
+         $CI->email->message($email_msg); // siempre trae un valor
+         $CI->email->subject($email_subject); // siempre trae un valor
+         
+         if (!$CI->email->send() ){            
+               $cRet = 'Ocurrio un Error al Enviar el Correo \n Volver a Intentar mas Tarde \n Sentimos los inconvenientes \n '.$CI->email->print_debugger();         
+         }                       
+         //$cRet = $CI->email->print_debugger(array('headers')); //headers, subject, body.
       }else {
-         $RespData['STATUS'] = 'ERROR';
-         $RespData['MSG_ERROR'] = 'Falta de Parametros';
+         $cRet =  'Falta de Parametros';
       }
-      
-
-      header('Content-type: application/json; charset=utf-8');
-      echo json_encode($RespData);
+   return $cRet;
    } // fin del enviar email_generar function
    /**************************************************************************/
 }

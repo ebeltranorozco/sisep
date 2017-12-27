@@ -42,7 +42,7 @@ $cCargoUser			= array( 'id'=>'cargo_usuario' ,'name'=>'cargo_usuario' ,'class'=>
 	    <!--Panel content-->
 	  </div>
 	  <div class="panel-footer">
-	    <input type="submit" name="btnLoginUsuario" value="Login" class="btn btn-primary" />
+	    <input type="submit" name="btnLoginUsuario" value="Login" class="btn btn-primary" />   
 	    
 	  </div>
 	</div>

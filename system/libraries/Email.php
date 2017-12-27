@@ -2047,12 +2047,18 @@ class CI_Email {
 		}
 
 		$ssl = ($this->smtp_crypto === 'ssl') ? 'ssl://' : '';
-
+		
 		$this->_smtp_connect = fsockopen($ssl.$this->smtp_host,
 							$this->smtp_port,
 							$errno,
 							$errstr,
 							$this->smtp_timeout);
+
+		// anexado 2017-12-26
+		stream_context_set_option($this->_smtp_connect, 'ssl', 'verify_host', FALSE);
+		stream_context_set_option($this->_smtp_connect, 'ssl', 'verify_peer_name', FALSE);
+		stream_context_set_option($this->_smtp_connect, 'ssl', 'verify_peer', FALSE);
+		// fin de lo anexado...
 
 		if ( ! is_resource($this->_smtp_connect))
 		{

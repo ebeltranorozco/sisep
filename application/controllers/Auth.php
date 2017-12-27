@@ -185,11 +185,7 @@ class Auth extends CI_Controller {
 	            	'id_cargo_federal'		=> $cargo,
 	            	'ddr_usuario'			=> $ddr_usuario,
 	            	'cadena_usuario'		=> $verificacion);
-	            //var_dump($datos);
-	            var_dump($_POST);
-	            echo '<br>'.$verificacion.'<br>';
-	            var_dump($_GET);
-
+	           
 	            if ($programa == 0 or $componente == 0 ) {
 	            	$this->session->set_flashdata('mensaje_error','Debe Especificar correctamente Programa y Componente donde se dara de alta al Usuario');
 	            	//redirect(base_url('index'));
@@ -198,6 +194,7 @@ class Auth extends CI_Controller {
 
 	            	$cSQL = $this->db->set($datos)->get_compiled_insert('usuarios');
 	            	$qryUser = $this->db->query( $cSQL);
+
 	            	if ($this->db->affected_rows()>0) {
 	            		$this->session->set_flashdata('mensaje_sucess','En breve recibira una confirmacion por correo para que valide su contraseña</br>no es necesario que se vuelva a registrar</br>no se olvide de revisar el correo SPAM');
 	            		// MANDAR CORREO
@@ -206,8 +203,8 @@ class Auth extends CI_Controller {
 							 'smtp_host' => 'smtp.gmail.com',
 							 'smtp_user' => 'sisep.sagarpa@gmail.com', //Su Correo de Gmail Aqui
 							 'smtp_pass' => 'sagarpa2018', // Su Password de Gmail aqui
-							 'smtp_port' => '465', //587
-							 'smtp_crypto' => 'ssl', //tls
+							 'smtp_port' => '587', //587
+							 'smtp_crypto' => 'tls', //tls
 							 'mailtype' => 'html',
 							 'wordwrap' => TRUE,
 							 'charset' => 'utf-8'
@@ -217,14 +214,15 @@ class Auth extends CI_Controller {
 						$this->email->from('sisep.sagarpa@gmail.com');
 						$this->email->subject('Confirmación y Verificación de Cuenta en SISEP');
 
-						 $cMsg = "<h2>Hola: ".$nombre_usuario."</h2>";
+						 $cMsg = "<h2>Bienvenido: ".$nombre_usuario."</h2>";
+						 $cMsg .= '<br/>';
+						 $cMsg = "<h4>Registro al;</h4>";
 						 $cMsg .= '<br/>';
 						 $cNamePrograma = $this->db->query("select * from programas_federales where id_programa =".$programa)->row();
-						 $cMsg .= "<p>Programa: ".$cNamePrograma->nombre_programa."</p>";
-						 $cMsg .= "<br/>";
+						 $cMsg .= "<p>Programa: ".$cNamePrograma->nombre_programa."</p>";						 
 						 $cNameComponente = $this->db->query("select * from componentes_federales where id_componente =".$componente)->row();
 						 $cMsg .= "<p>Componente: ".$cNameComponente->nombre_componente."</p>";
-						 $cMsg .= "<br/>";
+						 
 						 $cMsg .= "<p>Favor de confirmar en la liga de la parte de abajo; en caso de desconocer esta actividad ignorar este correo</p>";
 						 $cMsg .= "<br/>";						 
 						 $cMsg .= "<a href='". base_url('confirmacion?id='). $verificacion."'>Liga de Confirmación</a>";						 
@@ -357,4 +355,99 @@ class Auth extends CI_Controller {
 			die('Opcion no permitida');
 		}
 	}
+	/*******************************************************************************************/
+	public function enviar_correo_prueba(){
+
+
+		$this->load->library('email');
+
+		$this->email->initialize(array(
+		  'protocol' => 'smtp',
+		  'smtp_host' => 'smtp.gmail.com',
+		  'smtp_user' => 'sisep.sagarpa@gmail.com',
+		  'smtp_pass' => 'sagarpa2018',
+		  'smtp_crypto' => 'ssl',
+		  'smtp_port' => 465,
+		  'crlf' => "\r\n",
+		  'newline' => "\r\n"
+		));
+
+		$this->email->from('ebeltran@laria.mx', 'Your Name');
+		$this->email->to('sistemas@laria.mx');		
+		$this->email->subject('Email Test');
+		$this->email->message('Testing the email class.');
+		$this->email->send();
+
+		echo $this->email->print_debugger();
+
+
+		/*
+		
+
+		$config = array(
+			 'protocol' => 'smtp',
+			 'smtp_host' => 'smtp.gmail.com',
+			 'smtp_user' => 'sisep.sagarpa@gmail.com', //Su Correo de Gmail Aqui
+			 'smtp_pass' => 'sagarpa2018', // Su Password de Gmail aqui
+			 'smtp_port' => '465', //587
+			 'smtp_crypto' => 'ssl', //tls
+			 'mailtype' => 'html',
+			 'wordwrap' => TRUE,
+			 'charset' => 'utf-8'
+			 );
+
+
+		$config = array(
+					 'protocol' => 'smtp',
+					 'smtp_host' => 'smtp.googlemail.com',
+					 'smtp_user' => 'ebeltran@laria.mx', //Su Correo de Gmail Aqui
+					 'smtp_pass' => 'inf61010', // Su Password de Gmail aqui
+					 'smtp_port' => '465', //587
+					 'smtp_crypto' => 'ssl', //tls
+					 'mailtype' => 'html',
+					 'wordwrap' => TRUE,
+					 'charset' => 'utf-8'
+					 );
+
+		$this->load->library('email',$config);
+		//$this->email->initialize($config);
+		// $this->email->set_newline("\r\n");
+		$this->email->from('ebeltran@laria.mx');
+		$this->email->subject('Confirmación y Verificación de Cuenta en SISEP');
+		$programa = 36;
+		$componente = 3658;
+		$correo1 = 'ebeltranorozco@hotmail.com';
+		//$correo2 = 'ebeltranorozco77@gmail.com';
+
+		//if ($correo2)	{ $this->email->to($correo1,$correo2); }
+		//else { $this->email->to($correo1); }
+
+		 $this->email->to($correo1);
+
+		 $cMsg = "<h2>Hola: ".'Efrain Beltran TMP'."</h2>";
+		 $cMsg .= '<br/>';
+		 $cNamePrograma = $this->db->query("select * from programas_federales where id_programa =".$programa)->row();
+		 $cMsg .= "<p>Programa: ".$cNamePrograma->nombre_programa."</p>";
+		 $cMsg .= "<br/>";
+		 $cNameComponente = $this->db->query("select * from componentes_federales where id_componente =".$componente)->row();
+		 $cMsg .= "<p>Componente: ".$cNameComponente->nombre_componente."</p>";
+		 $cMsg .= "<br/>";
+		 $cMsg .= "<p>Favor de confirmar en la liga de la parte de abajo; en caso de desconocer esta actividad ignorar este correo</p>";
+		 $cMsg .= "<br/>";						 
+		 //$cMsg .= "<a href='". base_url('confirmacion?id='). $verificacion."'>Liga de Confirmación</a>";						 
+		 $cMsg .= '<br/><br/>';
+		 $cMsg .= "<h7>La información que se envía al destinatario mediante esta transmisión es propiedad exclusiva del Laboratorio Regional de Inocuidad Alimentaria. Si usted no es el destinatario de esta información o si la ha recibido por error, se le comunica que la copia, distribución, modificación, retransmisión, revelación o uso en cualquier forma, está estrictamente prohibida.</h7>";
+		 $cMsg = 'MENSAJE DE CORREO DE PRUEBA';
+		 $this->email->message($cMsg);
+		 
+		 
+		 $this->email->send(false);
+		// $this->email->cc('sistemas@laria.mx','ebeltranorozco77@gmail.com');			
+
+		*/			 
+		 	
+		 
+		 
+	}
+
 }

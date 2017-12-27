@@ -24,7 +24,8 @@ $nombre_proyecto 					=array('id'=>'nombre_proyecto','name'=>'nombre_proyecto','
 $no_oficio['value'] = '311.2017.12.05';
 
 $fecha_oficio['value'] = '2017-12-05';
-$fecha_acuse['value'] = '2017-12-10';
+//$fecha_acuse['value'] = '2017-12-10';
+$fecha_acuse['readonly'] = false;
 ?>
 <div class="container-fluid">
 	<div class="panel panel-primary">
@@ -97,10 +98,10 @@ $fecha_acuse['value'] = '2017-12-10';
 
 		<div class="row">
 	  		<div class="col-md-4" id='idDivGrabarOficioApertura'>
-	  			<input type="button" name="btnGrabarApertura" id="btnGrabarApertura" value="Grabar Oficio" />	  			
+	  			<input type="button" name="btnGrabarApertura" id="btnGrabarApertura" class="btn btn-primary" value="Grabar Oficio" />	  			
 	  		</div>
 			<div class="col-md-4" id='idDivEnviarCorreoOficioApertura'>
-	  			<input type="button" name="btnEnviarCorreoOficioApertura" id="btnEnviarCorreoOficioApertura" value="Enviar Correo Confirmación" />	  			
+	  			<input type="button" name="btnEnviarCorreoOficioApertura" class="btn btn-info" id="btnEnviarCorreoOficioApertura" value="Enviar Correo Confirmación" />	  			
 	  		</div>
 	  	</div>
 

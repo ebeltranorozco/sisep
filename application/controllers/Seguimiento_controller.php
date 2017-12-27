@@ -88,7 +88,7 @@ class Seguimiento_controller extends CI_Controller {
 		$data->page_title = 'SISEP';
 		$id = 2; // temporal		
 		
-		$qryOficios = $this->db->query('select * from seguimientos_enc');		
+		$qryOficios = $this->db->query('select * from seguimientos');		
 		$data->oficios_apertura=$qryOficios->result();	 	
 
 	 	$this->load->view('plantillas/encabezado',$data);
@@ -189,54 +189,9 @@ class Seguimiento_controller extends CI_Controller {
 					$RespData['MSG_ERROR'] = $this->db->_error_message();			        	
 			    } else {        
 			       	$this->db->trans_commit();
-			       	$RespData['STATUS'] = 'OK';
-			       	// 2017-12-06 --> enviando el correo a los usuarios
-			       	$this->load->library('utilerias');
-			       	//$nImporte = $this->utilerias->conv_cadena_float($_POST['importe']);
-			       	//$RespData['ERROR_CORREO'] = $this->utilerias->email();
-			       	$config = Array(
-				        'protocol' => 'smtp',
-				        'smtp_host' => 'smtp.gmail.com',
-				        'smtp_user' => 'sisep.sagarpa', //Su Correo de Gmail Aqui
-				        'smtp_pass' => 'sagarpa2018', // Su Password de Gmail aqui
-				        'smtp_port' => '465', //587
-				        'smtp_crypto' => 'ssl', //tls
-				        'mailtype' => 'html',
-				        'wordwrap' => TRUE,
-				        'charset' => 'utf-8'
-				    );
-				    $config = array(
-						'protocol' 		=> 'smtp',
-					 	'smtp_host' 	=> 'smtp.googlemail.com',
-					 	'smtp_user' 	=> 'ebeltran@laria.mx', //Su Correo de Gmail Aqui
-					 	'smtp_pass' 	=> 'inf61010', // Su Password de Gmail aqui
-					 	'smtp_port' 	=> '465', //587
-					 	'smtp_crypto' 	=> 'ssl', //tls
-					 	'mailtype' 		=> 'html',
-					 	'wordwrap' 		=> TRUE,
-					 	'charset' 		=> 'utf-8'
-					 );
+			       	$RespData['STATUS'] = 'OK';    
+			       	 
 
-				    $this->load->library('email',$config);				    
-				 	$this->email->set_newline("\r\n");
-				 	$this->email->from('muestras@laria.mx');
-				 	$this->email->subject('Nueva Muestra de Analisis');
-				 	$this->email->to('ebeltranorozco77@gmail.com');
-				 	$this->email->message('prueba de envio de correo');
-				 	$this->email->send();
-
-				    
-				    /*$subject = 'Bienvenido a mi app';
-
-				    $msg = 'Mensaje de prueba';
-
-				    $this->email
-				        ->from('ebeltran@laria.mx')
-				        ->to('sistemas@laria.mx')
-				        ->subject($subject)
-				        ->message($msg)
-				        ->send();
-				        */
 			    }
 				
 			}else {
@@ -248,6 +203,127 @@ class Seguimiento_controller extends CI_Controller {
  		//header('Content-type: application/json;');
  		echo json_encode($RespData); 
  	}
+ 	/***********************************************************************/
+ 	public function enviar_correo_oficio_apertura(){ // se trata de generar el correo e indicar las cartas de autorizacion que vienen
+ 		$RespData = array();
+
+ 		$this->load->library('utilerias'); 	
+ 		
+ 		if (!$this->input->is_ajax_request()) {
+ 			$RespData['STATUS'] = 'ERROR';
+ 			$RespData['MSG_ERROR'] = 'No direct script access allowed';
+ 		  	//exit('No direct script access allowed');
+		}else {
+			//captando las variables
+			$enc = isset($_POST['enc']) ? $_POST['enc'] : false;
+			$det = isset($_POST['det']) ? $_POST['det'] : false;	
+			
+			if ($enc && $det)	{
+
+				$msg_correo = '';
+				$msg_correo .= 'SAGARPA';
+				$msg_correo .= '<br/>';
+				$msg_correo .= 'SISEP';
+				$msg_correo .= '<br/>';
+				$msg_correo .= 'Listado de Autorizaciones (oficio de aperturas)';				
+				$msg_correo .= '<br/>';
+				$msg_correo .= 'Oficio: '.$enc['no_oficio'];						
+				$msg_correo .= '<br/>';
+				$msg_correo .= 'Fecha del Oficio: '.$enc['fecha_oficio'];
+				$msg_correo .= '<br/>';
+				$msg_correo .= 'Cartas de Autorización Recibidas<br/>';	
+				$msg_correo .= '<br/>';
+				$msg_correo .= '<table><thead>';
+				$msg_correo .= '<tr>';
+				$msg_correo .= '<th>Nombre</th>';
+				$msg_correo .= '<th>SURI</th>';
+				$msg_correo .= '<th>Concepto</th>';
+				$msg_correo .= '<th>DDR</th>';
+				$msg_correo .= '<th>HAS</th>';
+				$msg_correo .= '<th>Apoyo</th>';
+				$msg_correo .= '<th>Aportacion</th>';
+				$msg_correo .= '</tr>';
+				$msg_correo .= '</thead><tbody>';		
+				
+
+				$detallado = $det[0];
+				for ($nPos=0;$nPos<count($detallado);$nPos+=9){
+
+					$id_padron_beneficiario  = $detallado[$nPos];
+                    $nombre_beneficiario     = $detallado[$nPos+1];
+                    $folio_suri              = $detallado[$nPos+2];
+                    $id_concepto             = $detallado[$nPos+3];
+                    $concepto                = $detallado[$nPos+4];
+                    $ddr                     = $detallado[$nPos+5];
+                    $haz                     = $detallado[$nPos+6];
+                    $apoyo                   = $detallado[$nPos+7];
+                    $aportacion              = $detallado[$nPos+8];
+
+                    $msg_correo .= '<tr>';                    
+                    $msg_correo .= '<td>'.$nombre_beneficiario.'</td>';
+                    $msg_correo .= '<td>'.$folio_suri.'</td>';
+                    $msg_correo .= '<td>'.$concepto.'</td>';
+                    $msg_correo .= '<td>'.$ddr.'</td>';
+                    $msg_correo .= '<td>'.$haz.'</td>';
+                    $msg_correo .= '<td>'.$apoyo.'</td>';
+                    $msg_correo .= '<td>'.$aportacion.'</td>';
+                    $msg_correo .= '</tr>';
+
+				}// fin del for de la tabla que graba el oficio de apertura
+				$msg_correo .= '</tbody></table>';
+
+				//buscando en las plantillas a quien debe ir ese correo --> 2017-12-27
+				$this->db->select('to_correo_plantilla,cc_correo_plantilla,cco_correo_plantilla,titulo_correo_plantilla');
+				$this->db->from('correos_plantilla');
+				$this->db->join('enc_plantillas','correos_plantilla.id_enc_plantilla = enc_plantillas.id_enc_plantilla');
+				$this->db->where('nombre_enc_plantilla','CORREO CONFIRMACION OFICIO APERTURA');
+				$qryCorreos = $this->db->get()->row();
+
+				if ($qryCorreos){
+					$email_to = $qryCorreos->to_correo_plantilla;
+					//$RespData['EMAIL_TO'] = $email_to;					
+					$email_cco =  $qryCorreos->cc_correo_plantilla;					
+					$email_bco = $qryCorreos->cco_correo_plantilla;
+					$email_subject = 'oficio de apertura recibido';
+					if ($qryCorreos->titulo_correo_plantilla<>""){
+						$email_subject = $qryCorreos->titulo_correo_plantilla;	
+					}
+					//$RespData['SUBJECT_CORREO'] = $qryCorreos->titulo_correo_plantilla;
+					
+
+					$this->load->library('utilerias');
+			       	$cResp_Correo = $this->utilerias->enviar_correo_general($email_to,$email_subject,$msg_correo,$email_cco,$email_bco);
+			       	
+			       	//$RespData['EMAIL_CCO'] = $email_cco;
+
+			       	if ($cResp_Correo<>'OK'){
+			       		$RespData['STATUS'] = 'ERROR';
+			       		$RespData['MSG_ERROR'] = $cResp_Correo;
+			       	}else {
+			       		$RespData['STATUS'] = 'OK';
+			       	}
+
+
+
+				}
+
+
+				// ahora si mandando el correo
+			    
+		       	//( $email_from = 'sisep.sagarpa@gmail.com', $email_to, $email_subject='Correo SISEP',$email_msg='Sin cuerpo en el Mensaje',$email_bcc=NULL, $email_bco=NULL,$email_file = NULL){   
+		       	
+			    
+				
+			}else {
+				$RespData['STATUS'] = 'ERROR';
+				$RespData['MSG_ERROR'] = 'información recibida esta incompleta; verifique parametros enviados';
+			}
+		} 
+		
+		header('Content-type: application/json; charset=utf-8'); 		
+ 		echo json_encode($RespData); 
+ 	}
+
  	/***********************************************************************/
  	public function enviar_correo(){
 
