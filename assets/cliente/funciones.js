@@ -816,6 +816,42 @@ $(function () {
         }
     });
     /*************************************************************************************/
+    $("#idBtnActualizaFechaAcuseOficioRemesa").click(function(){ // viene de v_apertura_global --> btn q actualiza unicamente la fecha de acuse
+        var cIdSeguimiento = $("#id_seguimiento").val();
+        var cNoOficioRemesa = $("#id_oficio_remesa").val();
+        var dFechaAcuse = $("#id_fecha_acuse").val();        
+
+        if (cNoOficioRemesa  && dFechaAcuse ){
+
+            if (confirm('Realizar la Actualizacion de la Fecha de Acuse')){
+                var data = { 'no_oficio_remesa': cNoOficioRemesa,'fecha_acuse_oficio_apertura':dFechaAcuse};
+
+                $.ajax({
+                data: data,
+                dataType: 'json',
+                type: 'POST',
+                url: base_url+'/actualiza_fecha_acuse_oficio_remesa',
+                    success: function (htmlResponse){
+                        console.log(htmlResponse);
+                           
+                        if (htmlResponse['STATUS']=='OK'){                    
+                            $("#idBtnCloseModal").click();
+                            location.reload();                    
+                        }// fin del if
+                    }// fin de la funcion sucess del ajax
+                }); // fin del ajax    
+            }            
+        }else { // fin del if cIdSeguimiento y dFechaAcuse
+            alert('parametros incompletos');
+        }
+    });
+    /*************************************************************************************/
+
+    /*************************************************************************************/
+
+    /*************************************************************************************/
+
+    /*************************************************************************************/
 
     /*************************************************************************************/
     

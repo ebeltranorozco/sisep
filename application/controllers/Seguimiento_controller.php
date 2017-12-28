@@ -368,6 +368,23 @@ class Seguimiento_controller extends CI_Controller {
 		$this->load->view('plantillas/footer',$data);	
  	}
  	/*************************************************************************/
+ 	public function listado_cartas_autorizacion(){ // segunda opcion de menu  --> oficio remesa
+
+ 		$data = new stdClass();
+		$data->menu_activo = 'tercero';		
+		$data->accion = 'ALTA';
+		$data->panel_title = 'Listado de Cartas de Autorizaciones (Oficios de Remesa)';
+		$data->page_title = 'SISEP';		
+		
+		$qryOficios = $this->db->query("select * from seguimientos where no_oficio_remesa_seguimiento <> ''");		// quizas deba limitar a 3 campos oficio_remesa_seguimiento // acuse / ty otra fecha
+		$data->oficios_remesa=$qryOficios->result();	 	
+
+	 	$this->load->view('plantillas/encabezado',$data);
+		$this->load->view('plantillas/menu',$data);		
+		$this->load->view('seguimiento/v_registro_cartas_aceptacion_global',$data);
+		$this->load->view('plantillas/footer',$data);
+ 	}
+ 	/*************************************************************************/
  	public function obtener_cartas_apertura(){ // is ajax, retorna las cartas de un ddr que no han sido seleccionadas
  		if (!$this->input->is_ajax_request()) {
  			$RespData['STATUS'] = 'ERROR';
@@ -482,7 +499,37 @@ class Seguimiento_controller extends CI_Controller {
 		header('Content-type: application/json; charset=utf-8'); 		
  		echo json_encode($RespData); 
  	} 	
- 	/*******************************************************************************/
+ 	/*******************************************************************************/ 	
+ 	public function actualiza_fecha_acuse_oficio_remesa(){ // is ajax --> actualiza desde un modal la fecha de acuse 
+ 		$RespData = array();
+ 		if (!$this->input->is_ajax_request()) {
+ 			$RespData['STATUS'] = 'ERROR';
+ 			$RespData['MSG_ERROR'] = 'No direct script access allowed'; 		 
+		}else {
+			//var data = { 'no_oficio_apertura':no_oficio_apertura,'fecha_oficio_apertura': fecha_oficio_apertura,'fecha_acuse_oficio_apertura':fecha_acuse_oficio_apertura};
+
+			if (isset($_POST['no_oficio_remesa']) && isset($_POST['fecha_acuse_oficio_remesa'])){
+				$no_oficio_apertura = "'".$_POST['no_oficio_remnesa']."'";
+				$dFechaAcuse = "'".$_POST['fecha_acuse_oficio_remesa']."'";
+
+				$this->db->query('update seguimientos set fecha_acuse_remesa_seguimiento = '.$dFechaAcuse . ' where no_oficio_remesa_seguimiento = '. $no_oficio_remesa);
+				$RespData['SQL'] = $this->db->last_query();
+
+				if ($this->db->affected_rows()>0){
+					$RespData['STATUS'] = 'OK';
+					//$RespData['CONSULTA'] = $qryTmp;
+				}else{
+					$RespData['STATUS'] = 'ERROR';
+	 				$RespData['MSG_ERROR'] = 'No hay registros'; 		 
+				}
+			}else{
+				$RespData['STATUS'] = 'ERROR';
+	 			$RespData['MSG_ERROR'] = 'parametros llegaron incompletos';
+			}
+		}
+		header('Content-type: application/json; charset=utf-8'); 		
+ 		echo json_encode($RespData); 
+ 	} 	
 
  	/*******************************************************************************/
 

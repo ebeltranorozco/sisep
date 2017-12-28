@@ -4,8 +4,8 @@ $no_oficio			= array('id'=>'no_oficio_apertura', 'name'=>'no_oficio_apertura', '
 $fecha_oficio		= array('id'=>'fecha_oficio_apertura', 'name'=>'fecha_oficio_apertura', 'class'=>'form-control', 'value'=>set_value('fecha_oficio_apertura') );
 $fecha_acuse		= array('id'=>'fecha_acuse_oficio_apertura', 'name'=>'fecha_acuse_oficio_apertura', 'class'=>'form-control', 'value'=>set_value('fecha_acuse_oficio_apertura') );
 
-$no_oficio['value'] = '311.2017.12.05';
-$fecha_oficio['value'] = '2017-12-05';
+$no_oficio['value'] = '411.2017.12.05';
+$fecha_oficio['value'] = '2017-12-10';
 $fecha_acuse['value'] = '2017-12-10';
 ?>
 

@@ -92,8 +92,11 @@ $route['buscar_convenio'] 		= 'beneficiario/buscar_convenio';
 $route['genera_convenio']		= 'beneficiario/genera_convenio';
 
 /* EMPEZADNO MENU SEGUIMIENTO */
-$route['listado_autorizaciones'] = 'seguimiento_controller/listado_autorizaciones'; // primer submenu
-$route['registro_cartas_autorizacion'] = 'seguimiento_controller/registro_cartas_autorizacion'; //segundo submenu
+$route['listado_autorizaciones'] = 'seguimiento_controller/listado_autorizaciones'; // primer submenu -> cartas de apertura
+
+$route['listado_cartas_autorizacion'] = 'seguimiento_controller/listado_cartas_autorizacion'; //segundo submenu --> oficio remesa
+$route['registro_cartas_autorizacion'] = 'seguimiento_controller/registro_cartas_autorizacion'; //segundo submenu -->agregar
+
 $route['obtener_cartas_apertura'] = 'seguimiento_controller/obtener_cartas_apertura'; // 2017-12-08
 
 
