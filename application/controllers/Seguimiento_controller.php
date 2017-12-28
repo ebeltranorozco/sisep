@@ -13,43 +13,31 @@ class Seguimiento_controller extends CI_Controller {
 		}
  	}
  	/****************************************************************************/
- 	public function apertura(){ // INDICA QUE SE VA A REALIZAR UN NUEVO OFICIO DE APERTURA
+ 	public function apertura(){ // INDICA QUE SE VA A REALIZAR UN NUEVO OFICIO DE APERTURA o SE VA A VISUALIZAR NADA MAS
  		$data = new stdClass();
 		$data->menu_activo = 'tercero';		
 		$data->accion = 'ALTA';
 		$data->panel_title = 'Listado de Autorizaciones (Oficios de Apertura)';
 		$data->page_title = 'SISEP';
 
- 		$accion = 'ALTA';
- 		$id_seguimiento = 9999999;
+ 		$accion = 'ALTA'; 		
+ 		$cNoOficioAperturaSeguimiento = "99999999999999";
  		if (isset($_GET['id'])){
- 			$id=$_GET['id'];
- 			$accion = 'EDICION';
- 			// consulta SQL
- 		}
+ 			$id_seguimiento=$_GET['id']; 			
+ 			$data->accion = 'VISUALIZACION'; 			
+
+ 			//2017-12-27 con el id_seguimiento obtenemos el numero de oficio deseado..!
+ 			$qryOficios = $this->db->query('select no_oficio_apertura_seguimiento,fecha_oficio_apertura_seguimiento,fecha_acuse_apertura_seguimiento from seguimientos where id_seguimiento = '.$id_seguimiento)->row();
+ 			$cNoOficioAperturaSeguimiento = $qryOficios->no_oficio_apertura_seguimiento;
+ 			$data->oficios = $qryOficios; //--> para la parte de los encabezados de la vista individual
+ 		} 		
 
  		$this->load->library('table');
  		
-
+ 		//<table id="table_id_componente" class="table table-striped table-bordered" cellspacing="0" width="100%">
+ 		//'table_open'          => '<table border="0" class="table table-condensed" cellpadding="4" cellspacing="0" id="idTablaTmpDetalleSeguimiento">',
  		$template = array (
-            'table_open'          => '<table border="0" class="table table-condensed" cellpadding="4" cellspacing="0" id="idTablaTmpDetalleSeguimiento">',
-
-            'heading_row_start'   => '<tr>',
-            'heading_row_end'     => '</tr>',
-            'heading_cell_start'  => '<th>',
-            'heading_cell_end'    => '</th>',
-
-            'row_start'           => '<tr>',
-            'row_end'             => '</tr>',
-            'cell_start'          => '<td>',
-            'cell_end'            => '</td>',
-
-            'row_alt_start'       => '<tr>',
-            'row_alt_end'         => '</tr>',
-            'cell_alt_start'      => '<td>',
-            'cell_alt_end'        => '</td>',
-
-            'table_close'         => '</table>'
+            'table_open'          => '<table border="0" class="table table-striped table-bordered" cellpadding="4" cellspacing="0" id="idTablaTmpDetalleSeguimiento">'
       	);	
 
 		
@@ -61,10 +49,13 @@ class Seguimiento_controller extends CI_Controller {
  		$this->db->select('id_padron_beneficiario,nombre_beneficiario_seguimiento,folio_suri_seguimiento,seguimientos.id_concepto,nombre_concepto,id_ddr,has_seguimiento,aportacion_federal_seguimiento,aportacion_productor_seguimiento');
 		$this->db->from('seguimientos');
 		$this->db->join('conceptos_inversion','seguimientos.id_concepto = conceptos_inversion.id_concepto','LEFT');			
-		$this->db->where('id_seguimiento',$id_seguimiento);
+		$this->db->where('no_oficio_apertura_seguimiento',$cNoOficioAperturaSeguimiento);
 
 		$cCad = $this->db->get_compiled_select();
-		$qryBeneficiarios = $this->db->query($cCad)->result_array();
+		$qryBeneficiarios = $this->db->query($cCad)->result_array();		
+		if($data->accion == 'VISUALIZACION'){
+			$data->no_oficio_apertura_seguimiento =  $cNoOficioAperturaSeguimiento;
+		}
 		$data->consulta = $qryBeneficiarios;// proviene del detallado de resultados..!
 		$data->sql = $cCad; // CONOCER LA CONSULTA QUE LO ESTA EJECUTANDO..!
 		// GENERANDO EL DROP DE EL CONCEPTO
@@ -461,7 +452,36 @@ class Seguimiento_controller extends CI_Controller {
  		echo json_encode($RespData); 
  	} 
  	/*******************************************************************************/
- 	
+ 	public function actualiza_fecha_acuse_oficio_apertura(){ // is ajax --> actualiza desde un modal la fecha de acuse 
+ 		$RespData = array();
+ 		if (!$this->input->is_ajax_request()) {
+ 			$RespData['STATUS'] = 'ERROR';
+ 			$RespData['MSG_ERROR'] = 'No direct script access allowed'; 		 
+		}else {
+			//var data = { 'no_oficio_apertura':no_oficio_apertura,'fecha_oficio_apertura': fecha_oficio_apertura,'fecha_acuse_oficio_apertura':fecha_acuse_oficio_apertura};
+
+			if (isset($_POST['no_oficio_apertura']) && isset($_POST['fecha_acuse_oficio_apertura'])){
+				$no_oficio_apertura = "'".$_POST['no_oficio_apertura']."'";
+				$dFechaAcuse = "'".$_POST['fecha_acuse_oficio_apertura']."'";
+
+				$this->db->query('update seguimientos set fecha_acuse_apertura_seguimiento = '.$dFechaAcuse . ' where no_oficio_apertura_seguimiento = '. $no_oficio_apertura);
+				$RespData['SQL'] = $this->db->last_query();
+
+				if ($this->db->affected_rows()>0){
+					$RespData['STATUS'] = 'OK';
+					//$RespData['CONSULTA'] = $qryTmp;
+				}else{
+					$RespData['STATUS'] = 'ERROR';
+	 				$RespData['MSG_ERROR'] = 'No hay registros'; 		 
+				}
+			}else{
+				$RespData['STATUS'] = 'ERROR';
+	 			$RespData['MSG_ERROR'] = 'parametros llegaron incompletos';
+			}
+		}
+		header('Content-type: application/json; charset=utf-8'); 		
+ 		echo json_encode($RespData); 
+ 	} 	
  	/*******************************************************************************/
 
  	/*******************************************************************************/

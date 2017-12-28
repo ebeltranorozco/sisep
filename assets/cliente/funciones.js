@@ -779,9 +779,42 @@ $(function () {
         } // fin de generar el oficio
     });
     /*************************************************************************************/
-
+    $(".actualiza_fecha_acuse").click(function(){ // 
+        var cIdSeguimiento = $ (this).val();
+        $("#id_oficio_apertura").val(cIdSeguimiento);
+        //alert('Entro a la funcion en clase de la tabla esCancelable');
+        //$("#id_fecha_acuse").val('');        
+     });
     /*************************************************************************************/
+    $("#idBtnActualizaFechaAcuse").click(function(){ // viene de v_apertura_global --> btn q actualiza unicamente la fecha de acuse
+        var cIdSeguimiento = $("#id_seguimiento").val();
+        var cNoOficioApertura = $("#id_oficio_apertura").val();
+        var dFechaAcuse = $("#id_fecha_acuse").val();        
 
+        if (cNoOficioApertura  && dFechaAcuse ){
+
+            if (confirm('Realizar la Actualizacion de la Fecha de Acuse')){
+                var data = { 'no_oficio_apertura': cNoOficioApertura,'fecha_acuse_oficio_apertura':dFechaAcuse};
+
+                $.ajax({
+                data: data,
+                dataType: 'json',
+                type: 'POST',
+                url: base_url+'/actualiza_fecha_acuse_oficio_apertura',
+                    success: function (htmlResponse){
+                        console.log(htmlResponse);
+                           
+                        if (htmlResponse['STATUS']=='OK'){                    
+                            $("#idBtnCloseModal").click();
+                            location.reload();                    
+                        }// fin del if
+                    }// fin de la funcion sucess del ajax
+                }); // fin del ajax    
+            }            
+        }else { // fin del if cIdSeguimiento y dFechaAcuse
+            alert('parametros incompletos');
+        }
+    });
     /*************************************************************************************/
 
     /*************************************************************************************/

@@ -110,3 +110,5 @@ $route['enviar_correo'] = 'seguimiento_controller/enviar_correo';
 // impresiones en pdf
 $route['generar_oficio_remesa'] = 'impresiones_controller/generar_oficio_remesa'; //2017-12-11
 
+
+$route['actualiza_fecha_acuse_oficio_apertura'] = 'seguimiento_controller/actualiza_fecha_acuse_oficio_apertura';

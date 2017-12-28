@@ -21,11 +21,25 @@ $producto_real						=array('id'=>'producto_real','name'=>'producto_real','class'
 $ddr 								=array('id'=>'ddr_real','name'=>'ddr_real','class'=>'form-control','value'=>set_value('ddr_real'),'readonly'=>TRUE);
 $nombre_proyecto 					=array('id'=>'nombre_proyecto','name'=>'nombre_proyecto','class'=>'form-control','value'=>set_value('nombre_proyecto'),'readonly'=>TRUE);
 
-$no_oficio['value'] = '311.2017.12.05';
-
-$fecha_oficio['value'] = '2017-12-05';
 //$fecha_acuse['value'] = '2017-12-10';
-$fecha_acuse['readonly'] = false;
+if ($accion == 'ALTA'){
+	$no_oficio['value'] = '311.2017.12.05';
+	$fecha_oficio['value'] = date('Y-m-d');
+	$fecha_acuse['readonly'] = false;	
+}
+
+//var_dump($consulta);
+if ($accion == 'VISUALIZACION'){
+	$no_oficio['value'] 	= $oficios->no_oficio_apertura_seguimiento;
+	$fecha_oficio['value'] 	= $oficios->fecha_oficio_apertura_seguimiento;
+	$fecha_acuse['value'] 	= $oficios->fecha_acuse_apertura_seguimiento;
+
+	$no_oficio['readonly'] = true;
+	$fecha_oficio['readonly'] = true;
+	$fecha_acuse['readonly'] = true;
+	//var_dump($consulta);
+}
+//var_dump($consulta);
 ?>
 <div class="container-fluid">
 	<div class="panel panel-primary">
@@ -40,10 +54,12 @@ $fecha_acuse['readonly'] = false;
 	  		<div class="col-md-4"><?php echo form_label('Fecha Acuse:');echo form_input($fecha_acuse);?></div>	  		
 	  	</div>
 	  	<br/>
-	  	<div class="row">	  		
-	  		<div class="col-md-2"><?php echo form_label('ID:'); echo form_input($id_beneficiario)?></div>
-	  		<div class="col-md-6"><?php echo form_label('Nombre del Beneficiario:');echo form_input($nombre_beneficiario) ;?></div>
-	  		<div class="col-md-2"><br><input type="button" id='btnBuscarBeneficiario' name="btnBuscarBeneficiario" value="Buscar" class="btn btn-primary" /></div>
+	  	<div class="row">
+	  		<?php if ($accion == 'ALTA' ){?>	  		
+	  			<div class="col-md-2"><?php echo form_label('ID:'); echo form_input($id_beneficiario)?></div>
+	  			<div class="col-md-6"><?php echo form_label('Nombre del Beneficiario:');echo form_input($nombre_beneficiario) ;?></div>
+	  			<div class="col-md-2"><br><input type="button" id='btnBuscarBeneficiario' name="btnBuscarBeneficiario" value="Buscar" class="btn btn-primary" /></div>
+			<?php } ?>
 	  	</div>
 	  	<hr>
 	  	<div class="row">
@@ -53,6 +69,7 @@ $fecha_acuse['readonly'] = false;
 	  	</div>
 
 		<br/>
+		
 
 		<div class="row">
 			<div class="col-md-4"><?php echo form_label('Folio Interno:'); echo form_input($folio_interno); ?></div>
@@ -64,13 +81,10 @@ $fecha_acuse['readonly'] = false;
 			<div class="col-md-4"><?php echo form_label('Nombre:'); echo form_input($nombre_beneficiario_seleccionado); ?></div>
 			<div class="col-md-4">
 				<?php 
-					echo form_label('Concepto:'); 
-					//$ConceptosFederalesCombo['0']='Seleccione';
+					echo form_label('Concepto:'); 					
 					echo form_dropdown('cboConceptos',$ConceptosFederalesCombo,0,'class="form-control" id="cboConceptos" disabled="disabled"'); 
-
 				?>
 			</div>
-
 			<div class="col-md-4"><?php echo form_label('HAS:'); echo form_input($has_real); ?></div>			
 		</div>			
 		
@@ -92,13 +106,16 @@ $fecha_acuse['readonly'] = false;
 		
 	  	<div class="row">
 	  		<div class="col-md-12">
-	  			<?php echo $this->table->generate(); ?>	  			
+	  			<?php $consulta2 = json_decode(json_encode($consulta), True); ?>
+	  			<?php echo $this->table->generate( $consulta2); ?>	  			
 	  		</div>	  		
 	  	</div>
 
 		<div class="row">
 	  		<div class="col-md-4" id='idDivGrabarOficioApertura'>
-	  			<input type="button" name="btnGrabarApertura" id="btnGrabarApertura" class="btn btn-primary" value="Grabar Oficio" />	  			
+	  			<?php  if ($accion == 'ALTA') {?>
+	  				<input type="button" name="btnGrabarApertura" id="btnGrabarApertura" class="btn btn-primary" value="Grabar Oficio" />	  			
+	  			<?php }?>
 	  		</div>
 			<div class="col-md-4" id='idDivEnviarCorreoOficioApertura'>
 	  			<input type="button" name="btnEnviarCorreoOficioApertura" class="btn btn-info" id="btnEnviarCorreoOficioApertura" value="Enviar Correo Confirmación" />	  			
