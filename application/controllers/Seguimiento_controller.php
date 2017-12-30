@@ -79,7 +79,7 @@ class Seguimiento_controller extends CI_Controller {
 		$data->page_title = 'SISEP';
 		$id = 2; // temporal		
 		
-		$qryOficios = $this->db->query('select * from seguimientos');		
+		$qryOficios = $this->db->query('select * from seguimientos');// filtrar por componente		
 		$data->oficios_apertura=$qryOficios->result();	 	
 
 	 	$this->load->view('plantillas/encabezado',$data);
@@ -320,7 +320,10 @@ class Seguimiento_controller extends CI_Controller {
 
  	}
  	/***********************************************************************/
- 	public function registro_cartas_autorizacion(){ // segunda opcion de menu
+ 	public function registro_cartas_autorizacion(){ // segunda opcion de menu alta de cartas de aceptacion indivual
+
+
+ 		////////////////////////////////////////////////////////////////////////////
  		$data = new stdClass();
 		$data->menu_activo = 'tercero';		
 		$data->accion = 'ALTA';
@@ -328,8 +331,19 @@ class Seguimiento_controller extends CI_Controller {
 		$data->page_title = 'SISEP';
 		$id_ddr = 133; // temporal		
 		
-		
+		$cNoOficioRemesaSeguimiento = "99999999999999";
+ 		if (isset($_GET['id'])){
+ 			$id_seguimiento=$_GET['id']; 			
+ 			$data->accion = 'VISUALIZACION'; 			
 
+ 			//2017-12-27 con el id_seguimiento obtenemos el numero de oficio deseado..!
+ 			$qryOficios = $this->db->query('select no_oficio_remesa_seguimiento,fecha_oficio_remesa_seguimiento,fecha_acuse_remesa_seguimiento from seguimientos where id_seguimiento = '.$id_seguimiento)->row();
+ 			$cNoOficioAperturaSeguimiento = $qryOficios->no_oficio_remesa_seguimiento;
+ 			$data->oficios = $qryOficios; //--> para la parte de los encabezados de la vista individual
+ 		}
+
+
+ 		/*
 		$this->load->library('table'); 		
 
  		$template = array (
@@ -344,27 +358,34 @@ class Seguimiento_controller extends CI_Controller {
 		$cBtn = '"<button type=button name=btnSelecionaCartaApertura  class="'.'"btn btn-info btn-xs"'.'"   onclick="'.'"SeleccionaRowDetalladoCartasApertura(this,0)"'.'" >Seleccionar"';
 		$cBtn .= '"</button>"';
 		$cCpo .= $cBtn;
-		
 		$this->db->select( $cCpo);
+		*/	
+		
+		$this->db->select( '*');
  		$this->db->from('seguimientos');
- 		$this->db->join('conceptos_inversion','seguimientos.id_concepto = conceptos_inversion.id_concepto','LEFT');			
+ 		$this->db->join('conceptos_inversion','seguimientos.id_concepto = conceptos_inversion.id_concepto','LEFT');
+ 		if ($data->accion=='VISUALIZACION'){
+ 			$this->db->where ('id_seguimiento',$id_seguimiento);
+ 		}
  		$cSql = $this->db->get_compiled_select();
-		$qryCartas = $this->db->query($cSql)->result_array();	
-		$data->cartas_aceptacionTmp=$qryCartas;
+		$qryCartas = $this->db->query($cSql)->result();	
+		//$data->cartas_aceptacionTmp=$qryCartas;
+		$data->cartas_aceptacion = $qryCartas;
 		$data->sql = $cSql;
 
+		/*
 		$template2 = array (
             'table_open'          => '<table id="idTablaDetalleCartasAperturaDDR" border="0" class="table table-condensed table-bordered" cellpadding="4" cellspacing="0" >'
       	);		
  		$this->table->set_template($template2);
  		$this->table->set_heading('ID','Nombre','SURI','ID Concepto','Concepto','DDR','HAS','Apoyo','Aportacion','Acciones');		
-		$data->cartas_aceptacion = $qryCartas;
+		*/
 
 		$data->DDRCombo = listData('ddrs_federales','nombre_ddr', 'id_ddr'); 				
 
 	 	$this->load->view('plantillas/encabezado',$data);
 		$this->load->view('plantillas/menu',$data);		
-		$this->load->view('seguimiento/v_registro_cartas_aceptacion',$data);
+		$this->load->view('seguimiento/v_registro_cartas_aceptacion_individual',$data);
 		$this->load->view('plantillas/footer',$data);	
  	}
  	/*************************************************************************/
@@ -376,7 +397,7 @@ class Seguimiento_controller extends CI_Controller {
 		$data->panel_title = 'Listado de Cartas de Autorizaciones (Oficios de Remesa)';
 		$data->page_title = 'SISEP';		
 		
-		$qryOficios = $this->db->query("select * from seguimientos where no_oficio_remesa_seguimiento <> ''");		// quizas deba limitar a 3 campos oficio_remesa_seguimiento // acuse / ty otra fecha
+		$qryOficios = $this->db->query("select * from seguimientos where no_oficio_remesa_seguimiento <> '' and id_componente = ". $_SESSION['id_componente']);		// quizas deba limitar a 3 campos oficio_remesa_seguimiento // acuse / ty otra fecha
 		$data->oficios_remesa=$qryOficios->result();	 	
 
 	 	$this->load->view('plantillas/encabezado',$data);
@@ -506,10 +527,8 @@ class Seguimiento_controller extends CI_Controller {
  			$RespData['STATUS'] = 'ERROR';
  			$RespData['MSG_ERROR'] = 'No direct script access allowed'; 		 
 		}else {
-			//var data = { 'no_oficio_apertura':no_oficio_apertura,'fecha_oficio_apertura': fecha_oficio_apertura,'fecha_acuse_oficio_apertura':fecha_acuse_oficio_apertura};
-
 			if (isset($_POST['no_oficio_remesa']) && isset($_POST['fecha_acuse_oficio_remesa'])){
-				$no_oficio_apertura = "'".$_POST['no_oficio_remnesa']."'";
+				$no_oficio_remesa = "'".$_POST['no_oficio_remesa']."'";
 				$dFechaAcuse = "'".$_POST['fecha_acuse_oficio_remesa']."'";
 
 				$this->db->query('update seguimientos set fecha_acuse_remesa_seguimiento = '.$dFechaAcuse . ' where no_oficio_remesa_seguimiento = '. $no_oficio_remesa);

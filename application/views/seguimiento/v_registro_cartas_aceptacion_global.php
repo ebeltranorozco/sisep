@@ -39,7 +39,7 @@
                     <button class="btn btn-danger btn-xs" onclick="alert('pendiente de desarrollo');"><i class="glyphicon glyphicon-remove"></i></button>                  
 
                     <!--$accion = $accion . '<button type="button" value="'.$registro->ID_MUESTRA.'" class="btn btn-danger btn-xs esCancelable" data-toggle="modal" data-target="#myModal" ><span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true" data-toggle="tooltip"  title="Cancelar" value="'.$registro->ID_MUESTRA.'"  ></span></button>';-->
-                    <button type="button" value="<?php echo $oficio->no_oficio_remesa_seguimiento; ?>" class="btn btn-danger btn-xs actualiza_fecha_acuse" data-toggle="modal" data-target="#myModal" ><span class="glyphicon glyphicon glyphicon-calendar" aria-hidden="true" data-toggle="tooltip"  title="Anexar fecha de acuse" value="<?php echo $oficio->no_oficio_remesa_seguimiento; ?>"  ></span></button>
+                    <button type="button" value="<?php echo $oficio->no_oficio_remesa_seguimiento.'/'.$oficio->fecha_acuse_remesa_seguimiento; ?>" class="btn btn-danger btn-xs actualiza_fecha_acuse_oficio_remesa" data-toggle="modal" data-target="#myModal" ><span class="glyphicon glyphicon glyphicon-calendar" aria-hidden="true" data-toggle="tooltip"  title="Anexar fecha de acuse" value="<?php echo $oficio->no_oficio_remesa_seguimiento.'/'.$oficio->fecha_acuse_remesa_seguimiento; ?>"  ></span></button>
                     
                   </td>
                 </tr>
