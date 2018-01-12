@@ -737,6 +737,45 @@ $(function () {
     }
     /******************************************************************************************/
     var createPDF = function() {
+        //alert('va');
+        html2canvas( document.body,{
+            onrendered: function (canvas){
+                var img = canvas.toDataURL("image/png");
+                var doc = new jsPDF;                
+                doc.addImage( img, 'JPEG',20,20);
+                //doc.save('prueba.pdf');               
+            }
+        });
+
+        /*
+
+        var pdf = new jsPDF();
+        pdf.text(20,20,"Hola Mundo!");
+        pdf.save('mipdf.pdf');
+
+        */
+
+/*
+
+        html2canvas(document.body).then(function(canvas) {
+             document.body.appendChild(canvas);
+        });       
+        
+
+        html2canvas( document.body,{
+            onrendered: function (canvas){
+                var img = canvas.toDataURL("image/png");
+                var doc = new jsPDF;                
+                doc.addImage( img, 'JPEG',20,20);
+                doc.save('prueba.pdf');               
+            }
+        });
+        //alert('saliendo');
+        //doc.save('prueba_canvas_efrain.pdf');
+            
+*/
+
+        /*
         var doc = new jsPDF('p', 'pt', 'a4');
         var width = doc.internal.pageSize.width;    
         var height = doc.internal.pageSize.height;
@@ -748,7 +787,7 @@ $(function () {
         var h1=50;
         var aspectwidth1= (height-h1)*(9/16);
 
-        $('body').append('<div id="idDivWhile"></div>');7t                        
+        $('body').append('<div id="idDivWhile"></div>');                        
         $("#idDivWhile").html( '<p>PRUEBA DE UN TEST PDF</p>');
         
         //doc.addImage(imgData, 'JPEG', 10, 10, 120, 100, 'monkey');
@@ -762,7 +801,7 @@ $(function () {
         var aspectwidth2= (height-h2)*(9/16);
         doc.addImage(imgData, 'JPEG', 10, h2, aspectwidth2, (height-h2), 'monkey');
         */
-        doc.save('prueba.pdf');
+        //doc.save('prueba.pdf');
         //doc.output('datauri');
     }; 
     /**********************************/
@@ -941,6 +980,12 @@ $(function () {
         }
     });
     /*************************************************************************************/
+    $("#idBtnGeneraOficioRemesaOK").click(function(){ // traduce de la plantilla el oficio remesa y lo genera y casi casi lo manda x correo
+        var no_oficio =$("#no_oficio_remesa").val();
+        var fecha_oficio = $("#fecha_oficio_remesa").val();
+        var cRuta = base_url + '/impresiones_controller/procesaygenera_oficio_remesa/?no='+no_oficio;
+        window.open( cRuta,'_blank');
+    });
 
     /*************************************************************************************/
 

@@ -12,40 +12,7 @@ class Impresiones_controller extends CI_Controller {
     echo 'index';
   } 
   /***************************************************************/
-  public function idr_microbiologia( $idDetalleMuestra = null) {
-  	// lo primero es obtener los datos necesarios ..!
-  	$this->db->select('*');
-  	$this->db->from('detalle_muestras');
-  	$this->db->join('recepcion_muestras','detalle_muestras.ID_RECEPCION_MUESTRA = recepcion_muestras.ID_RECEPCION_MUESTRA');
-  	$this->db->join('clientes','recepcion_muestras.ID_CLIENTE = clientes.ID_CLIENTE');
-  	$this->db->join('estudios','detalle_muestras.ID_ESTUDIO = estudios.ID_ESTUDIO');
-  	$this->db->join('idr_microbiologia','detalle_muestras.ID_METODOLOGIA = idr_microbiologia.ID_METODOLOGIA');
-	  $this->db->join('usuarios','idr_microbiologia.ID_USUARIO_SIGNATARIO = usuarios.ID_USUARIO');   	  	
-    $this->db->where('detalle_muestras.ID_DETALLE_MUESTRA',$idDetalleMuestra);   
-    
-    $query = $this->db->get();    
-  	$data = $query->result();
-  	
-  	// fin de la obtencion de los datos necesarios ..!
-  	  	 
-  	if (count($data)== 0) {
-        echo '<script>alert("Error Folio ['.$idDetalle_Muestra.' ] Inexistente" );</script>';
-        exit();        
-    }
-          	
-    //$IDR                = $data[0]->ID_RECEPCION_MUESTRA;
-    $dFechaEmision      = date('Y-m-d h:m:s');
-    $IDR				= $data[0]->ID_IDR;
-    $idMuestra          = $data[0]->ID_MUESTRA;
-    //$cFolioSolicitud	= $data[0]->FOLIO_SOLICITUD;
-    
-    
-    
-    // EMPEZAMOS EL PDF
-    $this->load->library('pdf');
-    $this->pdf = new pdf( $cMetodoValidado ); //  
-  } // fin del informe de micro borrar temporal
-  /****************************************************************/
+  
   public function generar_oficio_remesa(){ // debe generar un oficio remesa
     $RespData = array();
     if (!$this->input->is_ajax_request()) { 
@@ -82,31 +49,6 @@ class Impresiones_controller extends CI_Controller {
         }
 
 
-        /*
-        $detallado = $det[0];
-        for ($nPos=0;$nPos<count($detallado);$nPos+=2){
-          
-          $id_padron_beneficiario   = $detallado[$nPos];
-          $data[] = $datos_detallado;
-          
-        } // fin del for
-        */
-
-        /*
-        $qryTmp = $this->db->update_batch('seguimientos',$data,'id_padron_beneficiario');
-        $cSql = $this->db->last_query();
-        $RespData['SQL'] = ' tabla seguimientos:['.$cSql."] ";
-        $RespData['RESULTADO_DET'] = $this->db->affected_rows();
-        
-        
-        if ($this->db->affected_rows()>0){
-          $RespData['STATUS'] = 'OK';
-          $RespData['CONSULTA'] = $qryTmp;
-        }else{
-          $RespData['STATUS'] = 'ERROR';
-          $RespData['MSG_ERROR'] = 'No hay registros';     
-        }
-        */
       }else{        
         $RespData['STATUS'] = 'ERROR';
         $RespData['MSG_ERROR'] = 'información llego incompleta';     
@@ -131,6 +73,36 @@ class Impresiones_controller extends CI_Controller {
      //$this->utilerias->enviar_correo_general( 'sisep.sagarpa@laria.mx','sistemas@laria.mx',                ,                ,   'Titulo del Correo','Mensaje del Correo');
     $cRet = $this->utilerias->enviar_correo_general( 'sisep.sagarpa@laria.mx','sistemas@laria.mx');
     var_dump($cRet);
+
+  }
+  /****************************************************************************************/
+  public function procesaygenera_oficio_remesa(){
+
+    $this->load->library('pdf');
+    $this->pdf = new pdf( 'prueba de encabvezado' ); 
+
+
+    $this->pdf->AddPage('P','letter'); //l landscape o P normal
+    $this->pdf->SetFillColor(237, 237, 237);
+    $this->pdf->AliasNbPages();
+
+    $this->pdf->SetFont('Arial','',8);
+    $cHtml = '<p>prueba de un parrafo HTML</p>';
+    $cHtml .= '<br />';
+    $cHtml .= '<div id="prueba"><p>esto es un div especial </p></div>';
+
+
+
+    
+    //$this->pdf->cellHtml(60,20,$cHtml,1,'C' ,1 );
+    $this->pdf->WriteHTML($cHtml);
+
+
+    $this->pdf->SetDisplayMode('fullpage','single');
+    $cNombreArchivo = date('y')."-".'oficio_remesa';
+    $this->pdf->Output($cNombreArchivo,'I');
+
+
 
   }
 

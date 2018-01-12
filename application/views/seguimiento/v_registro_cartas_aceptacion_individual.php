@@ -1,8 +1,8 @@
 <?php // definicion de variables
 
-$no_oficio			= array('id'=>'no_oficio_apertura', 'name'=>'no_oficio_apertura', 'class'=>'form-control', 'value'=>set_value('no_oficio_apertura') );
-$fecha_oficio		= array('id'=>'fecha_oficio_apertura', 'name'=>'fecha_oficio_apertura', 'class'=>'form-control', 'value'=>set_value('fecha_oficio_apertura') );
-$fecha_acuse		= array('id'=>'fecha_acuse_oficio_apertura', 'name'=>'fecha_acuse_oficio_apertura', 'class'=>'form-control', 'value'=>set_value('fecha_acuse_oficio_apertura') );
+$no_oficio			= array('id'=>'no_oficio_remesa', 'name'=>'no_oficio_remesa', 'class'=>'form-control', 'value'=>set_value('no_oficio_remesa') );
+$fecha_oficio		= array('id'=>'fecha_oficio_remesa', 'name'=>'fecha_oficio_remesa', 'class'=>'form-control', 'value'=>set_value('fecha_oficio_remesa') );
+$fecha_acuse		= array('id'=>'fecha_acuse_oficio_remesa', 'name'=>'fecha_acuse_oficio_remesa', 'class'=>'form-control', 'value'=>set_value('fecha_acuse_oficio_remesa') );
 
 
 //$fecha_acuse['value'] = '2017-12-10';
@@ -129,8 +129,10 @@ if ($accion == 'VISUALIZACION'){
 		  			<?php } ?>
 		  		</div>
 		  		<div class="col-md-3" id='idDivGeneraOficioRemesa'>					
-		  			<input type="button"  class="btn btn-info" name="btnGeneraOficioRemesa" id="btnGeneraOficioRemesa" value="Generar Oficio" />
-		  			<input type="button"  class="btn btn-info" name="btnGeneraOficioRemesaTmp" id="btnGeneraOficioRemesaTmp" value="Prueba Temporal" />
+		  			<!--input type="button"  class="btn btn-info" name="btnGeneraOficioRemesa" id="btnGeneraOficioRemesa" value="Generar Oficio" /> -->
+		  			<!-- <input type="button"  class="btn btn-info" name="btnGeneraOficioRemesaTmp" id="btnGeneraOficioRemesaTmp" value="Prueba Temporal" />-->
+		  			
+		  			<button type="button" class="btn btn-warning" id='idBtnGeneraOficioRemesaOK' formtarget="_blank"  >Generar Oficio via php</button>
 		  			<!--enviar_correo_general( $email_from, $email_to, $email_bcc, $email_bco,$email_titulo,$email_msg,$email_file = null){-->
 		  			<!--<input type="button" onclick="<?php //echo base_url('impresiones_controller/correo_prueba')?>" name="btnCorreoPrueba" id="btnCorreoPrueba" value="Enviar correo General de Prueba">-->
 		  			<!--<button onclick="location.href='<?php echo base_url();?>impresiones_controller/correo_prueba'">Register</button>-->
