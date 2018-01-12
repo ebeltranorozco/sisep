@@ -1,0 +1,13 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+    // Incluimos el archivo fpdf
+    require_once (APPPATH."/third_party/html2pdf/vendor/autoload.php");
+
+    //use Spipu\Html2Pdf\Html2Pdf;
+ 
+	class HtmltoPdf extends Spipu\Html2Pdf\Html2Pdf {
+		
+		public function __construct( ) {
+            parent::__construct();		  
+        }
+	}
+?>

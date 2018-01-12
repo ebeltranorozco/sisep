@@ -76,34 +76,87 @@ class Impresiones_controller extends CI_Controller {
 
   }
   /****************************************************************************************/
-  public function procesaygenera_oficio_remesa(){
-
-    $this->load->library('pdf');
-    $this->pdf = new pdf( 'prueba de encabvezado' ); 
-
-
-    $this->pdf->AddPage('P','letter'); //l landscape o P normal
-    $this->pdf->SetFillColor(237, 237, 237);
-    $this->pdf->AliasNbPages();
-
-    $this->pdf->SetFont('Arial','',8);
-    $cHtml = '<p>prueba de un parrafo HTML</p>';
-    $cHtml .= '<br />';
-    $cHtml .= '<div id="prueba"><p>esto es un div especial </p></div>';
-
-
-
+  public function procesaygenera_oficio_remesa(){   
     
-    //$this->pdf->cellHtml(60,20,$cHtml,1,'C' ,1 );
-    $this->pdf->WriteHTML($cHtml);
+   
+    require_once (APPPATH."/third_party/html2pdf/vendor/autoload.php");    
+    $html2pdf = new Spipu\Html2Pdf\Html2Pdf(); 
+
+    if (isset($_GET['no'])){
+      $nOficio = $_GET['no'];       
+      // obtener de seguimiento el ddr porque el programa y componente ya lo se
+      $qryDDR = $this->db->query( "select id_programa, id_componente,id_ddr from seguimientos where  no_oficio_remesa_seguimiento = '".$nOficio."'")->row();
+      $idPrograma     = $qryDDR->id_programa;
+      $idComponente   = $qryDDR->id_componente;
+      $idDDR          = $qryDDR->id_ddr;     
+
+      $qryPlantilla = $this->db->query('select plantilla_enc_plantilla,consulta_sql_plantilla from enc_plantillas where id_programa ='.$idPrograma.' and id_componente ='. $idComponente. ' and id_ddr ='. $idDDR)->row();
+      if ($qryPlantilla){
+        $cHtml = $qryPlantilla->plantilla_enc_plantilla;
+        $cConsultaSQL = trim($qryPlantilla->consulta_sql_plantilla). " where no_oficio_remesa_seguimiento ='".$nOficio."'";  
+        
+        //VIENE AHORA LA COSULTA A LA BASE DE DATOS..!
+        $consulta = $this->db->query( $cConsultaSQL )->result_array(); //nos traemos los join necesarios
+
+        // VIENE LA PARTE DE TRADUCCION DE LOS CAMPOS DE LA PLANTILLA 
+        
+        if ($consulta){          
+          // EMPIEZA LO BUENO...
+          $nAparicion = 0;
+          $nPosParentesisAbre   = strpos($cHtml, '((',$nAparicion);
+          $nPosParentesisCierra   = strpos($cHtml, '))',$nAparicion);          
+          $aCpo         = array();
+          $aCpoVacios       = array();
+          while( $nPosParentesisAbre ) {
+            
+            // posicion del campo a buscar
+            if (!$nPosParentesisCierra) {               
+              $cHtml='No se encontraron llaves de cierre';break;
+            }
+
+            $cCpo = substr($cHtml,$nPosParentesisAbre+2,$nPosParentesisCierra-$nPosParentesisAbre-2);
+            $cCpoDecodificado = null;
+            if (isset($consulta[0][$cCpo])){
+              $cCpoDecodificado = $consulta[0][$cCpo];  
+            }           
+
+            // vamos a buscar el CPO en el query de la consulta y hacer la transformacion
+            
+            if (!empty($cCpoDecodificado)){
+              $aCpo[] = array( $cCpo => $cCpoDecodificado );
+              $cHtml = substr( $cHtml , 0,$nPosParentesisAbre).  strtoupper($cCpoDecodificado). substr( $cHtml,$nPosParentesisCierra+2); // AQUI SE HACE LA MAGIA
+            }else{
+              $aCpoVacios = array( $cCpo => 'Verificar en BD');
+            }
+            
+            $nAparicion++;
+            $nPosParentesisAbre = strpos($cHtml, '((',$nAparicion);
+            $nPosParentesisCierra = strpos($cHtml, '))',$nAparicion);
+          } // FIN DEL while
 
 
-    $this->pdf->SetDisplayMode('fullpage','single');
-    $cNombreArchivo = date('y')."-".'oficio_remesa';
-    $this->pdf->Output($cNombreArchivo,'I');
 
+
+        }else { // CUANDO NOS MARCA ERROR LA CONSULTA JOIN if ($consulta){
+          $RespData['STATUS'] = 'ERROR';
+          $RespData['MSG_ERROR'] = 'Error al realizar la consulta ['. $cConsultaSQL.']';
+          $cHtml = '<p>ERROR</p>'. $RespData['MSG_ERROR'];
+        }
+      } else {
+        $cHtml = 'Plantilla Inexistente para el DDR ['. $idDDR.']';
+      }
+
+    } else { // no llego parametro --> if (isset($_GET['id'])){
+      $RespData['STATUS'] = 'ERROR';
+      $RespData['MSG_ERROR'] = 'parametro no encontrado';
+      $cHtml = '<p>ERROR</p>'. $RespData['MSG_ERROR'];
+    }
+
+    $html2pdf->writeHTML( $cHtml);
+    $html2pdf->output(); 
 
 
   }
+
 
 } // fin del impresiones_controller
