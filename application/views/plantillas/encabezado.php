@@ -44,7 +44,7 @@ ini_set("session.gc_maxlifetime","7200");//2017-07-11
         <div class ="container">
           <div class="row">
             <div class="col-md-3">
-              <img src="assets/images/sagarpa.png" width=250px height=100>
+              <img src="./assets/images/sagarpa.png" width=250px height=100px>
             </div>
             <div class="col-md-4">
               <h4 style="text-align:center" VALIGN="MIDDLE">SISTEMA PARA EL CONTROL DE EXPEDIENTES ELECTRONICOS</h4>

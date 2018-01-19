@@ -4,10 +4,11 @@ class Impresiones_controller extends CI_Controller {
  
   public function __construct()  {   	
   	parent::__construct();        
-        if (!isset($_SESSION['logeado'])){      
+    if (!isset($_SESSION['logeado'])){      
       redirect();     
     }
   }// fin del constructor   
+  /***************************************************************/
   public function index(){
     echo 'index';
   } 

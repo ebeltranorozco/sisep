@@ -128,26 +128,68 @@ if ($accion == 'VISUALIZACION'){
 		  				<input type="button" class="btn btn-primary" name="btnGrabarOficioRemesa" id="btnGrabarOficioRemesa" value="Grabar Oficio" />	  			
 		  			<?php } ?>
 		  		</div>
-		  		<div class="col-md-3" id='idDivGeneraOficioRemesa'>					
-		  			<!--input type="button"  class="btn btn-info" name="btnGeneraOficioRemesa" id="btnGeneraOficioRemesa" value="Generar Oficio" /> -->
-		  			<!-- <input type="button"  class="btn btn-info" name="btnGeneraOficioRemesaTmp" id="btnGeneraOficioRemesaTmp" value="Prueba Temporal" />-->
-		  			
-		  			<button type="button" class="btn btn-warning" id='idBtnGeneraOficioRemesaOK' formtarget="_blank"  >Generar Oficio via php</button>
-		  			<!--enviar_correo_general( $email_from, $email_to, $email_bcc, $email_bco,$email_titulo,$email_msg,$email_file = null){-->
-		  			<!--<input type="button" onclick="<?php //echo base_url('impresiones_controller/correo_prueba')?>" name="btnCorreoPrueba" id="btnCorreoPrueba" value="Enviar correo General de Prueba">-->
-		  			<!--<button onclick="location.href='<?php echo base_url();?>impresiones_controller/correo_prueba'">Register</button>-->
-
-		  				<!--
-
-		  					$accion = $accion . '<a target= "new" href= "'.base_url('impresiones_controller/idr_aflatoxinas/').$registro->ID_DETALLE_MUESTRA.'">';
-							$accion = $accion . '<button type="button" data-toggle="tooltip"  title="IDR Aflatoxinas" class="btn btn-default btn-xs" aria-label="Left Align"><span class="glyphicon glyphicon-print" aria-hidden="true"></span></button></a>';
-						-->
+		  		<div class="col-md-3" id='idDivGeneraOficioRemesa'>
+		  			<button type="button" class="btn btn-warning" id='idBtnGeneraOficioRemesaOK' formtarget="_blank"  >Generar Oficio via php</button>		  			
 		  		</div>				
 				<div class="col-md-3" id='idDivEnviarCorreoOficioRemesa'>
-		  			<input type="button" class="btn btn-info" name="btnEditarOficioAceptacion" id="btnEnviarCorreoOficioApertura" value="Enviar Correo Oficio" />
+		  			<!--<input type="button" class="btn btn-info" name="btnEditarOficioAceptacion" id="btnEnviarCorreoOficioApertura" value="Enviar Correo Oficio" />-->
+		  			<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" id="oldbtnEnviarCorreoOficioApertura2" value="Enviar Correo Oficio" />
 		  		</div>
 
 		  	</div>
 	  	</div>
 	</div><!-- fin del panel primary-->
 </div> <!-- fin del container fluid -->
+
+
+<!-- ******************************************** PARTE MODAL PARA LA SUBIDA DE ARCHIVOS ****************************************-->
+<!-- ******************************************** PARTE MODAL PARA LA SUBIDA DE ARCHIVOS ****************************************-->
+<!-- ******************************************** PARTE MODAL PARA LA SUBIDA DE ARCHIVOS ****************************************-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabelMetodologia">
+  	<div class="modal-dialog" role="document">
+    	<div class="modal-content">      
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        		<h4 class="modal-title" id="myModalLabelMetodologia">Subida de Archivo(s)</h4>            
+      		</div> <!--fin de modal header -->
+      	
+      	<div class="modal-body">
+
+	        <!-- vamos agregar las alertas -->
+	        <div id="msg_alerta_modal"></div> 
+	        <!-- LIMPIAR LOS CAMPOS -->      
+        
+
+	        <div class="row">
+	          <div class="form-group">
+	                
+	                <div class="col-sm-12">
+
+	                	<?php 
+	                		$cFile = array('name'=>'file_oficio_remesa','id'=>'file_oficio_remesa', 'class'=>'form-control','value'=>set_value('file_oficio_remesa'));
+	                		$attributes = array('id' => 'form_subir_oficio_remesa');
+	                		echo form_open_multipart('subir_oficio_remesa',$attributes);
+
+	                		echo form_upload( $cFile);
+	                		$attributes = array( 'class'=>'btn-xs btn-info');
+	                		echo form_submit('btnSubirOficioRemesa','Subir Archivo',$attributes);
+	                		echo form_close();
+	                	?>
+	                    
+	                </div>
+	          </div>
+	        </div>           
+
+	    </div> <!--fin de modal body -->       
+
+		<div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal" id="idBtnCloseModal">Close</button>            
+	        <button type="button" class="btn btn-primary"  id="enviar_correo_oficio_remesa">Aceptar</button>
+	    </div> <!--fin de modal footer -->          
+    
+    </div> <!--fin de modal content -->      
+  </div> <!--fin de modal dialog -->
+</div> <!-- fin de modal fade -->
+<!-- ************************************************************************************************-->  
+
+

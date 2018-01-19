@@ -2,15 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
  
 class Seguimiento_controller extends CI_Controller {
-	
  
 	 public function __construct() {
- 		parent::__construct();		 		
-		if (!isset($_SESSION['logeado'])){
-			if (!$_SESSION['logeado']){
-				redirect();
-			}			
-		}
+ 		parent::__construct();        
+    	if (!isset($_SESSION['logeado'])){      
+      		redirect();     
+ 		}
  	}
  	/****************************************************************************/
  	public function apertura(){ // INDICA QUE SE VA A REALIZAR UN NUEVO OFICIO DE APERTURA o SE VA A VISUALIZAR NADA MAS

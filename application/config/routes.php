@@ -72,3 +72,6 @@ $route['actualiza_fecha_acuse_oficio_remesa'] = 'seguimiento_controller/actualiz
 
 //2018-01-11
 //$route['procesaygenera_oficio_remesa'] = '/impresiones_controller/procesaygenera_oficio_remesa'; // se abre en una ventana nueva --> 2018-01-11
+
+//2018-01-19 --> subir archivos al site
+$route['subir_oficio_remesa'] = 'upload_controllers/cargar_archivo';
