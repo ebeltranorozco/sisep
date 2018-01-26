@@ -98,7 +98,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	                                </tr>
 	                                <tr>
 	                                    <td>
-	                                        <a href="#">Carta Pertinencia</a><span class="label label-info">6</span>
+	                                        <a href="cedula_pertinencia">Cedulas de Pertinencia</a><span class="label label-info">6</span>
 	                                    </td>
 	                                </tr>
 	                                <tr>
@@ -106,6 +106,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	                                        <a href="#">Envio Remesa a Pago</a><span class="label label-info">7</span>
 	                                    </td>
 	                                </tr>
+	                                
 	                                <!--
 	                                <tr>
 	                                    <td>

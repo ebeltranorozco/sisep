@@ -548,6 +548,64 @@ class Seguimiento_controller extends CI_Controller {
  	} 	
 
  	/*******************************************************************************/
+ 	public function cedula_pertinencia_individual(){
+ 		$id_seguimiento = 30;
+ 		if (isset($_GET['id'])){ $id_seguimiento = $_GET['id']; }
+ 		
+
+
+ 		$data = new stdClass();
+		$data->menu_activo = 'tercero';		
+		$data->accion = 'ALTA';
+		$data->panel_title = 'Cedula de Pertinencia';
+		$data->page_title = 'SISEP';			
+		
+
+
+		$this->db->select('*');
+ 		$this->db->from('seguimientos');
+ 		$this->db->join('ceula_pertinencias','seguimientos.id_seguimiento = ceula_pertinencias.id_seguimiento','left');
+ 		$this->db->where('seguimientos.id_seguimiento',$id_seguimiento);	
+ 		$qryCedula = $this->db->get();
+ 		$data->cedula_pertinencia=$qryCedula->row();
+
+ 		$this->load->view('plantillas/encabezado',$data);
+		$this->load->view('plantillas/menu',$data);	
+
+ 		if ($this->db->affected_rows()>0){ 				
+			$this->load->view('seguimiento/v_registro_cedula_pertinencia_individual',$data);			
+ 		}else { 			
+			echo 'nada que mostrar';			 			
+ 		}
+ 		$this->load->view('plantillas/footer',$data);	 	
+
+ 	}
 
  	/*******************************************************************************/
+ 	public function cedula_pertinencia(){ // global 'Cedula de Pertinencia Pendientes de Agregar y Agregadas';
+ 		$data = new stdClass();
+		$data->menu_activo = 'tercero';		
+		$data->accion = 'ALTA';
+		$data->panel_title = 'Cedula de Pertinencia Pendientes de Agregar y Agregadas';
+		$data->page_title = 'SISEP';
+
+		// CEDULAS POSIBLES...
+		$cComponente = $_SESSION['id_componente'];
+		$qryCedulasPosibles = $this->db->query('select * from seguimientos where id_componente = '.$cComponente.' and id_cedula_pertinencia is null');
+		$data->cedulas_posibles = $qryCedulasPosibles->result();		
+
+		// cedulas ya agregadas
+		$this->db->select('*');
+ 		$this->db->from('ceula_pertinencias');
+ 		$this->db->join('seguimientos','ceula_pertinencias.id_seguimiento = seguimientos.id_seguimiento','left');
+ 		
+ 		$qryCedulaAgregadas = $this->db->get();
+ 		$data->cedulas_agregadas=$qryCedulaAgregadas->result();
+
+ 		$this->load->view('plantillas/encabezado',$data);
+		$this->load->view('plantillas/menu',$data);	
+
+ 		$this->load->view('seguimiento/v_registro_cedula_pertinencia_global',$data);			
+ 		$this->load->view('plantillas/footer',$data);
+ 	}
  } // fin del controller

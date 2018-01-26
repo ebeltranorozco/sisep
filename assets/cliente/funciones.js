@@ -988,6 +988,24 @@ $(function () {
     });
 
     /*************************************************************************************/
+     $(".actualiza_fecha_acuse_cedula_pertinencia").click(function(){
+        var cBeneficiario_Fecha = $(this).val(); // viene Beneficiario y  fecha acuse separado por / (diagonal)
+        var cNombreBeneficiario = cBeneficiario_Fecha.substring(0,cBeneficiario_Fecha.indexOf('/'));
+        var dFechaAcuse = cBeneficiario_Fecha.substring(cBeneficiario_Fecha.indexOf('/')+1);
+        //alert( cNoOficio);
+        //alert(cIdSeguimiento);
+        //alert( dFechaAcuse);
+        alert(cBeneficiario_Fecha);
+        if (dFechaAcuse=='0000-00-00') { dFechaAcuse = false;}
+        $("#id_razon_social").val(cNombreBeneficiario);
+        $("#id_fecha_acuse").prop('readonly',false);
+        if (dFechaAcuse){
+            $("#id_fecha_acuse").val(dFechaAcuse);
+            $("#id_fecha_acuse").prop('readonly',true);
+            alert('fecha de acuse ya aplicada');
+        }
+        //alert(cIdSeguimiento);
+    });
 
     /*************************************************************************************/
 

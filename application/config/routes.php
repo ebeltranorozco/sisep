@@ -75,3 +75,7 @@ $route['actualiza_fecha_acuse_oficio_remesa'] = 'seguimiento_controller/actualiz
 
 //2018-01-19 --> subir archivos al site
 $route['subir_oficio_remesa'] = 'upload_controllers/cargar_archivo';
+
+
+//2018-01-26 --> cedula de pertiencnai
+$route['cedula_pertinencia'] = 'seguimiento_controller/cedula_pertinencia';
